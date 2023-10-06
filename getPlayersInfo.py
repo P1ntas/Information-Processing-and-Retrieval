@@ -16,7 +16,7 @@ url = 'https://www.transfermarkt.pt/premier-league/startseite/wettbewerb/GB1/plu
 
 def getPlayerStats():
     players_info = []
-    for i in range(2016,2024):
+    for i in range(2016,2023):
         season_url = url + str(i)
         driver.get(season_url)
         page_source = driver.page_source

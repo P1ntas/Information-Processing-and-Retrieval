@@ -6,13 +6,14 @@ import sqlite3
 from bs4 import BeautifulSoup
 
 # Initialize a SQLite database connection
-conn = sqlite3.connect("teams_stats.db")
+conn = sqlite3.connect("news_articles.db")
 cursor = conn.cursor()	
 
 cursor.execute("""
-    CREATE TABLE IF NOT EXISTS teams (
+    CREATE TABLE IF NOT EXISTS teams_season (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         Url VARCHAR(255) NOT NULL,
+        teams_id INTEGER REFERENCES teams(id),
         Season INT NOT NULL,
         Squad INT,
         Average_Age DOUBLE,
@@ -32,11 +33,11 @@ driver = webdriver.Chrome(options=options)
 
 # Navigate to the Page
 url = 'https://www.transfermarkt.pt/premier-league/startseite/wettbewerb/GB1/plus/?saison_id='
-
+    
 
 def getTeamsStats():
     teams_links = []
-    for i in range(2016,2024):
+    for i in range(2016,2023):
         season_url = url + str(i)
         driver.get(season_url)
         page_source = driver.page_source
@@ -52,16 +53,20 @@ def getTeamsStats():
             club_link = cells.find('a')
             club_stats = []
             club_stats.append('https://www.transfermarkt.pt' + club_link['href'])
+            club_name = club_link['title']
             club_stats_row = club_link.find_parent('tr')
             club_stats_cells = club_stats_row.find_all('td', class_=['zentriert','rechts'])
             club_stats_cells = club_stats_cells[1:] #remove the link
             
             for stat in club_stats_cells:
                 club_stats.append(stat.text)
+            club_stats.append(club_name)
             clubs_stats.append(club_stats)
        
         for club_stat in clubs_stats:
-            cursor.execute("INSERT INTO teams (Url, Season, Squad, Average_Age, Foreigners, Average_Player_Value, Total_Player_Value) VALUES (?, ?, ?, ?, ?, ?, ?)", (club_stat[0], i, club_stat[1], club_stat[2], club_stat[3], club_stat[4], club_stat[5]))
+            cursor.execute("SELECT id FROM teams WHERE name=?", (club_stat[6],))
+            team_id = cursor.fetchone()[0]
+            cursor.execute("INSERT INTO teams_season (Url, teams_id, Season, Squad, Average_Age, Foreigners, Average_Player_Value, Total_Player_Value) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (club_stat[0], team_id,i, club_stat[1], club_stat[2], club_stat[3], club_stat[4], club_stat[5]))
     
     cursor.close()
     conn.commit()

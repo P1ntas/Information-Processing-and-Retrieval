@@ -17,7 +17,7 @@
         {"name": "Swansea City AFC", "csv_name": "Swansea City", "nicknames": ["swans"]},
         {"name": "FC Watford", "csv_name": "Watford", "nicknames": ["hornets"]},
         {"name": "Leicester City FC", "csv_name": "Leicester City", "nicknames": ["foxes"]},
-        {"name": "Sunderland AFC", "csv_name": "Sunderland", "nicknames": ["black cats"]},
+        {"name": "AFC Sunderland", "csv_name": "Sunderland", "nicknames": ["black cats"]},
         {"name": "West Ham United", "csv_name": "West Ham", "nicknames": ["hammers"]},
         {"name": "FC Liverpool", "csv_name": "Liverpool", "nicknames": ["reds"]},
         {"name": "Brighton & Hove Albion", "csv_name": "Brighton", "nicknames": ["seagulls"]},
