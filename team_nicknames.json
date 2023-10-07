@@ -1,36 +1,270 @@
 {
     "teams": [
-        {"name": "Hull City", "csv_name": "Hull City", "nicknames": []},
-        {"name": "FC Middlesbrough", "csv_name": "Middlesbrough", "nicknames": ["boro"]},
-        {"name": "FC Burnley", "csv_name": "Burnley", "nicknames": ["clarets"]},
-        {"name": "FC Everton", "csv_name": "Everton", "nicknames": ["toffees"]},
-        {"name": "Crystal Palace FC", "csv_name": "Crystal Palace", "nicknames": ["eagles","palace"]},
-        {"name": "FC Southampton", "csv_name": "Southampton", "nicknames": ["saints"]},
-        {"name": "Manchester City FC", "csv_name": "Manchester City", "nicknames": ["city","man city"]},
-        {"name": "AFC Bournemouth", "csv_name": "Bournemouth", "nicknames": ["cherries", "afc bournemouth"]},
-        {"name": "FC Arsenal", "csv_name": "Arsenal", "nicknames": ["gunners"]},
-        {"name": "Chelsea FC", "csv_name": "Chelsea", "nicknames": ["blues"]},
-        {"name": "Manchester United FC", "csv_name": "Manchester Utd", "nicknames": ["red devils","manchester united","united","man utd"]},
-        {"name": "Stoke City", "csv_name": "Stoke City", "nicknames": ["potters"]},
-        {"name": "Tottenham Hotspur", "csv_name": "Tottenham", "nicknames": ["spurs","tottenham hotspur"]},
-        {"name": "West Bromwich Albion", "csv_name": "West Brom", "nicknames": ["baggies"]},
-        {"name": "Swansea City AFC", "csv_name": "Swansea City", "nicknames": ["swans"]},
-        {"name": "FC Watford", "csv_name": "Watford", "nicknames": ["hornets"]},
-        {"name": "Leicester City FC", "csv_name": "Leicester City", "nicknames": ["foxes"]},
-        {"name": "Sunderland AFC", "csv_name": "Sunderland", "nicknames": ["black cats"]},
-        {"name": "West Ham United", "csv_name": "West Ham", "nicknames": ["hammers"]},
-        {"name": "FC Liverpool", "csv_name": "Liverpool", "nicknames": ["reds"]},
-        {"name": "Brighton & Hove Albion", "csv_name": "Brighton", "nicknames": ["seagulls"]},
-        {"name": "Newcastle United", "csv_name": "Newcastle Utd", "nicknames": ["magpies", "newcastle"]},
-        {"name": "Huddersfield Town", "csv_name": "Huddersfield", "nicknames": ["terriers"]},
-        {"name": "FC Fulham", "csv_name": "Fulham", "nicknames": ["cottagers"]},
-        {"name": "Wolverhampton Wanderers", "csv_name": "Wolves", "nicknames": ["wolverhampton"]},
-        {"name": "Cardiff City", "csv_name": "Cardiff City", "nicknames": ["bluebirds"]},
-        {"name": "Norwich City", "csv_name": "Norwich City", "nicknames": ["canaries"]},
-        {"name": "Aston Villa FC", "csv_name": "Aston Villa", "nicknames": ["villans","villa"]},
-        {"name": "Sheffield United", "csv_name": "Sheffield Utd", "nicknames": ["blades","sheff utd"]},
-        {"name": "Leeds United FC", "csv_name": "Leeds United", "nicknames": ["whites", "leeds utd"]},
-        {"name": "Brentford FC", "csv_name": "Brentford", "nicknames": ["bees"]},
-        {"name": "Nottingham Forest", "csv_name": "Nott'ham Forest", "nicknames": ["forest", "nott'm forest"]}
+        {
+            "name": "Hull City",
+            "csv_name": "Hull City",
+            "nicknames": [],
+            "short_name": ""
+        },
+        {
+            "name": "FC Middlesbrough",
+            "csv_name": "Middlesbrough",
+            "nicknames": [
+                "boro"
+            ],
+            "short_name": ""
+        },
+        {
+            "name": "FC Burnley",
+            "csv_name": "Burnley",
+            "nicknames": [
+                "clarets"
+            ],
+            "short_name": ""
+        },
+        {
+            "name": "FC Everton",
+            "csv_name": "Everton",
+            "nicknames": [
+                "toffees"
+            ],
+            "short_name": "EVE"
+        },
+        {
+            "name": "Crystal Palace FC",
+            "csv_name": "Crystal Palace",
+            "nicknames": [
+                "eagles",
+                "palace"
+            ],
+            "short_name": "CRY"
+        },
+        {
+            "name": "FC Southampton",
+            "csv_name": "Southampton",
+            "nicknames": [
+                "saints"
+            ],
+            "short_name": "SOU"
+        },
+        {
+            "name": "Manchester City FC",
+            "csv_name": "Manchester City",
+            "nicknames": [
+                "city",
+                "man city"
+            ],
+            "short_name": "MCI"
+        },
+        {
+            "name": "AFC Bournemouth",
+            "csv_name": "Bournemouth",
+            "nicknames": [
+                "cherries",
+                "afc bournemouth"
+            ],
+            "short_name": "BOU"
+        },
+        {
+            "name": "FC Arsenal",
+            "csv_name": "Arsenal",
+            "nicknames": [
+                "gunners"
+            ],
+            "short_name": "ARS"
+        },
+        {
+            "name": "Chelsea FC",
+            "csv_name": "Chelsea",
+            "nicknames": [
+                "blues"
+            ],
+            "short_name": "CHE"
+        },
+        {
+            "name": "Manchester United FC",
+            "csv_name": "Manchester Utd",
+            "nicknames": [
+                "red devils",
+                "manchester united",
+                "united",
+                "man utd"
+            ],
+            "short_name": "MUN"
+        },
+        {
+            "name": "Stoke City",
+            "csv_name": "Stoke City",
+            "nicknames": [
+                "potters"
+            ],
+            "short_name": ""
+        },
+        {
+            "name": "Tottenham Hotspur",
+            "csv_name": "Tottenham",
+            "nicknames": [
+                "spurs",
+                "tottenham hotspur"
+            ],
+            "short_name": "TOT"
+        },
+        {
+            "name": "West Bromwich Albion",
+            "csv_name": "West Brom",
+            "nicknames": [
+                "baggies"
+            ],
+            "short_name": ""
+        },
+        {
+            "name": "Swansea City AFC",
+            "csv_name": "Swansea City",
+            "nicknames": [
+                "swans"
+            ],
+            "short_name": ""
+        },
+        {
+            "name": "FC Watford",
+            "csv_name": "Watford",
+            "nicknames": [
+                "hornets"
+            ],
+            "short_name": ""
+        },
+        {
+            "name": "Leicester City FC",
+            "csv_name": "Leicester City",
+            "nicknames": [
+                "foxes"
+            ],
+            "short_name": "LEI"
+        },
+        {
+            "name": "Sunderland AFC",
+            "csv_name": "Sunderland",
+            "nicknames": [
+                "black cats"
+            ],
+            "short_name": ""
+        },
+        {
+            "name": "West Ham United",
+            "csv_name": "West Ham",
+            "nicknames": [
+                "hammers"
+            ],
+            "short_name": "WHU"
+        },
+        {
+            "name": "FC Liverpool",
+            "csv_name": "Liverpool",
+            "nicknames": [
+                "reds"
+            ],
+            "short_name": "LIV"
+        },
+        {
+            "name": "Brighton & Hove Albion",
+            "csv_name": "Brighton",
+            "nicknames": [
+                "seagulls"
+            ],
+            "short_name": "BHA"
+        },
+        {
+            "name": "Newcastle United",
+            "csv_name": "Newcastle Utd",
+            "nicknames": [
+                "magpies",
+                "newcastle"
+            ],
+            "short_name": "NEW"
+        },
+        {
+            "name": "Huddersfield Town",
+            "csv_name": "Huddersfield",
+            "nicknames": [
+                "terriers"
+            ],
+            "short_name": ""
+        },
+        {
+            "name": "FC Fulham",
+            "csv_name": "Fulham",
+            "nicknames": [
+                "cottagers"
+            ],
+            "short_name": "FUL"
+        },
+        {
+            "name": "Wolverhampton Wanderers",
+            "csv_name": "Wolves",
+            "nicknames": [
+                "wolverhampton"
+            ],
+            "short_name": "WOL"
+        },
+        {
+            "name": "Cardiff City",
+            "csv_name": "Cardiff City",
+            "nicknames": [
+                "bluebirds"
+            ],
+            "short_name": ""
+        },
+        {
+            "name": "Norwich City",
+            "csv_name": "Norwich City",
+            "nicknames": [
+                "canaries"
+            ],
+            "short_name": ""
+        },
+        {
+            "name": "Aston Villa FC",
+            "csv_name": "Aston Villa",
+            "nicknames": [
+                "villans",
+                "villa"
+            ],
+            "short_name": "AVL"
+        },
+        {
+            "name": "Sheffield United",
+            "csv_name": "Sheffield Utd",
+            "nicknames": [
+                "blades",
+                "sheff utd"
+            ],
+            "short_name": ""
+        },
+        {
+            "name": "Leeds United FC",
+            "csv_name": "Leeds United",
+            "nicknames": [
+                "whites",
+                "leeds utd"
+            ],
+            "short_name": "LEE"
+        },
+        {
+            "name": "Brentford FC",
+            "csv_name": "Brentford",
+            "nicknames": [
+                "bees"
+            ],
+            "short_name": "BRE"
+        },
+        {
+            "name": "Nottingham Forest",
+            "csv_name": "Nott'ham Forest",
+            "nicknames": [
+                "forest",
+                "nott'm forest"
+            ],
+            "short_name": "NFO"
+        }
     ]
 }
