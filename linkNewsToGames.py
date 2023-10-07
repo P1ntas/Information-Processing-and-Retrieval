@@ -14,7 +14,8 @@ cursor.execute("""
     CREATE TABLE IF NOT EXISTS teams(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT,
-        csv_name TEXT
+        csv_name TEXT,
+        short_name TEXT
     )
 """)
 
@@ -63,7 +64,9 @@ with open("team_nicknames.json", "r") as json_file:
     for team in teams_data:
         team_name = team["name"]
         team_csv_name = team["csv_name"]
-        cursor.execute("INSERT INTO teams (name,csv_name) VALUES (?, ?)",(team_name,team_csv_name))
+        short_name = team["csv_name"]
+
+        cursor.execute("INSERT INTO teams (name,csv_name,short_name) VALUES (?, ?, ?)",(team_name,team_csv_name,short_name ))
         team_id = cursor.lastrowid
         nicknames = [team_name.lower()] + [team_csv_name.lower()] + [nickname.lower() for nickname in team["nicknames"]]
         cursor.executemany("INSERT INTO team_nicknames (team_id, nickname) VALUES (?, ?)", [(team_id, nickname) for nickname in nicknames])
