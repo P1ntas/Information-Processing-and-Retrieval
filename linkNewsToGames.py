@@ -64,7 +64,7 @@ with open("team_nicknames.json", "r") as json_file:
     for team in teams_data:
         team_name = team["name"]
         team_csv_name = team["csv_name"]
-        short_name = team["csv_name"]
+        short_name = team["short_name"]
 
         cursor.execute("INSERT INTO teams (name,csv_name,short_name) VALUES (?, ?, ?)",(team_name,team_csv_name,short_name ))
         team_id = cursor.lastrowid
