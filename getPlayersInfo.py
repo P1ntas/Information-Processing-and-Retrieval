@@ -44,6 +44,7 @@ def getPlayersLinks(clubs):
         soup = BeautifulSoup(page_source, 'html.parser')
         # find the table with the clubs of that season 
         table = soup.find('table', class_='items')
+        print(club_url)
         # find all the rows of the table with clubs
         rows = table.find_all('tr', class_=['odd','even'])
         
@@ -57,8 +58,8 @@ def getPlayersLinks(clubs):
 def getPlayerInfo(players_links, season):
     players_info = []
     for player_link in players_links:
-        player_url = 'https://www.transfermarkt.pt' + player_link + "/plus/0?saison=" + str(season) 
-        player_url = player_url.replace('profil', 'leistungsdaten')
+        player_url = 'https://www.transfermarkt.pt' + player_link
+        player_url = player_url.replace('profil', 'leistungsdatendetails')
 
         players_info.append(player_url)
 
@@ -66,13 +67,18 @@ def getPlayerInfo(players_links, season):
 
 
 links = getPlayerStats()
+# remove duplicates
+links = [link for season in links for link in season]
+
+# remove duplicates
+links = list(dict.fromkeys(links))
+
+
+
 # safe links in file 
 with open("players_links.txt", "w") as file:
-    for season in links:
-        for link in season:
-            file.write(link + "\n")
-
-print(links)
+    for link in links:
+        file.write(link + "\n")
 
 
 
