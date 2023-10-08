@@ -15,32 +15,6 @@ def create_connection(db_file):
 
     return conn
 
-def get_articles(conn):
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM articles")
-
-    rows = cur.fetchall()
-
-    for row in rows:
-        print(row)
-
-def count_articles(conn):
-    cur = conn.cursor()
-    cur.execute("SELECT COUNT(*) FROM articles")
-
-    rows = cur.fetchall()
-
-    print(rows[0][0])
-
-def get_teams(conn):
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM teams ORDER BY csv_name ASC;")
-
-    rows = cur.fetchall()
-
-    for row in rows:
-        print(row)
-
 def get_wins(conn):
     cur = conn.cursor()
 
@@ -99,14 +73,6 @@ def get_wins(conn):
     plt.show()
 
     print(teams_wins)
-
-def count_games(conn):
-    cur = conn.cursor()
-    cur.execute("SELECT COUNT(*) FROM games")
-
-    rows = cur.fetchall()
-
-    print(rows[0][0])
 
 def get_teams_articles(conn):
 
@@ -171,12 +137,13 @@ def get_average_number_goals_team(conn):
     team_goals = {}
 
     cur.execute("""
-        SELECT teams.csv_name, teams.short_name, games.season_end_year,
+        SELECT teams.csv_name, teams.short_name, seasons.last_year AS season_end_year,
         SUM(CASE WHEN teams.id = games.home_id THEN games.home_goals ELSE games.away_goals END) AS total_goals
         FROM teams
         LEFT JOIN games ON teams.id = games.home_id OR teams.id = games.away_id
-        GROUP BY teams.name, games.season_end_year
-        ORDER BY teams.csv_name ASC, games.season_end_year ASC;
+        LEFT JOIN seasons ON games.season_id = seasons.id
+        GROUP BY teams.csv_name, teams.short_name, seasons.last_year
+        ORDER BY teams.csv_name ASC, seasons.last_year ASC;
     """)
 
     for row in cur.fetchall():
@@ -218,12 +185,88 @@ def get_average_number_goals_team(conn):
 
     plt.show()
 
+def get_most_news_weeks(conn):
+    cur = conn.cursor()
+
+    cur.execute("""
+        SELECT subquery.wk, AVG(num_articles) AS avg_num_articles
+        FROM (
+            SELECT games.wk, COUNT(articles.id) AS num_articles
+            FROM games
+            LEFT JOIN articles ON games.id = articles.game_id
+            GROUP BY games.wk
+        ) AS subquery
+        GROUP BY subquery.wk
+        ORDER BY subquery.wk ASC;
+    """)
+
+    week_avg_articles = []
+
+    for row in cur.fetchall():
+        week, avg_articles = row
+        week_avg_articles.append((week, avg_articles))
+    
+    fig, ax = plt.subplots(figsize=(12, 6))
+
+    plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
+
+    weeks = [row[0] for row in week_avg_articles]
+    avg_articles = [row[1] for row in week_avg_articles]
+
+    plt.bar(range(len(weeks)), avg_articles, align='center', width=0.5)
+
+    plt.title('Average Number of News Articles per Week throughout the 2016/17 to 2022/23 Seasons')
+
+    plt.ylabel('Average Number of Articles')
+
+    plt.xlabel('Week')
+
+    plt.xticks(range(len(weeks)), weeks)
+
+    plt.show()
+
+def top10_scorers(conn):
+
+    cur = conn.cursor()
+
+    cur.execute("""
+                SELECT players.Name AS player_name, SUM(players_stats.Goals) AS total_goals FROM players
+                JOIN players_stats ON players.id = players_stats.players_id
+                GROUP BY players.Name
+                ORDER BY total_goals DESC
+                LIMIT 10;
+                """)
+    
+    scorers = {}
+    
+    for row in cur.fetchall():
+        player_name, total_goals = row
+        scorers[player_name] = total_goals
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+
+    plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
+
+    plt.bar(range(len(scorers)), list(scorers.values()), align='center', width=0.5)
+
+    plt.title('Top 10 Scorers in the Premier League from 2016/17 to 2022/23 Seasons')
+
+    plt.ylabel('Number of Goals')
+
+    plt.xlabel('Player')
+
+    plt.xticks(range(len(scorers)), list(scorers.keys()))
+
+    plt.show()
+
 connection = create_connection("news_articles.db")
 
-#get_teams(connection)
+get_wins(connection)
 
-#get_wins(connection)
-
-#get_teams_articles(connection)
+get_teams_articles(connection)
 
 get_average_number_goals_team(connection)
+
+get_most_news_weeks(connection)
+
+top10_scorers(connection)
