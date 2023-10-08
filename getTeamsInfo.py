@@ -10,16 +10,16 @@ conn = sqlite3.connect("news_articles.db")
 cursor = conn.cursor()	
 
 cursor.execute("""
-    CREATE TABLE IF NOT EXISTS teams_season (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        Url VARCHAR(255) NOT NULL,
+    CREATE TABLE IF NOT EXISTS teams_stats (
         teams_id INTEGER REFERENCES teams(id),
-        Season INT NOT NULL,
+        season_id INTEGER REFERENCES seasons(id),
+        Url VARCHAR(255) NOT NULL,
         Squad INT,
         Average_Age DOUBLE,
         Foreigners INT,
         Average_Player_Value VARCHAR(255),
-        Total_Player_Value VARCHAR(255)
+        Total_Player_Value VARCHAR(255),
+        PRIMARY KEY (teams_id, season_id)
     )
 """)
 
@@ -66,7 +66,7 @@ def getTeamsStats():
         for club_stat in clubs_stats:
             cursor.execute("SELECT id FROM teams WHERE name=?", (club_stat[6],))
             team_id = cursor.fetchone()[0]
-            cursor.execute("INSERT INTO teams_season (Url, teams_id, Season, Squad, Average_Age, Foreigners, Average_Player_Value, Total_Player_Value) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (club_stat[0], team_id,i, club_stat[1], club_stat[2], club_stat[3], club_stat[4], club_stat[5]))
+            cursor.execute("INSERT INTO teams_stats (teams_id, season_id, Url, Squad, Average_Age, Foreigners, Average_Player_Value, Total_Player_Value) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (team_id, int(str(i)[-2:]), club_stat[0], club_stat[1], club_stat[2], club_stat[3], club_stat[4], club_stat[5]))
     
     cursor.close()
     conn.commit()
