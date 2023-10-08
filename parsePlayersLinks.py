@@ -13,6 +13,7 @@ cursor.execute("""
     CREATE TABLE IF NOT EXISTS players (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         Url VARCHAR(255) NOT NULL,
+        Name VARCHAR(255)
     )
 """)
 
@@ -22,7 +23,6 @@ cursor.execute("""
         players_id INTEGER REFERENCES players(id),
         season_id INTEGER REFERENCES seasons(id),
         teams_id INTEGER REFERENCES teams(id),
-        Name VARCHAR(255),
         Games INT,
         Goals INT,
         Assists INT,
@@ -39,7 +39,6 @@ cursor.execute("""
         players_id INTEGER REFERENCES players(id),
         season_id INTEGER REFERENCES seasons(id),
         teams_id INTEGER REFERENCES teams(id),
-        Name VARCHAR(255),
         Games INT,
         Goals INT,
         Yellow_Cards INT,
@@ -145,19 +144,22 @@ for i in range(0, len(players_links)):
                     team_id = cursor.fetchone()[0]
                     #get the player id
                     cursor.execute("SELECT id FROM players WHERE Url=?", (players_links[i],))
-                    player_id = cursor.fetchone()[0]
+                    player_id = cursor.fetchone()
 
-                    if player_id is None:
-                        cursor.execute("INSERT INTO players (Url) VALUES (?)", (players_links[i],))
-                        #get the player id witch was the last added to the table
-                        player_id = cursor.lastrowid
-                    
                     player_name = players_links[i].split('/')[3].replace('-', ' ').title()
 
-                    if is_goalkeeper:
-                        cursor.execute("INSERT INTO goalkeepers (players_id, season_id, teams_id, Name,Games, Goals, Yellow_Cards, Double_Yellow_Cards, Red_Cards, Goals_Conceded, Clean_Sheets, Minutes_Played) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (player_id, season, team_id, player_name, player_stats[2], player_stats[3], player_stats[4].split('/')[0], player_stats[4].split('/')[1], player_stats[4].split('/')[2], player_stats[5], player_stats[6], player_stats[7]))
+                    if player_id is None:
+                        cursor.execute("INSERT INTO players (Url, Name) VALUES (?, ?)", (players_links[i],str(player_name),))
+                        #get the player id witch was the last added to the table
+                        player_id = cursor.lastrowid
                     else:
-                        cursor.execute("INSERT INTO players (players_id, season_id, teams_id, Name,Games, Goals, Assists, Yellow_Cards, Double_Yellow_Cards, Red_Cards, Minutes_Played) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (player_id, season, team_id, player_name, player_stats[2], player_stats[3], player_stats[4],  player_stats[5].split('/')[0],  player_stats[5].split('/')[1],  player_stats[5].split('/')[2], player_stats[6]))
+                        player_id = player_id[0]
+                   
+
+                    if is_goalkeeper:
+                        cursor.execute("INSERT INTO goalkeepers_stats (players_id, season_id, teams_id,Games, Goals, Yellow_Cards, Double_Yellow_Cards, Red_Cards, Goals_Conceded, Clean_Sheets, Minutes_Played) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (player_id, season, team_id, player_stats[2], player_stats[3], player_stats[4].split('/')[0], player_stats[4].split('/')[1], player_stats[4].split('/')[2], player_stats[5], player_stats[6], player_stats[7]))
+                    else:
+                        cursor.execute("INSERT INTO players_stats (players_id, season_id, teams_id,Games, Goals, Assists, Yellow_Cards, Double_Yellow_Cards, Red_Cards, Minutes_Played) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (player_id, season, team_id, player_stats[2], player_stats[3], player_stats[4],  player_stats[5].split('/')[0],  player_stats[5].split('/')[1],  player_stats[5].split('/')[2], player_stats[6]))
                     
                     
 

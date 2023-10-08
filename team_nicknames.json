@@ -4,7 +4,7 @@
             "name": "Hull City",
             "csv_name": "Hull City",
             "nicknames": [],
-            "short_name": ""
+            "short_name": "HUL"
         },
         {
             "name": "FC Middlesbrough",
@@ -12,7 +12,7 @@
             "nicknames": [
                 "boro"
             ],
-            "short_name": ""
+            "short_name": "MID"
         },
         {
             "name": "FC Burnley",
@@ -20,7 +20,7 @@
             "nicknames": [
                 "clarets"
             ],
-            "short_name": ""
+            "short_name": "BUR"
         },
         {
             "name": "FC Everton",
@@ -98,7 +98,7 @@
             "nicknames": [
                 "potters"
             ],
-            "short_name": ""
+            "short_name": "STO"
         },
         {
             "name": "Tottenham Hotspur",
@@ -115,7 +115,7 @@
             "nicknames": [
                 "baggies"
             ],
-            "short_name": ""
+            "short_name": "WBA"
         },
         {
             "name": "Swansea City AFC",
@@ -123,7 +123,7 @@
             "nicknames": [
                 "swans"
             ],
-            "short_name": ""
+            "short_name": "SWA"
         },
         {
             "name": "FC Watford",
@@ -131,7 +131,7 @@
             "nicknames": [
                 "hornets"
             ],
-            "short_name": ""
+            "short_name": "WAT"
         },
         {
             "name": "Leicester City FC",
@@ -147,7 +147,7 @@
             "nicknames": [
                 "black cats"
             ],
-            "short_name": ""
+            "short_name": "SUN"
         },
         {
             "name": "West Ham United",
@@ -188,7 +188,7 @@
             "nicknames": [
                 "terriers"
             ],
-            "short_name": ""
+            "short_name": "HUD"
         },
         {
             "name": "FC Fulham",
@@ -212,7 +212,7 @@
             "nicknames": [
                 "bluebirds"
             ],
-            "short_name": ""
+            "short_name": "CAR"
         },
         {
             "name": "Norwich City",
@@ -220,7 +220,7 @@
             "nicknames": [
                 "canaries"
             ],
-            "short_name": ""
+            "short_name": "NOR"
         },
         {
             "name": "Aston Villa FC",
@@ -238,7 +238,7 @@
                 "blades",
                 "sheff utd"
             ],
-            "short_name": ""
+            "short_name": "SHU"
         },
         {
             "name": "Leeds United FC",
