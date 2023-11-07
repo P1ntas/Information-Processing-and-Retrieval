@@ -1,0 +1,134 @@
+{
+  "add-field-type": [
+    {
+      "name": "text",
+      "class": "solr.TextField"
+    },
+    {
+      "name": "date",
+      "class": "solr.TrieDateField"
+    },
+    {
+      "name": "int",
+      "class": "solr.IntPointField"
+    },
+    {
+      "name": "float",
+      "class": "solr.FloatPointField"
+    }
+  ],
+  "add-field": [
+    {
+      "name": "wk",
+      "type": "text"
+    },
+    {
+      "name": "date",
+      "type": "text"
+    },
+    {
+      "name": "home_goals",
+      "type": "int"
+    },
+    {
+      "name": "away_goals",
+      "type": "int"
+    },
+    {
+      "name": "ftr",
+      "type": "text"
+    },
+    {
+      "name": "season",
+      "type": "text"
+    },
+    {
+      "name": "name",
+      "type": "text"
+    },
+    {
+      "name": "abbreviation",
+      "type": "text"
+    },
+    {
+      "name": "url",
+      "type": "text"
+    },
+    {
+      "name": "nr_players",
+      "type": "text"
+    },
+    {
+      "name": "average_age",
+      "type": "text"
+    },
+    {
+      "name": "foreigners",
+      "type": "text"
+    },
+    {
+      "name": "average_player_value",
+      "type": "text"
+    },
+    {
+      "name": "total_player_value",
+      "type": "text"
+    },
+    {
+      "name": "nr_games",
+      "type": "text"
+    },
+    {
+      "name": "goals",
+      "type": "text"
+    },
+    {
+      "name": "assists",
+      "type": "text"
+    },
+    {
+      "name": "yellow_cards",
+      "type": "text"
+    },
+    {
+      "name": "double_yellow_cards",
+      "type": "text"
+    },
+    {
+      "name": "red_cards",
+      "type": "text"
+    },
+    {
+      "name": "minutes_played",
+      "type": "text"
+    },
+    {
+      "name": "clean_sheets",
+      "type": "text"
+    },
+    {
+      "name": "goals_conceded",
+      "type": "text"
+    },
+    {
+      "name": "title",
+      "type": "text"
+    },
+    {
+      "name": "summary",
+      "type": "text"
+    },
+    {
+      "name": "text",
+      "type": "text"
+    },
+    {
+      "name": "home_team",
+      "type": "text"
+    },
+    {
+      "name": "away_team",
+      "type": "text"
+    }
+  ]
+}
