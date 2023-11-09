@@ -1,7 +1,7 @@
 import sqlite3
 import json
 
-def get_team_document(team_id,season_id):
+def get_team_document(team_id,season_id,nr_goals):
     cursor.execute("""
     SELECT teams.name,teams.short_name,Url,Squad,Average_age,Foreigners,Average_Player_Value,Total_Player_Value
     FROM teams LEFT JOIN teams_stats ON teams.id=teams_stats.teams_id 
@@ -10,6 +10,7 @@ def get_team_document(team_id,season_id):
     team_name,short_name,url,nr_players,average_age,foreigners,average_player_value,total_player_value = cursor.fetchone()
     team = {
         "name":team_name,
+        "goals":nr_goals,
         "abbreviation":short_name,
         "url":url,
         "nr_players":nr_players,
@@ -75,15 +76,13 @@ for games_db in cursor.fetchall():
     game_id,wk,date,home_goals,away_goals,ftr,home_team_id,away_team_id,season,season_id= games_db
     game={
         "wk":wk,
-        "date":date,
-        "home_goals":home_goals,
-        "away_goals":away_goals,
+        "date":f"{date}T00:00:00Z",
         "ftr":ftr,
         "season":season
     }
 
-    game["home_team"] = get_team_document(home_team_id,season_id)
-    game["away_team"] = get_team_document(away_team_id,season_id)
+    game["home_team"] = get_team_document(home_team_id,season_id,home_goals)
+    game["away_team"] = get_team_document(away_team_id,season_id,away_goals)
     cursor.execute("""
         SELECT title,summary,text, date, url
         FROM articles
@@ -98,7 +97,7 @@ for games_db in cursor.fetchall():
             "title":title,
             "summary":summary,
             "text":text,
-            "date": date,
+            "date":f"{date}T00:00:00Z",
             "url": url
         }
 
@@ -106,5 +105,5 @@ for games_db in cursor.fetchall():
     games.append(game)
 
 
-with open("games.json", "w") as json_file:
+with open("../documents/games.json", "w") as json_file:
     json.dump(games, json_file, indent=4)

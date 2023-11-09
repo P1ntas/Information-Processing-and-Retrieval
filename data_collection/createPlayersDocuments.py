@@ -57,5 +57,5 @@ for player_db in cursor.fetchall():
     player["player_stats"] = get_player_stats_document(player_id)
     players.append(player)
 
-with open("players.json", "w") as json_file:
+with open("../documents/players.json", "w") as json_file:
     json.dump(players, json_file, indent=4)

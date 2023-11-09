@@ -17,7 +17,7 @@ for article_db in cursor.fetchall():
         "title":title,
         "summary":summary,
         "text":text,
-        "date": date,
+        "date":f"{date}T00:00:00Z",
         "url": url
     }
     if(game_id):
@@ -31,7 +31,7 @@ for article_db in cursor.fetchall():
         wk,date,home_goals,away_goals,ftr,home_team,away_team,season = cursor.fetchone()
         game={
             "wk":wk,
-            "date":date,
+            "date":f"{date}T00:00:00Z",
             "home_goals":home_goals,
             "away_goals":away_goals,
             "ftr":ftr,
@@ -67,10 +67,10 @@ for article_db in cursor.fetchall():
     named_players = []
     for players_db in cursor.fetchall():
         player_name,url = players_db
-        named_players.append({"name":player_name,"URL":url})
+        named_players.append({"name":player_name,"url":url})
 
     article["named_players"]=named_players
     articles.append(article)
 
-with open("articles.json", "w") as json_file:
+with open("../documents/articles.json", "w") as json_file:
     json.dump(articles, json_file, indent=4)

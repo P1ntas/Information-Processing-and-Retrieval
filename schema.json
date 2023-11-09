@@ -2,7 +2,18 @@
   "add-field-type": [
     {
       "name": "text",
-      "class": "solr.TextField"
+
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                }
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                }
+            }
     },
     {
       "name": "date",
@@ -24,7 +35,7 @@
     },
     {
       "name": "date",
-      "type": "text"
+      "type": "date"
     },
     {
       "name": "home_goals",
@@ -80,7 +91,7 @@
     },
     {
       "name": "goals",
-      "type": "text"
+      "type": "int"
     },
     {
       "name": "assists",
