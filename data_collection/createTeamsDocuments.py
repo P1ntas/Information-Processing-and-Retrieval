@@ -77,7 +77,7 @@ for team_db in cursor.fetchall():
     team["team_stats"] = teams_stats
     final_teams.append(team)
     
-with open("teams.json", "w") as json_file:
+with open("../documents/teams.json", "w") as json_file:
     json.dump(final_teams, json_file, indent=4)
 
     
