@@ -6,3 +6,7 @@ curl -X GET http://localhost:8983/solr/articles/query -d  '
     "query": "text:\"Coutinho injury\"~10"
 }'
 comment
+
+
+
+
