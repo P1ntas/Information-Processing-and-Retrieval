@@ -26,7 +26,7 @@ for team_db in cursor.fetchall():
         team_stats = {"season_id": season_id,
              "team_url": team_url,
              "team_squad": team_squad,
-             "team_average_age": team_average_age,
+             "team_average_age": team_average_age.replace(',','.'),
              "team_foreigners": team_foreigners,
              "team_average_player_value": team_average_player_value,
              "team_total_player_value": team_total_player_value}

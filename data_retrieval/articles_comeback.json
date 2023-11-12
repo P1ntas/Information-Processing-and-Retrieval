@@ -1,0 +1,820 @@
+{
+                                                    "responseHeader":{
+                                                      "status":0,
+                                                      "QTime":4,
+                                                      "params":{
+                                                        "group.limit":"1000",
+                                                        "parent.q":"!parent which=\"*:* -_nest_path_:*\" v={!terms f=id v=$row.article_id}",
+                                                        "fl":"*,parent:[subquery]",
+                                                        "json":"\n{\n    \"query\": \"_nest_path_:\\\\/named_teams AND ({!child of=\\\"*:* -_nest_path_:*\\\"}title:comeback OR summary:comeback OR text:comeback)\"\n}",
+                                                        "group.field":"abbreviation",
+                                                        "group":"true=true"
+                                                      }
+                                                    },
+                                                    "grouped":{
+                                                      "abbreviation":{
+                                                        "matches":46,
+                                                        "groups":[{
+                                                          "groupValue":"TOT",
+                                                          "doclist":{
+                                                            "numFound":1,
+                                                            "start":0,
+                                                            "numFoundExact":true,
+                                                            "docs":[{
+                                                              "name":"Tottenham Hotspur",
+                                                              "abbreviation":"TOT",
+                                                              "article_id":"19222",
+                                                              "id":"19222/named_teams#0",
+                                                              "_version_":1782364812295012355,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"19222",
+                                                                  "title":"Liverpool comeback stuns Spurs",
+                                                                  "summary":"Kevin Stewart seals 3-2 victory after they had been 2-0 down at Anfield",
+                                                                  "text":"\n Liverpool fought from 2-0 down to beat Tottenham Hotspur 3-2 and move within two points of second-placed Manchester City in Division 1. \n Marcus Edwards' low drive and Will Miller's follow-up from Shilow Tracey's blocked shot put Spurs 2-0 up at Anfield. \n But Harry Wilson's penalty after Trent Alexander-Arnold was fouled gave Liverpool hope at half-time. \n \n \n \uD83D\uDCF0 Some comeback from  #LFCU23s ! https://t.co/NaSpN6YmFP \n— Liverpool FC (@LFC)  February 5, 2017 \n \n Two minutes after the interval, Sheyi Ojo curled in a fine strike, before Kevin Stewart sealed the victory by heading in Alexander-Arnold's 84th-minute cross. \n Liverpool next face Derby County in PL2 on Sunday, 19 February, while Spurs, in eighth position, host Sunderland the next day.   \n See:  Liverpool report  |  Spurs report \n",
+                                                                  "date":"2017-02-05T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/323225",
+                                                                  "_version_":1782364812295012355
+                                                                }]
+                                                              }
+                                                            }]
+                                                          }
+                                                        },{
+                                                          "groupValue":"LIV",
+                                                          "doclist":{
+                                                            "numFound":9,
+                                                            "start":0,
+                                                            "numFoundExact":true,
+                                                            "docs":[{
+                                                              "name":"FC Liverpool",
+                                                              "abbreviation":"LIV",
+                                                              "article_id":"19222",
+                                                              "id":"19222/named_teams#1",
+                                                              "_version_":1782364812295012355,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"19222",
+                                                                  "title":"Liverpool comeback stuns Spurs",
+                                                                  "summary":"Kevin Stewart seals 3-2 victory after they had been 2-0 down at Anfield",
+                                                                  "text":"\n Liverpool fought from 2-0 down to beat Tottenham Hotspur 3-2 and move within two points of second-placed Manchester City in Division 1. \n Marcus Edwards' low drive and Will Miller's follow-up from Shilow Tracey's blocked shot put Spurs 2-0 up at Anfield. \n But Harry Wilson's penalty after Trent Alexander-Arnold was fouled gave Liverpool hope at half-time. \n \n \n \uD83D\uDCF0 Some comeback from  #LFCU23s ! https://t.co/NaSpN6YmFP \n— Liverpool FC (@LFC)  February 5, 2017 \n \n Two minutes after the interval, Sheyi Ojo curled in a fine strike, before Kevin Stewart sealed the victory by heading in Alexander-Arnold's 84th-minute cross. \n Liverpool next face Derby County in PL2 on Sunday, 19 February, while Spurs, in eighth position, host Sunderland the next day.   \n See:  Liverpool report  |  Spurs report \n",
+                                                                  "date":"2017-02-05T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/323225",
+                                                                  "_version_":1782364812295012355
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Liverpool",
+                                                              "abbreviation":"LIV",
+                                                              "article_id":"17864",
+                                                              "id":"17864/named_teams#",
+                                                              "_version_":1782364812031819776,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"17864",
+                                                                  "title":"Henderson set for Liverpool comeback",
+                                                                  "summary":"Midfielder ready for first appearance in six months as Reds start their pre-season later today",
+                                                                  "text":"\n Liverpool  are likely to welcome captain  Jordan Henderson  back from long-term injury in their  first pre-season friendly  against Tranmere Rovers on Wednesday night. \n The midfielder has not played since early February but has been fully involved since the Reds returned to training last week. \n \"Having Hendo back on the training pitch is a nice thing,\"  Jurgen Klopp  told  liverpoolfc.com .  \n \"Unless the medical department comes to me and tells me to rest him a little bit [he might not play] but they first would have to explain this to Hendo! He is looking forward to it, I am looking forward to it and I expect him in the line-up.”  \n Klopp did, however, explain why new signing  Mohamed Salah  will  not make his first Liverpool appearance  at Prenton Park.   \n \n \n Great news...  The skipper is set to make his Reds return today!  https://t.co/MJpeJ4bnD0   pic.twitter.com/33weWZNmP6 \n— Liverpool FC (@LFC)  July 12, 2017 \n \n",
+                                                                  "date":"2017-07-12T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/437171",
+                                                                  "_version_":1782364812031819776
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Liverpool",
+                                                              "abbreviation":"LIV",
+                                                              "article_id":"10469",
+                                                              "id":"10469/named_teams#",
+                                                              "_version_":1782364810646650882,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"10469",
+                                                                  "title":"Brewster inspires comeback win for Liverpool",
+                                                                  "summary":"Striker involved in both goals for Group F leaders against Sunderland as we look at what happened in the weekend's five PL Cup matches",
+                                                                  "text":"\n Rhian Brewster inspired  Liverpool  to a comeback 2-1 victory at  Sunderland  in the  Premier League Cup .  \n Benji Kimpioka had given the hosts a second-half lead but Brewster forced an own goal from Michael Collins before the 19-year-old won and converted a late penalty.  \n It keeps the Reds top of Group F with two wins from two matches. Sunderland are third, level with second-placed  Huddersfield Town  and one point above bottom team  Wigan Athletic .  \n See:  Sunderland report  |  Liverpool report \n Group B  \n Watford  came from behind three times to win a 4-3 at  Fulham . \n Fulham went ahead at Motspur Park through Fabio Carvalho, Jayden Harris and Tayo Edun. \n But Joseph Hungbo, Kaylen Hinds and Sonny Blu Lo-Everton pegged them back before Hungbo scored a second with 18 minutes remaining.  \n See:  Fulham report  |  Watford report \n In the other match in the group,  Everton  were denied a first win of their PL Cup defence by Plymouth Argyle goalkeeper Mike Cooper in a 1-1 draw.  \n Cooper was beaten by Harry Charsley but, after Billy Clarke equalised, he starred with saves from Oumar Niasse, Kyle John, Ellis Simms and Ryan Astley.  \n Watford top the group on four points, followed by Fulham, Plymouth and Everton. \n See:  Everton report  |  Plymouth report \n Group E \n Southampton  moved above  AFC Bournemouth  on goal difference at the top with a 3-1 home victory over  Nottingham Forest .  \n It was 1-1 at the break after goals from Southampton's Kornelius Hansen and Forest's Alex Mighten. \n Saints moved to four points from two matches thanks to second-half strikes from Jake Vokins and Christoph Klarer. \n Forest are bottom, two points behind  Stoke City . \n See:  Southampton report  |  Forest report \n Group H  \n Benny Ashley-Seal scored twice as leaders  Wolverhampton Wanderers  beat  Birmingham City  2-1 to go five points clear. \n Bottom club  Derby County  host second-placed  Leeds United  on Wednesday in their match in hand over Wolves.  \n \n \n \n \n \n SOU \n \n \n \n \n 3 - 1 \n \n NFO \n \n \n \n \n \n \n \n \n \n \n WOL \n \n \n \n \n 2 - 1 \n \n BIR \n \n \n \n \n \n \n \n \n \n \n FUL \n \n \n \n \n 3 - 4 \n \n WAT \n \n \n \n \n \n \n \n \n \n \n SUN \n \n \n \n \n 1 - 2 \n \n LIV \n \n \n \n \n \n \n \n \n \n \n EVE \n \n \n \n \n 1 - 1 \n \n PLY \n \n \n \n \n \n \n \n \n \n \n \n close \n \n \n TV Info \n \n Broadcasters \n \n \n \n \n \n \n",
+                                                                  "date":"2019-11-11T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/1493489",
+                                                                  "_version_":1782364810646650882
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Liverpool",
+                                                              "abbreviation":"LIV",
+                                                              "article_id":"16293",
+                                                              "id":"16293/named_teams#",
+                                                              "_version_":1782364811752898562,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"16293",
+                                                                  "title":"Salah double seals comeback Liverpool win",
+                                                                  "summary":"Egyptian takes tally to 17 PL goals this season as Reds overcome Jamie Vardy's opener at Anfield",
+                                                                  "text":"\n Mohamed Salah scored two second-half goals, taking his tally to 17 for the season, as  Liverpool  came from behind to beat  Leicester City  2-1 at Anfield. \n Claude Puel’s team took the lead in the third minute, with Jamie Vardy netting for the seventh time in five matches against the Reds. \n But Liverpool responded strongly, Salah going close three times and Sadio Mane having a goal disallowed before the break. \n Salah’s equaliser arrived in the 52nd minute and, after Mane had had another strike ruled out, the Egyptian notched a 76th-minute winner. \n It moved him one goal behind Tottenham Hotspur’s Harry Kane at the top of the goalscoring chart. \n Liverpool remain fourth while Leicester stay eighth. \n See:  Liverpool report  |  Leicester report \n Next fixtures \n Liverpool: 1 Jan v Burnley (A) Leicester: 1 Jan v Huddersfield (H) \n \n \n FT \n \n \n \n \n \n \n \n \n \n Liverpool \n LIV \n \n \n \n \n 2 - 1 \n \n \n \n \n \n \n \n \n Leicester City \n LEI \n \n \n \n \n HT:  \n Half Time:  \n      0-1\n     \n \n \n \n Mohamed Salah  52', 76'\n               \n \n \n \n \n \n \n Jamie Vardy  3'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Sadio Mané  52'\n           \n \n James Milner  76'\n           \n \n \n \n Riyad Mahrez  3'\n           \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2017-12-30T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/580224",
+                                                                  "_version_":1782364811752898562
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Liverpool",
+                                                              "abbreviation":"LIV",
+                                                              "article_id":"18863",
+                                                              "id":"18863/named_teams#",
+                                                              "_version_":1782364812232097796,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"18863",
+                                                                  "title":"Lovren makes comeback in Liverpool win",
+                                                                  "summary":"Centre-half plays 75 minutes as Reds beat Chelsea",
+                                                                  "text":"\n Dejan Lovren played for 75 minutes as Liverpool beat Chelsea 2-0 at Prenton Park, in front of the watching Jurgen Klopp, to stay third in the Division 1 table. \n The centre-half has missed his side's last five first-team matches because of knee and back injuries but played his part alongside Marko Grujic, who completed the full 90 minutes as he stepped up his own comeback from injury. \n Captain Harry Wilson (pictured) put the Reds ahead with a 21st-minute penalty after a foul on Trent Alexander-Arnold, who hit the second from a free-kick 20 minutes from time. \n \n \n \uD83D\uDCF0 Read our match report from Prenton Park as Dejan Lovren features in  #LFCU23s ' victory over Chelsea:  https://t.co/7cADmZ623o   pic.twitter.com/nFOOZHdoc9 \n— Liverpool FC (@LFC)  March 13, 2017 \n \n See:  PL2 Division 1 table \n Liverpool stay third in the table, six points behind second-placed Manchester City and 11 adrift of leaders Everton, with a match in hand on both, while Chelsea remain fifth. \n The competition resumes after the international break with  Liverpool facing Southampton  at St Mary's Stadium on Monday 10 April, while  Chelsea entertain Sunderland  at Aldershot on the previous Friday. \n See:  Liverpool report  |  Chelsea report \n (Photos courtesy of Nick Taylor) \n",
+                                                                  "date":"2017-03-13T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/348278",
+                                                                  "_version_":1782364812232097796
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Liverpool",
+                                                              "abbreviation":"LIV",
+                                                              "article_id":"19859",
+                                                              "id":"19859/named_teams#1",
+                                                              "_version_":1782364812416647171,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"19859",
+                                                                  "title":"AFC Bournemouth stun Liverpool with comeback",
+                                                                  "summary":"Cherries recover from going 3-1 down to seal 4-3 victory in stoppage-time",
+                                                                  "text":"\n AFC Bournemouth 4-3 Liverpool \n Nathan Ake scored in stoppage time as AFC Bournemouth hit back from 3-1 down to beat Liverpool 4-3 at the Vitality Stadium. \n Liverpool were two goals ahead with 14 minutes of normal time left, but substitute Ryan Fraser curled in his first Premier League goal, centre-back Steve Cook brilliantly controlled and volleyed in the equaliser before Ake bundled in from close-range. \n \n \n \uD83D\uDCF0 We've done our best to put that game into words... ➡  https://t.co/4iPixEvwBy #afcb  \uD83C\uDF52  pic.twitter.com/avLa4CWTZ7 \n— AFC Bournemouth (@afcbournemouth)  December 4, 2016 \n \n Jurgen Klopp’s visitors raced into a two-goal lead inside 22 minutes, with Sadio Mane prodding in the opener following Emre Can’s ball over the top before Divock Origi beat onrushing goalkeeper Artur Boruc and curled into an empty net from a tight angle. \n Callum Wilson netted AFC Bournemouth’s first goal before Can curled in a fine third for Liverpool, but Eddie Howe’s home side fought back to earn a classic victory in the third minute of added time. \n See:  Liverpool report \n",
+                                                                  "date":"2016-12-04T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/152901",
+                                                                  "_version_":1782364812416647171
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Liverpool",
+                                                              "abbreviation":"LIV",
+                                                              "article_id":"13458",
+                                                              "id":"13458/named_teams#",
+                                                              "_version_":1782364811227561986,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"13458",
+                                                                  "title":"Liverpool keep pressure on City with comeback",
+                                                                  "summary":"Milner, Firmino and Shaqiri score Burnley beaten 3-1 to stay two points behind leaders",
+                                                                  "text":"\n Liverpool came back from a goal down to defeat  Burnley  3-1 at Turf Moor and stay two points behind leaders  Manchester City . \n Ashley Barnes and Phil Bardsley both had chances for Burnley in a goalless first half, while efforts from Naby Keita and James Milner were blocked for  Liverpool . \n Jack Cork put Burnley ahead with a tap-in after Liverpool failed to clear a corner nine minutes after half-time. \n Milner equalised eight minutes later with a low strike from outside the area after good work by Divock Origi. \n Roberto Firmino, a substitute along with Mohamed Salah, put Liverpool in front on 69 minutes from Virgil van Dijk's pass, before Xherdan Shaqiri added a third from Salah's pass in stoppage time. \n Liverpool are in second on 39 points, while Burnley remain 19th on nine. \n See:  Burnley report  |  Liverpool report \n Next fixtures \n Burnley: 8 Dec v Brighton (A) Liverpool: 8 Dec v AFC Bournemouth (A) \n \n \n FT \n \n \n \n \n \n \n \n \n \n Burnley \n BUR \n \n \n \n \n 1 - 3 \n \n \n \n \n \n \n \n \n Liverpool \n LIV \n \n \n \n \n HT:  \n Half Time:  \n      0-0\n     \n \n \n \n Jack Cork  54'\n               \n \n \n \n \n \n \n James Milner  62'\n               \n \n \n \n \n Roberto Firmino  69'\n               \n \n \n \n \n Xherdan Shaqiri  90 +1'\n               \n \n \n \n \n \n \n Assists \n \n \n \n \n \n Divock Origi  62'\n           \n \n Virgil van Dijk  69'\n           \n \n Mohamed Salah  90 +1'\n           \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2018-12-05T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/934434",
+                                                                  "_version_":1782364811227561986
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Liverpool",
+                                                              "abbreviation":"LIV",
+                                                              "article_id":"9707",
+                                                              "id":"9707/named_teams#",
+                                                              "_version_":1782364810501947397,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"9707",
+                                                                  "title":"Jota seals comeback win to take Liverpool joint-top",
+                                                                  "summary":"Portuguese heads in winner after Firmino cancels out Berge penalty in 2-1 victory over Sheff Utd",
+                                                                  "text":"\n Roberto Firmino and Diogo Jota were on target as  Liverpool  came from behind to beat  Sheffield United  at Anfield.  \n Reds full-back Trent Alexander-Arnold almost scored from a free-kick inside his own half early on before Sander Berge's 13th-minute penalty gave the visitors a lead for the first time this season.  \n The visitors threatened to extend their lead through Oli McBurnie, who fired wide, and Ben Osborn, who was thwarted by the returning Alisson. \n But on 41 minutes Liverpool rallied, Firmino reacting quickest to score after Aaron Ramsdale had saved Sadio Mane's header.  \n Substitutes David McGoldrick and Oliver Burke both fired wide in the final 15 minutes as the Blades searched in vain for an equaliser.  \n A first victory in three matches lifts Jurgen Klopp's team to second place, behind leaders Everton on goal difference.   \n Sheffield United have one point from their six matches.  \n See:  Liverpool report  |  Sheffield Utd report \n Budweiser King of the match:  Sadio Mane  (LIV) \n Next fixtures \n Liverpool: 31 Oct v West Ham (H) Sheff Utd: 31 Oct v Man City (H) \n \n \n FT \n \n \n \n \n \n \n \n \n \n Liverpool \n LIV \n \n \n \n \n 2 - 1 \n \n \n \n \n \n \n \n \n Sheffield United \n SHU \n \n \n \n \n HT:  \n Half Time:  \n      1-1\n     \n \n \n \n Roberto Firmino  41'\n               \n \n \n \n \n Diogo Jota  64'\n               \n \n \n \n \n \n \n Sander Berge  13' (pen)\n               \n \n \n \n \n \n \n Assists \n \n \n \n Sadio Mané  64'\n           \n \n \n \n \n \n \n View Match \n \n \n \n   \n",
+                                                                  "date":"2020-01-24T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/1871611",
+                                                                  "_version_":1782364810501947397
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Liverpool",
+                                                              "abbreviation":"LIV",
+                                                              "article_id":"1291",
+                                                              "id":"1291/named_teams#1",
+                                                              "_version_":1782364808743485443,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"1291",
+                                                                  "title":"Liverpool climb to sixth with comeback win at West Ham",
+                                                                  "summary":"Reds boost European hopes, while Forest move out of relegation zone and Brentford beat Chelsea",
+                                                                  "date":"2023-04-26T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/3236410",
+                                                                  "text":"\n Liverpool came from behind to beat  West Ham United  2-1, climbing to sixth in the race for Europe thanks to goals from  Cody Gakpo  and  Joel Matip . \n \n \n \n \n \n WHU \n \n \n \n \n 1 - 2 \n \n LIV \n \n \n \n \n \n \n \n \n \n \n \n close \n \n \n TV Info \n \n Broadcasters \n \n \n \n \n \n It was hard work for the visitors as West Ham took the lead through an excellent  Lucas Paqueta  goal from 25 yards. \n But that lead only lasted six minutes as Gakpo also netted from range after receiving a pass from  Trent Alexander-Arnold , who has now produced five assists in his last four outings. \n Jarrod Bowen  thought he had given West Ham the lead again, but his strike was ruled out for offside following a VAR review. \n Instead, it was Liverpool who grabbed the winner as Matip rose highest to head home  Andrew Robertson ’s 67th-minute corner. \n The Reds’ third consecutive win takes them to 53 points, six off the top four. West Ham drop to 14th on 37 points. \n See:  Which teams can qualify for UEFA competitions   \n \n \n \n The race for Europe \n \n \n \n \n \n \n Position \n Pos \n \n Club \n \n Played \n Pl \n \n GD \n \n Points \n Pts \n \n \n \n \n \n \n 3 \n \n \n \n \n \n \n \n Manchester United \n MUN \n \n \n 38 \n \n        +15\n\n \n 75 \n \n \n \n 4 \n \n \n \n \n \n \n \n Newcastle United \n NEW \n \n \n 38 \n \n        +35\n\n \n 71 \n \n \n \n 5 \n \n \n \n \n \n \n \n Liverpool \n LIV \n \n \n 38 \n \n        +28\n\n \n 67 \n \n \n \n 6 \n \n \n \n \n \n \n \n Brighton & Hove Albion \n BHA \n \n \n 38 \n \n        +19\n\n \n 62 \n \n \n \n 7 \n \n \n \n \n \n \n \n Aston Villa \n AVL \n \n \n 38 \n \n        +5\n\n \n 61 \n \n \n \n 8 \n \n \n \n \n \n \n \n Tottenham Hotspur \n TOT \n \n \n 38 \n \n        +7\n\n \n 60 \n \n \n \n \n \n View More \n \n Forest boost safety hopes \n Brighton & Hove Albion  found themselves on the other end of a turnaround, with their own hopes of European qualification taking a hit as they scored first but lost 3-1 at  Nottingham Forest , who climbed out of the relegation zone. \n \n \n \n \n \n NFO \n \n \n \n \n 3 - 1 \n \n BHA \n \n \n \n \n \n \n \n \n \n \n \n close \n \n \n TV Info \n \n Broadcasters \n \n \n \n \n \n Forest missed a great chance to go in front as  Brennan Johnson ’s penalty was saved by  Jason Steele , with  Steve Cooper 's side missing a third spot-kick in a row. \n Brighton took full advantage as 18-year-old  Facundo Buonanotte  scored his first goal for the Seagulls in his first start, reacting quickly when  Keylor Navas  parried  Solly March 's low shot. \n But Forest levelled in first-half stoppage time when  Renan Lodi ’s cross was deflected in to his own net by  Pascal Gross . \n The home side completed the turnaround midway through the second half as  Danilo  scored his first goal for the club in his ninth appearance. \n Victory sealed when Forest won another penalty, awarded for handball against  Lewis Dunk . This time  Morgan Gibbs-White  stepped up to the spot, and he made no mistake. \n Forest's first victory in 12 Premier League matches takes them up to 17th on 30 points. Brighton stay eighth on 49 points. \n See:  De Bruyne and Haaland put Man City in control in title race \n \n \n \n The relegation battle \n \n \n \n \n \n \n Position \n Pos \n \n Club \n \n Played \n Pl \n \n GD \n \n Points \n Pts \n \n \n \n \n \n \n 12 \n \n \n \n \n \n \n \n Chelsea \n CHE \n \n \n 38 \n \n        -9\n\n \n 44 \n \n \n \n 13 \n \n \n \n \n \n \n \n Wolverhampton Wanderers \n WOL \n \n \n 38 \n \n        -27\n\n \n 41 \n \n \n \n 14 \n \n \n \n \n \n \n \n West Ham United \n WHU \n \n \n 38 \n \n        -13\n\n \n 40 \n \n \n \n 15 \n \n \n \n \n \n \n \n Bournemouth \n BOU \n \n \n 38 \n \n        -34\n\n \n 39 \n \n \n \n 16 \n \n \n \n \n \n \n \n Nottingham Forest \n NFO \n \n \n 38 \n \n        -30\n\n \n 38 \n \n \n \n 17 \n \n \n \n \n \n \n \n Everton \n EVE \n \n \n 38 \n \n        -23\n\n \n 36 \n \n \n \n 18 \n \n \n \n \n \n \n \n Leicester City \n LEI \n \n \n 38 \n \n        -17\n\n \n 34 \n \n \n \n 19 \n \n \n \n \n \n \n \n Leeds United \n LEE \n \n \n 38 \n \n        -30\n\n \n 31 \n \n \n \n 20 \n \n \n \n \n \n \n \n Southampton \n SOU \n \n \n 38 \n \n        -37\n\n \n 25 \n \n \n \n \n \n View More \n \n Lampard feeling the blues \n Frank Lampard ’s losing start as  Chelsea 's caretaker manager stretched to five matches in all competitions as  Brentford  won at Stamford Bridge for a second successive season. \n An own goal from  Cesar Azpilicueta  gave the visitors the lead, and  Bryan Mbeumo  then produced an excellent solo goal to seal the 2-0 victory. \n Chances were rare for the hosts, with the best opportunities falling to half-time substitute  Pierre-Emerick Aubameyang , but neither of his efforts seriously tested the Brentford goal. \n Another defeat for Chelsea leaves them 11th on 39 points, while Brentford move up to ninth on 47 points. \n Three more matches on Thursday \n The action continues on Thursday, with matches at the top and bottom of the Premier League. \n \n \n \n \n \n EVE \n \n \n \n \n 1 - 4 \n \n NEW \n \n \n \n \n \n \n \n \n \n \n SOU \n \n \n \n \n 0 - 1 \n \n BOU \n \n \n \n \n \n \n \n \n \n \n TOT \n \n \n \n \n 2 - 2 \n \n MUN \n \n \n \n \n \n \n \n \n \n \n \n close \n \n \n TV Info \n \n Broadcasters \n \n \n \n \n \n Everton  welcome  Newcastle United , with the hosts looking to climb of the relegation zone, while the Magpies are aiming to consolidate their position in the top four. \n Tottenham Hotspur  will also be targeting a much-needed victory in  Ryan Mason's first match in his second spell as interim manager  as they take on  Manchester United . \n There is also a huge match at the bottom where south coast rivals  Southampton  and  AFC Bournemouth  meet at St Mary's Stadium. \n",
+                                                                  "_version_":1782364808743485443
+                                                                }]
+                                                              }
+                                                            }]
+                                                          }
+                                                        },{
+                                                          "groupValue":"SOU",
+                                                          "doclist":{
+                                                            "numFound":4,
+                                                            "start":0,
+                                                            "numFoundExact":true,
+                                                            "docs":[{
+                                                              "name":"FC Southampton",
+                                                              "abbreviation":"SOU",
+                                                              "article_id":"20136",
+                                                              "id":"20136/named_teams#",
+                                                              "_version_":1782364812469075971,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"20136",
+                                                                  "title":"Hull comeback stuns Southampton",
+                                                                  "summary":"Two quickfire goals for Tigers cancel out Charlie Austin opener at KCOM Stadium",
+                                                                  "text":"\n Hull 2-1 Southampton \n Hull City scored two goals in two second-half minutes to claim a comeback victory over Southampton, their first win in nine Premier League matches. \n The Tigers looked to be heading for a seventh straight league defeat when Charlie Austin stroked home a sixth-minute penalty after Curtis Davies fouled Maya Yoshida in the area. \n \n \n \uD83D\uDCF7 | Goalscorers Michael Dawson and  @robsnodgrass7  speak to the press after coming off the pitch following today's  #HULSOU  win  pic.twitter.com/NWvdyaQ1Jb \n— Hull City (@HullCity)  November 6, 2016 \n \n But Hull refused to lie down and Robert Snodgrass, who came on as a first-half substitute, equalised on 61 minutes when he coolly finished from Sam Clucas's cut back. Snodgrass then turned provider when his free-kick was headed home by captain Michael Dawson. \n Hull goalkeeper David Marshall saved from Austin and Clucas headed off the line late on as Southampton chased an equaliser but the home side held on to secure their first league win since 20 August. \n See:  Hull City report  |  Southampton report \n",
+                                                                  "date":"2016-11-06T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/136842",
+                                                                  "_version_":1782364812469075971
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Southampton",
+                                                              "abbreviation":"SOU",
+                                                              "article_id":"12618",
+                                                              "id":"12618/named_teams#",
+                                                              "_version_":1782364811073421317,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"12618",
+                                                                  "title":"Ward-Prowse completes Southampton comeback",
+                                                                  "summary":"Midfielder's stunning late free-kick gives Southampton a 2-1 victory over Tottenham Hotspur",
+                                                                  "text":"\n James Ward-Prowse scored a superb late free-kick as  Southampton  hit back from a goal down to beat  Tottenham Hotspur . \n Harry Kane had put Spurs ahead in the 26th minute after a pass from Dele Alli, playing his first match since January. \n The visitors dominated the first half but Saints improved after the break. \n Three minutes after coming on, substitute Stuart Armstrong set up Yan Valery to equalise from close range. \n With nine minutes remaining, Ward-Prowse stepped up to curl in from distance with his sixth goal in nine matches. \n Southampton rise to 16th on 30 points, two off the bottom three.  \n A third defeat in four keeps Spurs in third on 61 points, three above Manchester United. \n See:  Southampton report  |  Spurs report \n Next fixtures \n \n \n \n \n \n BHA \n \n \n \n \n 0 - 1 \n \n SOU \n \n \n \n \n \n \n \n \n \n \n LIV \n \n \n \n \n 2 - 1 \n \n TOT \n \n \n \n \n \n \n \n \n \n \n \n close \n \n \n TV Info \n \n Broadcasters \n \n \n \n \n \n \n \n \n FT \n \n \n \n \n \n \n \n \n \n Southampton \n SOU \n \n \n \n \n 2 - 1 \n \n \n \n \n \n \n \n \n Tottenham Hotspur \n TOT \n \n \n \n \n HT:  \n Half Time:  \n      0-1\n     \n \n \n \n Yan Valery  76'\n               \n \n \n \n \n James Ward-Prowse  81'\n               \n \n \n \n \n \n \n Harry Kane  26'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Stuart Armstrong  76'\n           \n \n \n \n Dele Alli  26'\n           \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2019-03-09T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/1091837",
+                                                                  "_version_":1782364811073421317
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Southampton",
+                                                              "abbreviation":"SOU",
+                                                              "article_id":"10288",
+                                                              "id":"10288/named_teams#",
+                                                              "_version_":1782364810609950723,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"10288",
+                                                                  "title":"Ward-Prowse seals Saints' comeback win",
+                                                                  "summary":"Midfielder's free-kick and Danny Ings's sixth goal in eight matches earn 2-1 victory over Watford",
+                                                                  "text":"\n James Ward-Prowse's late free-kick earned  Southampton  a thrilling 2-1 comeback victory against  Watford . \n Ismaila Sarr gave Watford the lead after 24 minutes, latching on to a long pass down the right before firing high past Alex McCarthy. \n Southampton substitute Shane Long saw his close-range effort tipped on to the crossbar by Ben Foster before Danny Ings equalised with 12 minutes remaining. \n Moussa Djenepo got to the byline with great skill and crossed low for Ings to scramble in at the near post for his sixth goal in his last eight matches. \n Ward-Prowse completed the comeback on 83 minutes, with Foster unable to prevent his curled free-kick from finding the top-left corner. \n Watford substitute Andre Gray lashed wide in stoppage time but 18th-placed Southampton held on for their first home win of the season to move four points clear of the Hornets in 20th. \n Next fixtures \n Southampton: 4 Dec v Norwich (H) Watford: 4 Dec v Leicester (A) \n \n \n FT \n \n \n \n \n \n \n \n \n \n Southampton \n SOU \n \n \n \n \n 2 - 1 \n \n \n \n \n \n \n \n \n Watford \n WAT \n \n \n \n \n HT:  \n Half Time:  \n      0-1\n     \n \n \n \n Danny Ings  78'\n               \n \n \n \n \n James Ward-Prowse  83'\n               \n \n \n \n \n \n \n Ismaïla Sarr  24'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Moussa Djenepo  78'\n           \n \n \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2019-11-30T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/1506930",
+                                                                  "_version_":1782364810609950723
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Southampton",
+                                                              "abbreviation":"SOU",
+                                                              "article_id":"12685",
+                                                              "id":"12685/named_teams#",
+                                                              "_version_":1782364811084955649,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"12685",
+                                                                  "title":"Man Utd claim record ninth comeback win over Saints",
+                                                                  "summary":"Ole Gunnar Solskjaer's side's victory after a first-half deficit sets Premier League record",
+                                                                  "text":"\n Southampton suffered a familiar sense of deja vu after taking the lead at  Manchester United  through  Yan Valery ’s spectacular first-half strike. \n United fought back to claim a 3-2 victory, through  Romelu Lukaku 's 88th-minute winner, the ninth time that they had come from behind to beat  Southampton . \n This is a Premier League record, moving United one ahead of their own mark of eight comeback wins over  Newcastle United , and eight by  Chelsea  over Sunderland. \n It was the third time United had come from behind to beat Saints by a scoreline of 3-2 and the fifth comeback win against them at Old Trafford. \n Ole Gunnar Solskjaer  felt the home crowd played a crucial role on this occasion, with all United's goals scored in front of the Stretford End. \n \n \n Late winners and great finishes - Ole knows all about those! \uD83D\uDE09  #MUFC   pic.twitter.com/njCyT3CYHw \n— Manchester United (@ManUtd)  March 2, 2019 \n \n \"We spoke at half-time about the Stretford End, normally they suck that ball in and today was the same,” the caretaker manager said. \n “They just sucked the ball in, in the end, and I have to say they were great finishes, but then again it does help with that support behind the goal.”  \n Man Utd's nine fightbacks \n \n \n \n Date \n Score \n Venue \n \n \n \n \n 20-Feb-93 \n 2-1 \n H \n \n \n 10-May-95 \n 2-1 \n H \n \n \n 01-Feb-97 \n 2-1 \n H \n \n \n 13-Jan-02 \n 3-1 \n A \n \n \n 15-May-05 \n 2-1 \n A \n \n \n 02-Sep-12 \n 3-2 \n A \n \n \n 30-Jan-13 \n 2-1 \n H \n \n \n 20-Sep-15 \n 3-2 \n A \n \n \n 02-Mar-19 \n 3-2 \n H \n \n \n \n   \n",
+                                                                  "date":"2019-03-03T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/1084979",
+                                                                  "_version_":1782364811084955649
+                                                                }]
+                                                              }
+                                                            }]
+                                                          }
+                                                        },{
+                                                          "groupValue":"AVL",
+                                                          "doclist":{
+                                                            "numFound":3,
+                                                            "start":0,
+                                                            "numFoundExact":true,
+                                                            "docs":[{
+                                                              "name":"Aston Villa FC",
+                                                              "abbreviation":"AVL",
+                                                              "article_id":"18914",
+                                                              "id":"18914/named_teams#",
+                                                              "_version_":1782364812240486402,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"18914",
+                                                                  "title":"Aston Villa comeback stuns Wolves",
+                                                                  "summary":"Late goals from Jordan Lyden and Rory Hale win Midlands derby for visitors",
+                                                                  "text":"\n Jordan Lyden and Rory Hale scored late on as Aston Villa hit back from a goal down to beat Wolverhampton Wanderers 2-1 at Molineux. \n Wolves, the only team who can stop Swansea City winning the Division 2 title, took a 53rd-minute lead through Donovan Wilson, but Villa, who fielded triallist Christopher Samba in defence, equalised through his replacement Lyden. \n Hale hit the winner from the penalty spot in the 86th minute to move Villa to within two points of the play-off places with three matches remaining.  \n See:  Premier League 2 tables \n \n \n \uD83D\uDCF0 Match Report from tonight's Under-23 game -  https://t.co/hkMuVfMhFK   pic.twitter.com/FcMEBDCyEF \n— Wolves (@Wolves)  March 6, 2017 \n \n Wolves need to win all five of their remaining fixtures and hope Swansea lose their last three to claim the only automatic promotion spot. Wolves, in third place,  meet the Swans  at the Liberty Stadium on Monday – the same night  Villa entertain Brighton & Hove Albion  at Villa Park. \n See:  Wolves report  |  Aston Villa report \n",
+                                                                  "date":"2017-03-07T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/344680",
+                                                                  "_version_":1782364812240486402
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"Aston Villa FC",
+                                                              "abbreviation":"AVL",
+                                                              "article_id":"19942",
+                                                              "id":"19942/named_teams#",
+                                                              "_version_":1782364812433424386,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"19942",
+                                                                  "title":"Aston Villa earn comeback victory",
+                                                                  "summary":"Villans up to fourth in Division 2 after 4-2 win against Stoke City",
+                                                                  "text":"\n Aston Villa fought back from 2-1 down to claim a 4-2 victory at Stoke City in their Premier League 2 Division 2 match. \n Stoke twice took the lead, with Hakim Abdallah and Oliver Shenton finding the net either side of a Libor Kozak penalty. \n But Villa hit back on 49 minutes through Core Blackett-Taylor, Kozak headed in his second and Callum O’Hare’s late header into the top corner sealed victory. \n Villa are up to fourth, while Stoke drop to 11th. \n \n \n \uD83D\uDCDD  #SCFC  U23s boss Glyn Hodges says today's 4-2 defeat to  @AVFCOfficial  was disappointing to take ➡️  https://t.co/D9RShQNFFf   pic.twitter.com/tJr9vpH6Oz \n— Stoke City FC (@stokecity)  November 26, 2016 \n \n See:  Stoke report \n See:  Premier League 2 tables \n",
+                                                                  "date":"2016-11-26T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/143942",
+                                                                  "_version_":1782364812433424386
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"Aston Villa FC",
+                                                              "abbreviation":"AVL",
+                                                              "article_id":"10551",
+                                                              "id":"10551/named_teams#",
+                                                              "_version_":1782364810661330944,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"10551",
+                                                                  "title":"Robertson and Mane earn comeback win at Villa",
+                                                                  "summary":"Liverpool score twice in last four minutes to claim 2-1 victory at Villa Park and stay six points clear",
+                                                                  "text":"\n Late goals by Andrew Robertson and Sadio Mane gave Liverpool a dramatic 2-1 comeback victory over Aston Villa to maintain their unbeaten start to the season. \n Anwar El Ghazi forced Alisson into an early save before Trezeguet opened the scoring after 21 minutes. \n John McGinn’s free-kick was finished by Trezeguet, who became the first Egyptian to score for Villa in the Premier League. \n Mane was denied superbly by Villa goalkeeper Tom Heaton, while Mohamed Salah headed over as Liverpool pressed for an equaliser. \n Robertson made it 1-1 with just three minutes remaining, heading in Mane's floated cross at the back post. \n Mane completed the comeback when he glanced in Trent Alexander-Arnold's corner in stoppage time. \n Liverpool have 31 points, six clear of Manchester City, while Villa lie 15th with 11 points. \n See:  Villa report  |  Liverpool report \n Next fixtures \n Aston Villa: 10 Nov v Wolves (A) Liverpool: 10 Nov v Man City (H) \n \n \n FT \n \n \n \n \n \n \n \n \n \n Aston Villa \n AVL \n \n \n \n \n 1 - 2 \n \n \n \n \n \n \n \n \n Liverpool \n LIV \n \n \n \n \n HT:  \n Half Time:  \n      1-0\n     \n \n \n \n Trézéguet  21'\n               \n \n \n \n \n \n \n Andy Robertson  87'\n               \n \n \n \n \n Sadio Mané  90 +4'\n               \n \n \n \n \n \n \n Assists \n \n \n \n John McGinn  21'\n           \n \n \n \n Sadio Mané  87'\n           \n \n Trent Alexander-Arnold  90 +4'\n           \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2019-11-02T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/1479228",
+                                                                  "_version_":1782364810661330944
+                                                                }]
+                                                              }
+                                                            }]
+                                                          }
+                                                        },{
+                                                          "groupValue":"BHA",
+                                                          "doclist":{
+                                                            "numFound":1,
+                                                            "start":0,
+                                                            "numFoundExact":true,
+                                                            "docs":[{
+                                                              "name":"Brighton & Hove Albion",
+                                                              "abbreviation":"BHA",
+                                                              "article_id":"9901",
+                                                              "id":"9901/named_teams#",
+                                                              "_version_":1782364810538647556,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"9901",
+                                                                  "title":"Cashman seals comeback victory for Brighton",
+                                                                  "summary":"Seagulls battle back from behind to secure seventh win of the season",
+                                                                  "text":"\n Goals from Peter Gwargis and Danny Cashman secured a 2-1 comeback win for Brighton & Hove Albion at Blackburn Rovers in Premier League 2 Division 1.  \n Jack Vale gave Blackburn the lead from the penalty spot in the third minute. \n But Gwargis equalised seven minutes later from Taylor Richards' cutback, and Cashman put Brighton in front on 67 minutes with a cool finish. \n Brighton's Jordan Davies was sent off late on but they held on to claim back-to-back victories. \n The Seagulls sit fifth with 22 points, while Blackburn lie 10th with 14. \n See:  Blackburn report  |  Brighton report \n",
+                                                                  "date":"2020-01-06T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/1560348",
+                                                                  "_version_":1782364810538647556
+                                                                }]
+                                                              }
+                                                            }]
+                                                          }
+                                                        },{
+                                                          "groupValue":"FUL",
+                                                          "doclist":{
+                                                            "numFound":1,
+                                                            "start":0,
+                                                            "numFoundExact":true,
+                                                            "docs":[{
+                                                              "name":"FC Fulham",
+                                                              "abbreviation":"FUL",
+                                                              "article_id":"12972",
+                                                              "id":"12972/named_teams#",
+                                                              "_version_":1782364811140530177,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"12972",
+                                                                  "title":"Mitrovic inspires comeback win for Fulham",
+                                                                  "summary":"Striker scores twice as Cottagers fight back from 2-0 down to beat Brighton 4-2 and boost hopes of avoiding relegation",
+                                                                  "text":"\n Aleksandar Mitrovic struck twice as  Fulham  fought back from 2-0 down to beat  Brighton & Hove Albion  4-2 at Craven Cottage. \n Glenn Murray gave the visitors a third-minute lead with a volley before doubling their advantage 14 minutes later after linking up with Pascal Gross.  \n Calum Chambers pulled a goal back with a superb volley into the top-left corner on 47 minutes, before Mitrovic headed Fulham level just before the hour mark.  \n With both sides searching for a winning goal, Murray was denied by a fantastic Sergio Rico save before Mitrovic headed a Joe Bryan cross past Mat Ryan.  \n Luciano Vietto headed Ryan Babel's wayward shot into the net to complete the scoring 11 minutes from time.  \n The result means Fulham move to 17 points, five below 17th-placed Southampton, while Brighton remain 13th on 26 points.  \n See:  Fulham report  |  Brighton report  \n Next fixtures \n Fulham: 2 Feb v Crystal Palace (A) Brighton: 2 Feb v Watford (H) \n \n \n FT \n \n \n \n \n \n \n \n \n \n Fulham \n FUL \n \n \n \n \n 4 - 2 \n \n \n \n \n \n \n \n \n Brighton & Hove Albion \n BHA \n \n \n \n \n HT:  \n Half Time:  \n      0-2\n     \n \n \n \n Calum Chambers  47'\n               \n \n \n \n \n Aleksandar Mitrovic  58', 74'\n               \n \n \n \n \n Luciano Vietto  79'\n               \n \n \n \n \n \n \n Glenn Murray  3', 17'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Joe Bryan  74'\n           \n \n Ryan Babel  79'\n           \n \n \n \n Martín Montoya  3'\n           \n \n Pascal Groß  17'\n           \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2019-01-29T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/986234",
+                                                                  "_version_":1782364811140530177
+                                                                }]
+                                                              }
+                                                            }]
+                                                          }
+                                                        },{
+                                                          "groupValue":"CHE",
+                                                          "doclist":{
+                                                            "numFound":4,
+                                                            "start":0,
+                                                            "numFoundExact":true,
+                                                            "docs":[{
+                                                              "name":"Chelsea FC",
+                                                              "abbreviation":"CHE",
+                                                              "article_id":"15265",
+                                                              "id":"15265/named_teams#",
+                                                              "_version_":1782364811566252039,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"15265",
+                                                                  "title":"Giroud double sparks Chelsea comeback win",
+                                                                  "summary":"Substitute scores twice as Blues net three goals in nine minutes to beat Southampton 3-2",
+                                                                  "text":"\n Substitute Olivier Giroud scored twice as  Chelsea  rallied from two goals down to beat  Southampton  3-2 at St Mary’s Stadium. \n Mark Hughes’ side looked set to be moving out of the bottom three when Dusan Tadic and Jan Bednarek gave them a two-goal lead, but three strikes in less than nine minutes condemned them to defeat. \n Tadic struck on 21 minutes from Ryan Bertrand's cutback. \n The Blues were two behind on the hour when James Ward-Prowse crossed for Bednarek to score on his first PL start for Saints. \n Giroud replaced Alvaro Morata and headed Chelsea back in contention from Marcos Alonso’s 70th-minute cross. \n Five minutes later Willian teed up Eden Hazard to level and the comeback was complete when Giroud struck again. \n Chelsea lie fifth on 60 points while Southampton stay third from bottom with 28 points. \n See:  Southampton report  |  Chelsea report \n Next fixtures \n Southampton: 19 Apr v Leicester (A) Chelsea: 19 Apr v Burnley (A) \n \n \n FT \n \n \n \n \n \n \n \n \n \n Southampton \n SOU \n \n \n \n \n 2 - 3 \n \n \n \n \n \n \n \n \n Chelsea \n CHE \n \n \n \n \n HT:  \n Half Time:  \n      1-0\n     \n \n \n \n Dusan Tadic  21'\n               \n \n \n \n \n Jan Bednarek  60'\n               \n \n \n \n \n \n \n Olivier Giroud  70', 78'\n               \n \n \n \n \n Eden Hazard  75'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Ryan Bertrand  21'\n           \n \n James Ward-Prowse  60'\n           \n \n \n \n Marcos Alonso  70'\n           \n \n Willian  75'\n           \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2018-04-14T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/662852",
+                                                                  "_version_":1782364811566252039
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"Chelsea FC",
+                                                              "abbreviation":"CHE",
+                                                              "article_id":"16991",
+                                                              "id":"16991/named_teams#",
+                                                              "_version_":1782364811869290503,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"16991",
+                                                                  "title":"Batshuayi seals comeback win for Chelsea",
+                                                                  "summary":"Striker comes off the bench to score twice as Blues battle back to defeat Watford",
+                                                                  "text":"\n Substitute  Michy Batshuayi  scored twice to give  Chelsea  a thrilling come-from-behind victory over  Watford  at Stamford Bridge. \n Pedro 's superb 12th-minute strike gave Chelsea the lead but Watford equalised just before half-time through  Abdoulaye Doucoure . \n Richarlison  missed a great chance to put Watford ahead before he set up  Roberto Pereyra , who finished well past Thibaut Courtois, only for Batshuayi, introduced on 61 minutes, to equalise 10 minutes later with a fine header into the top corner. \n The home side took the lead with  Cesar Azpilicueta 's header three minutes from time before Batshuayi made sure of Chelsea's first win in three in stoppage time. \n See:  Chelsea report  |  Watford report \n \n \n FT \n \n \n \n \n \n \n \n \n \n Chelsea \n CHE \n \n \n \n \n 4 - 2 \n \n \n \n \n \n \n \n \n Watford \n WAT \n \n \n \n \n HT:  \n Half Time:  \n      1-1\n     \n \n \n \n Pedro  12'\n               \n \n \n \n \n Michy Batshuayi  71', 90 +5'\n               \n \n \n \n \n César Azpilicueta  87'\n               \n \n \n \n \n \n \n Abdoulaye Doucouré  45 +2'\n               \n \n \n \n \n Roberto Pereyra  49'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Eden Hazard  12'\n           \n \n Pedro  71'\n           \n \n Tiémoué Bakayoko  90 +5'\n           \n \n \n \n Richarlison  49'\n           \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2017-10-21T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/496732",
+                                                                  "_version_":1782364811869290503
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"Chelsea FC",
+                                                              "abbreviation":"CHE",
+                                                              "article_id":"18642",
+                                                              "id":"18642/named_teams#",
+                                                              "_version_":1782364812190154756,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"18642",
+                                                                  "title":"Spurs comeback keeps pressure on Chelsea",
+                                                                  "summary":"Three goals from the 88th minute onwards seal dramatic 3-1 triumph away at Swansea",
+                                                                  "text":"\n Swansea 1-3 Spurs \n Late goals from Dele Alli, Son Heung-Min and Christian Eriksen earned a 3-1 win against Swansea City for Tottenham Hotspur, keeping the pressure on Premier League leaders Chelsea. \n Home side Swansea went ahead when Jordan Ayew crossed for former Spurs winger Wayne Routledge to angle in a low drive past Michel Vorm. \n \n \n We will keep on fighting and pushing, another great win ⚽️  #COYS   pic.twitter.com/5ZiFGpHfo3 \n— Dele (@Dele_Alli)  April 5, 2017 \n \n Mauricio Pochettino’s side finally broke down the resolute Swansea defence in the 88 th  minute, with Dele Alli, who has now been involved in 12 goals in 12 PL matches for Spurs in 2017, firing into an empty net. \n In stoppage time Son and Eriksen struck to keep Spurs second and seven points behind Chelsea, while Swansea dropped into the relegatio zone, in 18th place. \n See:  Swansea report  l  Spurs report \n",
+                                                                  "date":"2017-04-05T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/363029",
+                                                                  "_version_":1782364812190154756
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"Chelsea FC",
+                                                              "abbreviation":"CHE",
+                                                              "article_id":"14339",
+                                                              "id":"14339/named_teams#",
+                                                              "_version_":1782364811391139841,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"14339",
+                                                                  "title":"Alonso strikes as Chelsea see off Arsenal comeback",
+                                                                  "summary":"Spaniard scores winner as Blues win 3-2 at Stamford Bridge after Gunners had fought back from 2-0 down",
+                                                                  "text":"\n Marcos Alonso scored the decisive goal as  Chelsea  held off an  Arsenal  comeback to win 3-2 in a thriller at Stamford Bridge. \n Pedro gave Chelsea the lead after just nine minutes, converting Alonso's cross. \n Less than a minute after Pierre-Emerick Aubameyang had missed a great chance to equalise, Alvaro Morata doubled Chelsea's lead from Cesar Azpilicueta's ball over the top. \n Henrikh Mkhitaryan, who had also missed a fine opportunity, pulled one back on 37 minutes and then crossed for Alex Iwobi to make it 2-2. \n Both sides had chances after the restart to win it, but Eden Hazard, a second-half substitute, crossed from the left for Alonso to stroke in the winner with just nine minutes remaining. \n See:  Chelsea report  |  Arsenal report \n Next fixtures \n Chelsea: 26 Aug v Newcastle (A) Arsenal: 25 Aug v West Ham (H) \n \n \n FT \n \n \n \n \n \n \n \n \n \n Chelsea \n CHE \n \n \n \n \n 3 - 2 \n \n \n \n \n \n \n \n \n Arsenal \n ARS \n \n \n \n \n HT:  \n Half Time:  \n      2-2\n     \n \n \n \n Pedro  9'\n               \n \n \n \n \n Álvaro Morata  20'\n               \n \n \n \n \n Marcos Alonso  81'\n               \n \n \n \n \n \n \n Henrikh Mkhitaryan  37'\n               \n \n \n \n \n Alex Iwobi  41'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Marcos Alonso  9'\n           \n \n César Azpilicueta  20'\n           \n \n Eden Hazard  81'\n           \n \n \n \n Henrikh Mkhitaryan  41'\n           \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2018-08-18T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/820625",
+                                                                  "_version_":1782364811391139841
+                                                                }]
+                                                              }
+                                                            }]
+                                                          }
+                                                        },{
+                                                          "groupValue":"SUN",
+                                                          "doclist":{
+                                                            "numFound":3,
+                                                            "start":0,
+                                                            "numFoundExact":true,
+                                                            "docs":[{
+                                                              "name":"AFC Sunderland",
+                                                              "abbreviation":"SUN",
+                                                              "article_id":"15725",
+                                                              "id":"15725/named_teams#",
+                                                              "_version_":1782364811653283846,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"15725",
+                                                                  "title":"Molyneux strikes on comeback for Sunderland",
+                                                                  "summary":"Luke Molyneux returns from knee injury to give Sunderland 1-1 draw with Hull in Group H",
+                                                                  "text":"\n Luke Molyneux earned a point for Sunderland on his return from a knee injury as they drew 1-1 with Hull City at Eppleton Colliery Welfare Ground. \n The 19-year-old, who had been out with a knee injury since November, came off the bench to equalise in the 84th minute. \n Hull went ahead after the break thanks to Keane Lewis-Potter's close-range finish. \n Deon Moore almost doubled the lead with a bullet header that was well saved, before Molyneux netted with minutes remaining. \n Sunderland finish Group H in third place, while Hull City are fourth, as both teams end their PL Cup campaign.  \n See:  Sunderland report \n Next fixtures \n Sunderland: 3 Mar v Man Utd (A) PL2 Hull: 26 Feb v Barnsley (H) PDL \n",
+                                                                  "date":"2018-02-24T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/606945",
+                                                                  "_version_":1782364811653283846
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"AFC Sunderland",
+                                                              "abbreviation":"SUN",
+                                                              "article_id":"17112",
+                                                              "id":"17112/named_teams#",
+                                                              "_version_":1782364811889213445,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"17112",
+                                                                  "title":"McNair scores on comeback as Sunderland win",
+                                                                  "summary":"Black Cats get International Cup campaign off to winning start against Hertha Berlin",
+                                                                  "text":"\n Paddy McNair scored on his comeback from injury as  Sunderland  made a winning start to their Premier League International Cup campaign with a 2-0 defeat of Hertha Berlin at the Stadium of Light. \n McNair, who suffered a season-ending knee injury last November, put the Black Cats ahead in the 37th minute with a looping header after Duncan Watmore's shot had been saved by goalkeeper Leon Bruggemeier. \n Sunderland's experienced line-up also included Donald Love, Brendan Galloway and Jack Rodwell but the visitors had the better of the second half. \n But the Black Cats made the match safe in the last minute when Tom Beadling converted a penalty following a foul on Jack Diamond. \n It is Hertha's second successive Group B defeat after they lost 3-0 at Leicester City last month, while Sunderland's next group fixture is against Legia Warsaw at the Eppleton Colliery Welfare Ground on 15 November. \n The Black Cats' next Premier League 2 match is on Monday when they face Arsenal at Emirates Stadium.  \n See:  Sunderland report \n \n \n \uD83D\uDCFADickman pleased with commitment shown  ➡️ https://t.co/sfdWGqC8e2   pic.twitter.com/CYMBJRIyz8 \n— Sunderland AFC (@SunderlandAFC)  October 10, 2017 \n \n",
+                                                                  "date":"2017-10-11T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/489247",
+                                                                  "_version_":1782364811889213445
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"AFC Sunderland",
+                                                              "abbreviation":"SUN",
+                                                              "article_id":"9723",
+                                                              "id":"9723/named_teams#",
+                                                              "_version_":1782364810506141697,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"9723",
+                                                                  "title":"Kiernan's late strike completes comeback win for Sunderland",
+                                                                  "summary":"Victory over Huddersfield takes Black Cats level with second-placed Wigan, while Plymouth also triumph for the first time in this season's competition",
+                                                                  "text":"\n Substitute Cole Kiernan hit a late winner as  Sunderland  came from behind to beat  Huddersfield Town  2-1 in  Group F , securing their first Premier League Cup win this season. \n Micah Obiero gave the visitors a sixth-minute lead but Ruben Sammut equalised and Kiernan struck decisively in the 88th minute. \n His goal put the Black Cats in third, level on points with second-placed  Wigan Athletic . The top two teams qualify from each group. \n See:  Sunderland report  |  Huddersfield report \n Group B \n Plymouth Argyle also earned their first win in the competition and boosted their chances of reaching the knockout stage with a 3-1 victory at  Watford . \n Klaidi Lolos, Conor Grant and Joel Grant were all on the scoresheet for the visitors. \n Plymouth leapfrog Watford into third place, moving one point behind Fulham and two behind Everton. \n See:  Plymouth report \n Group D \n Doncaster Rovers strengthened their position in the top two with a 4-2 win at  Portsmouth , establishing a six-point gap to the teams behind them with two matches to play. \n Danny Amos, Rian McLean and Myron Gibbons struck for the visitors, along with a trialist. Portsmouth remain winless. \n See:  Doncaster report   \n Group G \n Tyrone O'Neill scored both of  Middlesbrough 's goals as they edged past  Burnley  2-1. \n The 20-year-old striker broke the deadlock on the stroke of half-time and added a second seven minutes after the break. \n Ali Koiki converted a late penalty for third-placed Burnley but could not prevent second-placed Boro from moving five points ahead of them. \n See:  Burnley report  |  Boro report \n The matches between Wolverhampton Wanderers and Derby County, Stoke City and Southampton and West Bromwich Albion and Scunthorpe United were postponed. \n",
+                                                                  "date":"2020-01-22T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/1570674",
+                                                                  "_version_":1782364810506141697
+                                                                }]
+                                                              }
+                                                            }]
+                                                          }
+                                                        },{
+                                                          "groupValue":"EVE",
+                                                          "doclist":{
+                                                            "numFound":5,
+                                                            "start":0,
+                                                            "numFoundExact":true,
+                                                            "docs":[{
+                                                              "name":"FC Everton",
+                                                              "abbreviation":"EVE",
+                                                              "article_id":"16051",
+                                                              "id":"16051/named_teams#",
+                                                              "_version_":1782364811709906950,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"16051",
+                                                                  "title":"Coleman makes comeback in Everton victory",
+                                                                  "summary":"Full-back plays first match in 10 months following leg break as Toffees beat Portsmouth",
+                                                                  "text":"\n Seamus Coleman  played for an hour in his first match for 10 months as  Everton  beat  Portsmouth  3-0 at Goodison Park. \n The right-back, who suffered a broken leg playing for the Republic of Ireland in March, comfortably came through his comeback. \n By the time he went off, the Toffees were 2-0 up thanks to Nathan Broadhead's neat finish and Bassala Sambou's superb strike. \n Sambou sealed Everton's second Group F win with his second goal of the night. \n The Toffees are second in the table on six points, four points behind leaders Leicester City with a match in hand. \n See:  Everton report  |  Portsmouth report \n Next fixtures \n Everton: 29 Jan v Chelsea (H) PL2 Portsmouth: 6 Feb v Leicester (H) PL Cup \n \n \n | Seamus Coleman on why his return from injury was such a special moment... https://t.co/eBKBeMBtGt   pic.twitter.com/hTu5vEOyZs \n— Everton (@Everton)  January 24, 2018 \n \n",
+                                                                  "date":"2018-01-24T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/598124",
+                                                                  "_version_":1782364811709906950
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Everton",
+                                                              "abbreviation":"EVE",
+                                                              "article_id":"19590",
+                                                              "id":"19590/named_teams#",
+                                                              "_version_":1782364812369461250,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"19590",
+                                                                  "title":"Barkley earns comeback draw for Everton",
+                                                                  "summary":"Late header cancels out superb Snodgrass free-kick for Hull, who move off bottom",
+                                                                  "text":"\n Hull City 2-2 Everton \n Ross Barkley's late header cancelled out a wonderful Robert Snodgrass free-kick as Everton fought back to draw 2-2 at Hull City. \n The Everton midfielder connected with Leighton Baines' deep cross with six minutes left, after Snodgrass curled a free-kick superbly into the top corner on 65 minutes. \n \n \n \uD83C\uDFA5 | \"We created the better chances in the game.\"  @RonaldKoeman  reflects on the 2-2 draw at  @HullCity ...  #EFCawayday   pic.twitter.com/EooMYxiPrn \n— Everton (@Everton)  December 30, 2016 \n \n Michael Dawson rifled in his third goal of the season to put Hull 1-0 up on six minutes, before goalkeeper David Marshall deflected a corner into his own net for Everton's equaliser in first-half stoppage time. \n Not long after hitting the post with another superb set piece, Snodgrass put Hull 2-1 up, but Everton's pressure was rewarded late on. The result lifts Hull into 19th place. Everton remain seventh. \n See:  Hull report  |  Everton report \n",
+                                                                  "date":"2016-12-31T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/258720",
+                                                                  "_version_":1782364812369461250
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Everton",
+                                                              "abbreviation":"EVE",
+                                                              "article_id":"16830",
+                                                              "id":"16830/named_teams#",
+                                                              "_version_":1782364811843076096,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"16830",
+                                                                  "title":"Baines seals dramatic comeback win for Everton",
+                                                                  "summary":"Leighton Baines scores from spot, and Tom Cleverley misses penalty, as Blues rally from two-goal deficit to beat Watford 3-2",
+                                                                  "text":"\n Leighton Baines scored a late penalty as  Everton  recovered from two goals down to beat  Watford  3-2 at Goodison Park. \n The Toffees seemed down and out when goals early in the second half from Richarlison, set up by Andre Gray, and Christian Kabasele, with a header from a corner, put the Hornets in control. \n But Oumar Niasse capitalised on a mistake by substitute goalkeeper Orestis Karnezis and substitute Dominic Calvert-Lewin headed the equaliser from a corner. \n Baines won it from the spot after substitute Aaron Lennon was fouled by Jose Holebas within a minute of coming on. \n Tom Cleverley might have equalised in the 10th minute of stoppage time but the former Everton midfielder drove his penalty wide. \n The victory takes Everton out of the relegation zone. \n See:  Everton report  |  Watford review \n Next fixtures \n Everton: 18 Nov v Crystal Palace (A)  Watford: 19 Nov v West Ham (A) \n \n \n FT \n \n \n \n \n \n \n \n \n \n Everton \n EVE \n \n \n \n \n 3 - 2 \n \n \n \n \n \n \n \n \n Watford \n WAT \n \n \n \n \n HT:  \n Half Time:  \n      0-0\n     \n \n \n \n Oumar Niasse  67'\n               \n \n \n \n \n Dominic Calvert-Lewin  74'\n               \n \n \n \n \n Leighton Baines  90 +1' (pen)\n               \n \n \n \n \n \n \n Richarlison  46'\n               \n \n \n \n \n Christian Kabasele  64'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Ademola Lookman  67'\n           \n \n Leighton Baines  74'\n           \n \n \n \n Andre Gray  46'\n           \n \n José Holebas  64'\n           \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2017-11-05T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/509174",
+                                                                  "_version_":1782364811843076096
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Everton",
+                                                              "abbreviation":"EVE",
+                                                              "article_id":"17614",
+                                                              "id":"17614/named_teams#",
+                                                              "_version_":1782364811980439556,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"17614",
+                                                                  "title":"Antonio starts comeback in draw with Everton",
+                                                                  "summary":"First-team star features in stalemate with defending champions",
+                                                                  "text":"\n Michail Antonio 's return from a hamstring injury started with his first competitive match as  West Ham United  drew 0-0 with defending champions  Everton . \n Everton dominated and Jonjoe Kenny struck his effort against the woodwork. \n The closest that West Ham, in their first Division 1 match since promotion, came to a goal was Antonio's shot, which went narrowly wide. \n Conor Coventry was shown a second yellow in stoppage time but West Ham held on for a point. \n Their next match is at Swindon Town in the Checkatrade Trophy, with Everton travelling to Notts County. \n \n \n \"He was first class in terms of his attitude and the way he approached the game.\" https://t.co/v0gPuEt7rr \n— West Ham United (@WestHamUtd)  August 11, 2017 \n \n See:  West Ham report﻿  |  Everton report \n",
+                                                                  "date":"2017-08-12T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/448269",
+                                                                  "_version_":1782364811980439556
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"FC Everton",
+                                                              "abbreviation":"EVE",
+                                                              "article_id":"10885",
+                                                              "id":"10885/named_teams#0",
+                                                              "_version_":1782364810726342657,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"10885",
+                                                                  "title":"Everton stay unbeaten with comeback Man City draw",
+                                                                  "summary":"Antony Evans and Ellis Simms score second-half goals as Toffees move a point behind Division 1 leaders Chelsea",
+                                                                  "text":"\n Everton came from two goals down in the second half to draw 2-2 with  Manchester City  and extend their unbeaten start to their Premier League 2 Division 1 title defence. \n Visitors Man City were 2-0 up after 49 minutes at Merseyrail Community Stadium thanks to a penalty from Tommy Doyle and a Nabili Touaizi strike. \n But Antony Evans gave  Everton  hope with a second great goal in as many matches, scoring with a free-kick. \n Ellis Simms completed the comeback in the 82nd minute. He headed in after Anthony Gordon dribbled past three players and crashed a shot that rebounded off the crossbar. \n \n The draw keeps David Unsworth's side in second, a point behind  Chelsea  who travel to  Leicester City  on Saturday. Man City are second-from-bottom, above  Liverpool . \n See:  Everton report  |  Man City report \n Next fixtures \n Everton: 6 Oct v Fulham (PL Cup) Man City: 19 Oct v Brighton (H) \n Friday's PL2 results  \n Division 1 \n \n \n FT \n \n \n \n \n \n \n \n \n \n Everton \n EVE \n \n \n \n \n 2 - 2 \n \n \n \n \n \n \n \n \n Manchester City \n MCI \n \n \n \n \n HT:  \n Half Time:  \n      0-1\n     \n \n \n \n Antony Evans  58'\n               \n \n \n \n \n Ellis Simms  82'\n               \n \n \n \n \n \n \n Tommy Doyle  21' (pen)\n               \n \n \n \n \n Nabili Zoubdi Touaizi  49'\n               \n \n \n \n \n \n \n Assists \n \n \n \n \n \n Ian Poveda  49'\n           \n \n \n \n \n View Match \n \n \n \n \n \n \n FT \n \n \n \n \n \n \n \n \n \n Brighton & Hove Albion U21 \n BHA \n \n \n \n \n 4 - 1 \n \n \n \n \n \n \n \n \n Tottenham Hotspur U21 \n TOT \n \n \n \n \n HT:  \n Half Time:  \n      1-1\n     \n \n \n \n Ryan Longman  37', 62'\n               \n \n \n \n \n Danny Cashman  48'\n               \n \n \n \n \n Lorent Tolaj  80'\n               \n \n \n \n \n \n \n Rodel Richards  28'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Danny Cashman  37', 62'\n           \n \n Jack Leahy  48'\n           \n \n Ryan Longman  80'\n           \n \n \n \n Tashan Oakley-Boothe  28'\n           \n \n \n \n \n View Match \n \n \n \n \n \n \n FT \n \n \n \n \n \n \n \n \n \n Wolverhampton Wanderers \n WOL \n \n \n \n \n 1 - 2 \n \n \n \n \n \n \n \n \n Southampton \n SOU \n \n \n \n \n HT:  \n Half Time:  \n      1-1\n     \n \n \n \n Benny Ashley-Seal  34'\n               \n \n \n \n \n \n \n Christian Norton  28'\n               \n \n \n \n \n Aaron O'Driscoll  65'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Lewis Richards  34'\n           \n \n \n \n Jake Vokins  28'\n           \n \n Callum Slattery  65'\n           \n \n \n \n \n View Match \n \n \n \n Division 2 \n \n \n FT \n \n \n \n \n \n \n \n \n \n Fulham \n FUL \n \n \n \n \n 2 - 4 \n \n \n \n \n \n \n \n \n Middlesbrough \n MID \n \n \n \n \n HT:  \n Half Time:  \n      1-3\n     \n \n \n \n Nicolas Santos-Clase  21', 67'\n               \n \n \n \n \n \n \n Ben Liddle  23' (pen), 25'\n               \n \n \n \n \n Connor Malley  42'\n               \n \n \n \n \n Rumarn Burrell  74'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Benjamin Davis  21'\n           \n \n Sonny Hilton  67'\n           \n \n \n \n Rumarn Burrell  25'\n           \n \n Connor Malley  74'\n           \n \n \n \n \n View Match \n \n \n \n \n \n \n FT \n \n \n \n \n \n \n \n \n \n Manchester United \n MUN \n \n \n \n \n 2 - 0 \n \n \n \n \n \n \n \n \n Norwich City \n NOR \n \n \n \n \n HT:  \n Half Time:  \n      1-0\n     \n \n \n \n James Garner  41'\n               \n \n \n \n \n Largie Ramazani  68' (pen)\n               \n \n \n \n \n \n \n \n \n Assists \n \n \n \n Reece Devine  41'\n           \n \n \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2019-09-28T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/1359182",
+                                                                  "_version_":1782364810726342657
+                                                                }]
+                                                              }
+                                                            }]
+                                                          }
+                                                        },{
+                                                          "groupValue":"MCI",
+                                                          "doclist":{
+                                                            "numFound":5,
+                                                            "start":0,
+                                                            "numFoundExact":true,
+                                                            "docs":[{
+                                                              "name":"Manchester City FC",
+                                                              "abbreviation":"MCI",
+                                                              "article_id":"16654",
+                                                              "id":"16654/named_teams#",
+                                                              "_version_":1782364811814764544,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"16654",
+                                                                  "title":"Sterling earns Man City comeback win",
+                                                                  "summary":"Sergio Aguero's penalty and a late Raheem Sterling goal give PL leaders a 2-1 win at Huddersfield Town",
+                                                                  "text":"\n Raheem Sterling struck late on as  Manchester City  came from behind to earn a 2-1 win at  Huddersfield Town . \n Pep Guardiola’s dominant side fell behind in first-half stoppage time when Nicolas Otamendi deflected Christopher Schindler's header into his own net. \n City levelled on 47 minutes when Sterling was fouled by Scott Malone and Sergio Aguero scored from the spot for his ninth PL goal of the season. \n Leroy Sane crashed a free-kick against the bar but City’s pressure told six minutes from time when Gabriel Jesus’ shot was saved by Jonas Lossl only to loop back in off Sterling. \n City move eight points clear at the top following this record 11th consecutive PL away win. Huddersfield, for whom Rajiv van La Parra was dismissed after the final whistle, are 15th. \n See:  Huddersfield report  |  Man City report \n Next fixtures \n Huddersfield: 29 Nov v Arsenal (A) Man City: 29 Nov v Southampton (H) \n \n \n FT \n \n \n \n \n \n \n \n \n \n Huddersfield Town \n HUD \n \n \n \n \n 1 - 2 \n \n \n \n \n \n \n \n \n Manchester City \n MCI \n \n \n \n \n HT:  \n Half Time:  \n      1-0\n     \n \n \n \n Nicolás Otamendi  45 +1' (og)\n               \n \n \n \n \n Rajiv van La Parra  90 +6'\n               \n \n \n \n \n \n \n Sergio Agüero  47' (pen)\n               \n \n \n \n \n Raheem Sterling  84'\n               \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2017-11-26T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/521371",
+                                                                  "_version_":1782364811814764544
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"Manchester City FC",
+                                                              "abbreviation":"MCI",
+                                                              "article_id":"17310",
+                                                              "id":"17310/named_teams#",
+                                                              "_version_":1782364811924865025,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"17310",
+                                                                  "title":"Diaz claims comeback point for Man City",
+                                                                  "summary":"Brahim Diaz nets twice as City draw with Sunderland despite fourth-minute red card",
+                                                                  "text":"\n Brahim Diaz scored twice as  Manchester City  earned a comeback 2-2 draw at home to  Sunderland  despite playing nearly all the Division 1 match with 10 men. \n Charlie Oliver was sent off in the fourth minute after bringing down Duncan Watmore in the penalty area. Watmore scored the resulting spot-kick. \n City levelled when Diaz scored a penalty of his own, before Ethan Robson restored the visitors' lead in first-half stoppage-time. \n But the hosts fought back again and Diaz made it 2-2 with a brilliant curling strike just after the hour mark. \n City are 10th in Division 1 and next visit Swansea City on Friday 22 September. Sunderland, in seventh, host West Ham United two days later.  \n See:  Man City report \n \n \n FT \n \n \n \n \n \n \n \n \n \n Manchester City \n MCI \n \n \n \n \n 2 - 2 \n \n \n \n \n \n \n \n \n Sunderland \n SUN \n \n \n \n \n HT:  \n Half Time:  \n      1-2\n     \n \n \n \n Charlie Oliver  5'\n               \n \n \n \n \n Brahim Díaz  32' (pen), 61'\n               \n \n \n \n \n \n \n Duncan Watmore  6' (pen)\n               \n \n \n \n \n Ethan Robson  45 +2'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Phil Foden  61'\n           \n \n \n \n Denver Hume  45 +2'\n           \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2017-09-16T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/471946",
+                                                                  "_version_":1782364811924865025
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"Manchester City FC",
+                                                              "abbreviation":"MCI",
+                                                              "article_id":"18400",
+                                                              "id":"18400/named_teams#",
+                                                              "_version_":1782364812144017411,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"18400",
+                                                                  "title":"Jesus earns comeback point for Man City",
+                                                                  "summary":"City's top-four ambitions and Boro's hopes of safety dented in 2-2 draw at the Riverside Stadium",
+                                                                  "text":"\n Middlesbrough 2-2 Man City \n Gabriel Jesus scored with an 85th-minute header to claim a 2-2 draw for  Manchester City  at the Riverside Stadium. \n He rose highest to head home Sergio Aguero's cross just eight minutes after Calum Chambers had given  Middlesbrough  a 2-1 lead when he pounced on a loose ball in the area. \n Middlesbrough's former Man City striker, Alvaro Negredo, put the home side ahead on 38 minutes with a shot that went in off the post. \n \n \n . @gabrieljesus33  knows the battle that lies ahead in our final four  @premierleague  fixtures!  #mcfc   https://t.co/beMVDBqZZn \n— Manchester City (@ManCity)  April 30, 2017 \n \n City made it 1-1 on 69 minutes, Sergio Aguero scoring from the penalty spot after Leroy Sane was fouled by Marten de Roon. \n The result leaves fourth-placed City level on points with Liverpool in third while Middlesbrough remain in 19th place, six points from safety with three matches left to play. \n See:  Middlesbrough report  |  Man City report \n",
+                                                                  "date":"2017-04-30T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/381982",
+                                                                  "_version_":1782364812144017411
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"Manchester City FC",
+                                                              "abbreviation":"MCI",
+                                                              "article_id":"10356",
+                                                              "id":"10356/named_teams#",
+                                                              "_version_":1782364810622533635,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"10356",
+                                                                  "title":"Man City on the rise after comeback win",
+                                                                  "summary":"Champions beat Chelsea to go third thanks to goals from Kevin De Bruyne and Riyad Mahrez",
+                                                                  "text":"\n Manchester City rallied from a goal down to beat  Chelsea  2-1 and move above their opponents into third in the Premier League. \n The Londoners' six-match winning run came to an end as the champions bounced back after conceding N'Golo Kante's opening goal. \n Kante struck on 21 minutes when he kept his composure to finish Mateo Kovacic's fine through-ball past the advancing Ederson. \n City equalised eight minutes later when Kevin De Bruyne's shot went in via a deflection off Kurt Zouma. \n Pep Guardiola's side went in front on 37 minutes with a fine individual goal from Riyad Mahrez, who cut in from the right and curled a shot into the bottom corner. \n The closest Chelsea came to a response was when Kante's shot was deflected wide by Fernandinho. \n City have 28 points from 13 matches, two more than the fourth-placed Chelsea, but nine behind leaders Liverpool. \n See:  Man City report  |  Chelsea report \n Next fixtures \n Man City: 30 Nov v Newcastle (A) Chelsea: 30 Nov v West Ham (H) \n \n \n FT \n \n \n \n \n \n \n \n \n \n Manchester City \n MCI \n \n \n \n \n 2 - 1 \n \n \n \n \n \n \n \n \n Chelsea \n CHE \n \n \n \n \n HT:  \n Half Time:  \n      2-1\n     \n \n \n \n Kevin De Bruyne  29'\n               \n \n \n \n \n Riyad Mahrez  37'\n               \n \n \n \n \n \n \n N'Golo Kanté  21'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Rodri  37'\n           \n \n \n \n Mateo Kovacic  21'\n           \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2019-11-23T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/1498889",
+                                                                  "_version_":1782364810622533635
+                                                                }]
+                                                              }
+                                                            },{
+                                                              "name":"Manchester City FC",
+                                                              "abbreviation":"MCI",
+                                                              "article_id":"10885",
+                                                              "id":"10885/named_teams#1",
+                                                              "_version_":1782364810726342657,
+                                                              "parent":{
+                                                                "numFound":1,
+                                                                "start":0,
+                                                                "numFoundExact":true,
+                                                                "docs":[{
+                                                                  "id":"10885",
+                                                                  "title":"Everton stay unbeaten with comeback Man City draw",
+                                                                  "summary":"Antony Evans and Ellis Simms score second-half goals as Toffees move a point behind Division 1 leaders Chelsea",
+                                                                  "text":"\n Everton came from two goals down in the second half to draw 2-2 with  Manchester City  and extend their unbeaten start to their Premier League 2 Division 1 title defence. \n Visitors Man City were 2-0 up after 49 minutes at Merseyrail Community Stadium thanks to a penalty from Tommy Doyle and a Nabili Touaizi strike. \n But Antony Evans gave  Everton  hope with a second great goal in as many matches, scoring with a free-kick. \n Ellis Simms completed the comeback in the 82nd minute. He headed in after Anthony Gordon dribbled past three players and crashed a shot that rebounded off the crossbar. \n \n The draw keeps David Unsworth's side in second, a point behind  Chelsea  who travel to  Leicester City  on Saturday. Man City are second-from-bottom, above  Liverpool . \n See:  Everton report  |  Man City report \n Next fixtures \n Everton: 6 Oct v Fulham (PL Cup) Man City: 19 Oct v Brighton (H) \n Friday's PL2 results  \n Division 1 \n \n \n FT \n \n \n \n \n \n \n \n \n \n Everton \n EVE \n \n \n \n \n 2 - 2 \n \n \n \n \n \n \n \n \n Manchester City \n MCI \n \n \n \n \n HT:  \n Half Time:  \n      0-1\n     \n \n \n \n Antony Evans  58'\n               \n \n \n \n \n Ellis Simms  82'\n               \n \n \n \n \n \n \n Tommy Doyle  21' (pen)\n               \n \n \n \n \n Nabili Zoubdi Touaizi  49'\n               \n \n \n \n \n \n \n Assists \n \n \n \n \n \n Ian Poveda  49'\n           \n \n \n \n \n View Match \n \n \n \n \n \n \n FT \n \n \n \n \n \n \n \n \n \n Brighton & Hove Albion U21 \n BHA \n \n \n \n \n 4 - 1 \n \n \n \n \n \n \n \n \n Tottenham Hotspur U21 \n TOT \n \n \n \n \n HT:  \n Half Time:  \n      1-1\n     \n \n \n \n Ryan Longman  37', 62'\n               \n \n \n \n \n Danny Cashman  48'\n               \n \n \n \n \n Lorent Tolaj  80'\n               \n \n \n \n \n \n \n Rodel Richards  28'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Danny Cashman  37', 62'\n           \n \n Jack Leahy  48'\n           \n \n Ryan Longman  80'\n           \n \n \n \n Tashan Oakley-Boothe  28'\n           \n \n \n \n \n View Match \n \n \n \n \n \n \n FT \n \n \n \n \n \n \n \n \n \n Wolverhampton Wanderers \n WOL \n \n \n \n \n 1 - 2 \n \n \n \n \n \n \n \n \n Southampton \n SOU \n \n \n \n \n HT:  \n Half Time:  \n      1-1\n     \n \n \n \n Benny Ashley-Seal  34'\n               \n \n \n \n \n \n \n Christian Norton  28'\n               \n \n \n \n \n Aaron O'Driscoll  65'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Lewis Richards  34'\n           \n \n \n \n Jake Vokins  28'\n           \n \n Callum Slattery  65'\n           \n \n \n \n \n View Match \n \n \n \n Division 2 \n \n \n FT \n \n \n \n \n \n \n \n \n \n Fulham \n FUL \n \n \n \n \n 2 - 4 \n \n \n \n \n \n \n \n \n Middlesbrough \n MID \n \n \n \n \n HT:  \n Half Time:  \n      1-3\n     \n \n \n \n Nicolas Santos-Clase  21', 67'\n               \n \n \n \n \n \n \n Ben Liddle  23' (pen), 25'\n               \n \n \n \n \n Connor Malley  42'\n               \n \n \n \n \n Rumarn Burrell  74'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Benjamin Davis  21'\n           \n \n Sonny Hilton  67'\n           \n \n \n \n Rumarn Burrell  25'\n           \n \n Connor Malley  74'\n           \n \n \n \n \n View Match \n \n \n \n \n \n \n FT \n \n \n \n \n \n \n \n \n \n Manchester United \n MUN \n \n \n \n \n 2 - 0 \n \n \n \n \n \n \n \n \n Norwich City \n NOR \n \n \n \n \n HT:  \n Half Time:  \n      1-0\n     \n \n \n \n James Garner  41'\n               \n \n \n \n \n Largie Ramazani  68' (pen)\n               \n \n \n \n \n \n \n \n \n Assists \n \n \n \n Reece Devine  41'\n           \n \n \n \n \n \n \n View Match \n \n \n \n \n",
+                                                                  "date":"2019-09-28T00:00:00Z",
+                                                                  "url":"https://www.premierleague.com/news/1359182",
+                                                                  "_version_":1782364810726342657
+                                                                }]
+                                                              }
+                                                            }]
+                                                          }
+                                                        }]
+                                                      }
+                                                    }
+                                                  }

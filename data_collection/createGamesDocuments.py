@@ -13,7 +13,7 @@ def get_team_document(team_id,season_id):
         "abbreviation":short_name,
         "url":url,
         "nr_players":nr_players,
-        "average_age":average_age,
+        "average_age":average_age.replace(',','.'),
         "foreigners":foreigners,
         "average_player_value":average_player_value,
         "total_player_value":total_player_value
