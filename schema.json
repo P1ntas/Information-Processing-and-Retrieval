@@ -151,6 +151,34 @@
     {
       "name": "away_team",
       "type": "text"
+    },
+    {
+      "name": "season_id",
+      "type": "int"
+    },
+    {
+      "name": "team_url",
+      "type": "text"
+    },
+    {
+      "name": "team_squad",
+      "type": "int"
+    },
+    {
+      "name": "team_average_age",
+      "type": "text"
+    },
+    {
+      "name": "team_foreigners",
+      "type": "text"
+    },
+    {
+      "name": "team_average_player_value",
+      "type": "text"
+    },
+    {
+      "name": "team_total_player_value",
+      "type": "text"
     }
   ]
 }
