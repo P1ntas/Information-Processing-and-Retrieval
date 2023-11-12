@@ -27,6 +27,10 @@
             }
     },
     {
+      "name": "name",
+      "class":"solr.TextField"
+    },
+    {
       "name": "date",
       "class": "solr.TrieDateField"
     },
@@ -42,7 +46,7 @@
   "add-field": [
     {
       "name": "wk",
-      "type": "text"
+      "type": "int"
     },
     {
       "name": "date",
@@ -66,15 +70,15 @@
     },
     {
       "name": "name",
-      "type": "text"
+      "type": "name"
     },
     {
       "name": "abbreviation",
-      "type": "text"
+      "type": "name"
     },
     {
       "name": "article_id",
-      "type": "text"
+      "type": "int"
     },
     {
       "name": "url",
@@ -82,15 +86,15 @@
     },
     {
       "name": "nr_players",
-      "type": "text"
+      "type": "int"
     },
     {
       "name": "average_age",
-      "type": "text"
+      "type": "float"
     },
     {
       "name": "foreigners",
-      "type": "text"
+      "type": "int"
     },
     {
       "name": "average_player_value",
@@ -102,7 +106,7 @@
     },
     {
       "name": "nr_games",
-      "type": "text"
+      "type": "int"
     },
     {
       "name": "goals",
@@ -114,27 +118,27 @@
     },
     {
       "name": "yellow_cards",
-      "type": "text"
+      "type": "int"
     },
     {
       "name": "double_yellow_cards",
-      "type": "text"
+      "type": "int"
     },
     {
       "name": "red_cards",
-      "type": "text"
+      "type": "int"
     },
     {
       "name": "minutes_played",
-      "type": "text"
+      "type": "int"
     },
     {
       "name": "clean_sheets",
-      "type": "text"
+      "type": "int"
     },
     {
       "name": "goals_conceded",
-      "type": "text"
+      "type": "int"
     },
     {
       "name": "title",
@@ -150,10 +154,38 @@
     },
     {
       "name": "home_team",
-      "type": "text"
+      "type": "name"
     },
     {
       "name": "away_team",
+      "type": "name"
+    },
+    {
+      "name": "season_id",
+      "type": "int"
+    },
+    {
+      "name": "team_url",
+      "type": "text"
+    },
+    {
+      "name": "team_squad",
+      "type": "int"
+    },
+    {
+      "name": "team_average_age",
+      "type": "float"
+    },
+    {
+      "name": "team_foreigners",
+      "type": "int"
+    },
+    {
+      "name": "team_average_player_value",
+      "type": "text"
+    },
+    {
+      "name": "team_total_player_value",
       "type": "text"
     }
   ]

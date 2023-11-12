@@ -26,3 +26,16 @@ curl -X POST -H 'Content-type:application/json' \
 curl -X POST -H 'Content-type:application/json' \
 --data-binary "@../documents/articles.json" \
     http://localhost:8983/solr/articles/update?commit=true
+
+
+docker exec premier_league bin/solr delete -c teams
+docker exec premier_league bin/solr create_core  -c teams
+
+# Schema definition via API
+curl -X POST -H 'Content-type:application/json' \
+    --data-binary "@../schema.json" \
+    http://localhost:8983/solr/teams/schema
+
+curl -X POST -H 'Content-type:application/json' \
+--data-binary "@../documents/teams.json" \
+    http://localhost:8983/solr/teams/update?commit=true
