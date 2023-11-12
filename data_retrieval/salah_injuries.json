@@ -1,0 +1,38 @@
+{
+  "responseHeader":{
+    "status":0,
+    "QTime":2,
+    "params":{
+      "q":"\"\"Jack"
+    }
+  },
+  "response":{
+    "numFound":0,
+    "start":0,
+    "numFoundExact":true,
+    "docs":[ ]
+  }
+}{
+  "responseHeader":{
+    "status":0,
+    "QTime":2,
+    "params":{
+      "q":"\"Jack Wilshere injury\"",
+      "defType":"edismax",
+      "qs":"20",
+      "indent":"true",
+      "qf":"title^2.3 summary text^0.4",
+      "fl":"*,score",
+      "q.op":"OR",
+      "useParams":"",
+      "bq":"{!parent which=\"*:* -_nest_path_:*\"}(+_nest_path_:\\/named_players +name:\"Philippe Coutinho\")"
+    }
+  },
+  "response":{
+    "numFound":0,
+    "start":0,
+    "maxScore":0.0,
+    "numFoundExact":true,
+    "docs":[ ]
+  }
+}
