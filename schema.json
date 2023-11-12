@@ -73,6 +73,10 @@
       "type": "text"
     },
     {
+      "name": "article_id",
+      "type": "text"
+    },
+    {
       "name": "url",
       "type": "text"
     },

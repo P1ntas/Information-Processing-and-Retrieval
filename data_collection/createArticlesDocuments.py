@@ -14,6 +14,7 @@ articles = []
 for article_db in cursor.fetchall():
     id,title,summary,text, date, url, game_id = article_db
     article = {
+        "id":id,
         "title":title,
         "summary":summary,
         "text":text,
@@ -53,7 +54,7 @@ for article_db in cursor.fetchall():
     named_teams = []
     for teams_db in cursor.fetchall():
         team_name,short_name = teams_db
-        named_teams.append({"name":team_name,"abbreviation":short_name})
+        named_teams.append({"name":team_name,"abbreviation":short_name,"article_id":id})
 
 
     article["named_teams"]=named_teams
