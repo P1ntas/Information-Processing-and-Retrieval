@@ -62,6 +62,10 @@
         "type": "text"
       },
       {
+        "name": "article_id",
+        "type": "int"
+      },
+      {
         "name": "url",
         "type": "text"
       },

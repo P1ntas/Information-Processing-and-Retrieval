@@ -1,0 +1,132 @@
+{
+                                                "responseHeader":{
+                                                  "status":0,
+                                                  "QTime":3,
+                                                  "params":{
+                                                    "group.limit":"10",
+                                                    "parent.q":"!parent which=\"*:* -_nest_path_:*\" v={!terms f=id v=$row.article_id}",
+                                                    "fl":"*,parent:[subquery]",
+                                                    "json":"\n{\n    \"query\": \"_nest_path_:\\\\/named_teams AND ({!child of=\\\"*:* -_nest_path_:*\\\"}title:comeback^2 OR summary:comeback^1.5 OR text:comeback^1)\"\n}",
+                                                    "group.field":"abbreviation",
+                                                    "group":"true=true"
+                                                  }
+                                                },
+                                                "grouped":{
+                                                  "abbreviation":{
+                                                    "matches":4,
+                                                    "groups":[{
+                                                      "groupValue":"SOU",
+                                                      "doclist":{
+                                                        "numFound":1,
+                                                        "start":0,
+                                                        "numFoundExact":true,
+                                                        "docs":[{
+                                                          "name":"FC Southampton",
+                                                          "abbreviation":"SOU",
+                                                          "article_id":10288,
+                                                          "id":"10288/named_teams#",
+                                                          "_version_":1782389877813280768,
+                                                          "parent":{
+                                                            "numFound":1,
+                                                            "start":0,
+                                                            "numFoundExact":true,
+                                                            "docs":[{
+                                                              "id":"10288",
+                                                              "title":"Ward-Prowse seals Saints' comeback win",
+                                                              "summary":"Midfielder's free-kick and Danny Ings's sixth goal in eight matches earn 2-1 victory over Watford",
+                                                              "text":"\n James Ward-Prowse's late free-kick earned  Southampton  a thrilling 2-1 comeback victory against  Watford . \n Ismaila Sarr gave Watford the lead after 24 minutes, latching on to a long pass down the right before firing high past Alex McCarthy. \n Southampton substitute Shane Long saw his close-range effort tipped on to the crossbar by Ben Foster before Danny Ings equalised with 12 minutes remaining. \n Moussa Djenepo got to the byline with great skill and crossed low for Ings to scramble in at the near post for his sixth goal in his last eight matches. \n Ward-Prowse completed the comeback on 83 minutes, with Foster unable to prevent his curled free-kick from finding the top-left corner. \n Watford substitute Andre Gray lashed wide in stoppage time but 18th-placed Southampton held on for their first home win of the season to move four points clear of the Hornets in 20th. \n Next fixtures \n Southampton: 4 Dec v Norwich (H) Watford: 4 Dec v Leicester (A) \n \n \n FT \n \n \n \n \n \n \n \n \n \n Southampton \n SOU \n \n \n \n \n 2 - 1 \n \n \n \n \n \n \n \n \n Watford \n WAT \n \n \n \n \n HT:  \n Half Time:  \n      0-1\n     \n \n \n \n Danny Ings  78'\n               \n \n \n \n \n James Ward-Prowse  83'\n               \n \n \n \n \n \n \n Ismaïla Sarr  24'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Moussa Djenepo  78'\n           \n \n \n \n \n \n \n View Match \n \n \n \n \n",
+                                                              "date":"2019-11-30T00:00:00Z",
+                                                              "url":"https://www.premierleague.com/news/1506930",
+                                                              "_version_":1782389877813280768
+                                                            }]
+                                                          }
+                                                        }]
+                                                      }
+                                                    },{
+                                                      "groupValue":"LIV",
+                                                      "doclist":{
+                                                        "numFound":1,
+                                                        "start":0,
+                                                        "numFoundExact":true,
+                                                        "docs":[{
+                                                          "name":"FC Liverpool",
+                                                          "abbreviation":"LIV",
+                                                          "article_id":10469,
+                                                          "id":"10469/named_teams#",
+                                                          "_version_":1782389877907652610,
+                                                          "parent":{
+                                                            "numFound":1,
+                                                            "start":0,
+                                                            "numFoundExact":true,
+                                                            "docs":[{
+                                                              "id":"10469",
+                                                              "title":"Brewster inspires comeback win for Liverpool",
+                                                              "summary":"Striker involved in both goals for Group F leaders against Sunderland as we look at what happened in the weekend's five PL Cup matches",
+                                                              "text":"\n Rhian Brewster inspired  Liverpool  to a comeback 2-1 victory at  Sunderland  in the  Premier League Cup .  \n Benji Kimpioka had given the hosts a second-half lead but Brewster forced an own goal from Michael Collins before the 19-year-old won and converted a late penalty.  \n It keeps the Reds top of Group F with two wins from two matches. Sunderland are third, level with second-placed  Huddersfield Town  and one point above bottom team  Wigan Athletic .  \n See:  Sunderland report  |  Liverpool report \n Group B  \n Watford  came from behind three times to win a 4-3 at  Fulham . \n Fulham went ahead at Motspur Park through Fabio Carvalho, Jayden Harris and Tayo Edun. \n But Joseph Hungbo, Kaylen Hinds and Sonny Blu Lo-Everton pegged them back before Hungbo scored a second with 18 minutes remaining.  \n See:  Fulham report  |  Watford report \n In the other match in the group,  Everton  were denied a first win of their PL Cup defence by Plymouth Argyle goalkeeper Mike Cooper in a 1-1 draw.  \n Cooper was beaten by Harry Charsley but, after Billy Clarke equalised, he starred with saves from Oumar Niasse, Kyle John, Ellis Simms and Ryan Astley.  \n Watford top the group on four points, followed by Fulham, Plymouth and Everton. \n See:  Everton report  |  Plymouth report \n Group E \n Southampton  moved above  AFC Bournemouth  on goal difference at the top with a 3-1 home victory over  Nottingham Forest .  \n It was 1-1 at the break after goals from Southampton's Kornelius Hansen and Forest's Alex Mighten. \n Saints moved to four points from two matches thanks to second-half strikes from Jake Vokins and Christoph Klarer. \n Forest are bottom, two points behind  Stoke City . \n See:  Southampton report  |  Forest report \n Group H  \n Benny Ashley-Seal scored twice as leaders  Wolverhampton Wanderers  beat  Birmingham City  2-1 to go five points clear. \n Bottom club  Derby County  host second-placed  Leeds United  on Wednesday in their match in hand over Wolves.  \n \n \n \n \n \n SOU \n \n \n \n \n 3 - 1 \n \n NFO \n \n \n \n \n \n \n \n \n \n \n WOL \n \n \n \n \n 2 - 1 \n \n BIR \n \n \n \n \n \n \n \n \n \n \n FUL \n \n \n \n \n 3 - 4 \n \n WAT \n \n \n \n \n \n \n \n \n \n \n SUN \n \n \n \n \n 1 - 2 \n \n LIV \n \n \n \n \n \n \n \n \n \n \n EVE \n \n \n \n \n 1 - 1 \n \n PLY \n \n \n \n \n \n \n \n \n \n \n \n close \n \n \n TV Info \n \n Broadcasters \n \n \n \n \n \n \n",
+                                                              "date":"2019-11-11T00:00:00Z",
+                                                              "url":"https://www.premierleague.com/news/1493489",
+                                                              "_version_":1782389877907652610
+                                                            }]
+                                                          }
+                                                        }]
+                                                      }
+                                                    },{
+                                                      "groupValue":"MCI",
+                                                      "doclist":{
+                                                        "numFound":1,
+                                                        "start":0,
+                                                        "numFoundExact":true,
+                                                        "docs":[{
+                                                          "name":"Manchester City FC",
+                                                          "abbreviation":"MCI",
+                                                          "article_id":10356,
+                                                          "id":"10356/named_teams#",
+                                                          "_version_":1782389877866758144,
+                                                          "parent":{
+                                                            "numFound":1,
+                                                            "start":0,
+                                                            "numFoundExact":true,
+                                                            "docs":[{
+                                                              "id":"10356",
+                                                              "title":"Man City on the rise after comeback win",
+                                                              "summary":"Champions beat Chelsea to go third thanks to goals from Kevin De Bruyne and Riyad Mahrez",
+                                                              "text":"\n Manchester City rallied from a goal down to beat  Chelsea  2-1 and move above their opponents into third in the Premier League. \n The Londoners' six-match winning run came to an end as the champions bounced back after conceding N'Golo Kante's opening goal. \n Kante struck on 21 minutes when he kept his composure to finish Mateo Kovacic's fine through-ball past the advancing Ederson. \n City equalised eight minutes later when Kevin De Bruyne's shot went in via a deflection off Kurt Zouma. \n Pep Guardiola's side went in front on 37 minutes with a fine individual goal from Riyad Mahrez, who cut in from the right and curled a shot into the bottom corner. \n The closest Chelsea came to a response was when Kante's shot was deflected wide by Fernandinho. \n City have 28 points from 13 matches, two more than the fourth-placed Chelsea, but nine behind leaders Liverpool. \n See:  Man City report  |  Chelsea report \n Next fixtures \n Man City: 30 Nov v Newcastle (A) Chelsea: 30 Nov v West Ham (H) \n \n \n FT \n \n \n \n \n \n \n \n \n \n Manchester City \n MCI \n \n \n \n \n 2 - 1 \n \n \n \n \n \n \n \n \n Chelsea \n CHE \n \n \n \n \n HT:  \n Half Time:  \n      2-1\n     \n \n \n \n Kevin De Bruyne  29'\n               \n \n \n \n \n Riyad Mahrez  37'\n               \n \n \n \n \n \n \n N'Golo Kanté  21'\n               \n \n \n \n \n \n \n Assists \n \n \n \n Rodri  37'\n           \n \n \n \n Mateo Kovacic  21'\n           \n \n \n \n \n View Match \n \n \n \n \n",
+                                                              "date":"2019-11-23T00:00:00Z",
+                                                              "url":"https://www.premierleague.com/news/1498889",
+                                                              "_version_":1782389877866758144
+                                                            }]
+                                                          }
+                                                        }]
+                                                      }
+                                                    },{
+                                                      "groupValue":"AVL",
+                                                      "doclist":{
+                                                        "numFound":1,
+                                                        "start":0,
+                                                        "numFoundExact":true,
+                                                        "docs":[{
+                                                          "name":"Aston Villa FC",
+                                                          "abbreviation":"AVL",
+                                                          "article_id":10551,
+                                                          "id":"10551/named_teams#",
+                                                          "_version_":1782389877933867009,
+                                                          "parent":{
+                                                            "numFound":1,
+                                                            "start":0,
+                                                            "numFoundExact":true,
+                                                            "docs":[{
+                                                              "id":"10551",
+                                                              "title":"Robertson and Mane earn comeback win at Villa",
+                                                              "summary":"Liverpool score twice in last four minutes to claim 2-1 victory at Villa Park and stay six points clear",
+                                                              "text":"\n Late goals by Andrew Robertson and Sadio Mane gave Liverpool a dramatic 2-1 comeback victory over Aston Villa to maintain their unbeaten start to the season. \n Anwar El Ghazi forced Alisson into an early save before Trezeguet opened the scoring after 21 minutes. \n John McGinn’s free-kick was finished by Trezeguet, who became the first Egyptian to score for Villa in the Premier League. \n Mane was denied superbly by Villa goalkeeper Tom Heaton, while Mohamed Salah headed over as Liverpool pressed for an equaliser. \n Robertson made it 1-1 with just three minutes remaining, heading in Mane's floated cross at the back post. \n Mane completed the comeback when he glanced in Trent Alexander-Arnold's corner in stoppage time. \n Liverpool have 31 points, six clear of Manchester City, while Villa lie 15th with 11 points. \n See:  Villa report  |  Liverpool report \n Next fixtures \n Aston Villa: 10 Nov v Wolves (A) Liverpool: 10 Nov v Man City (H) \n \n \n FT \n \n \n \n \n \n \n \n \n \n Aston Villa \n AVL \n \n \n \n \n 1 - 2 \n \n \n \n \n \n \n \n \n Liverpool \n LIV \n \n \n \n \n HT:  \n Half Time:  \n      1-0\n     \n \n \n \n Trézéguet  21'\n               \n \n \n \n \n \n \n Andy Robertson  87'\n               \n \n \n \n \n Sadio Mané  90 +4'\n               \n \n \n \n \n \n \n Assists \n \n \n \n John McGinn  21'\n           \n \n \n \n Sadio Mané  87'\n           \n \n Trent Alexander-Arnold  90 +4'\n           \n \n \n \n \n View Match \n \n \n \n \n",
+                                                              "date":"2019-11-02T00:00:00Z",
+                                                              "url":"https://www.premierleague.com/news/1479228",
+                                                              "_version_":1782389877933867009
+                                                            }]
+                                                          }
+                                                        }]
+                                                      }
+                                                    }]
+                                                  }
+                                                }
+                                              }
