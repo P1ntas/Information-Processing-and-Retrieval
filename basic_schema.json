@@ -62,6 +62,10 @@
         "type": "text"
       },
       {
+        "name": "article_id",
+        "type": "int"
+      },
+      {
         "name": "url",
         "type": "text"
       },
@@ -139,6 +143,34 @@
       },
       {
         "name": "away_team",
+        "type": "text"
+      },
+      {
+        "name": "season_id",
+        "type": "int"
+      },
+      {
+        "name": "team_url",
+        "type": "text"
+      },
+      {
+        "name": "team_squad",
+        "type": "int"
+      },
+      {
+        "name": "team_average_age",
+        "type": "float"
+      },
+      {
+        "name": "team_foreigners",
+        "type": "int"
+      },
+      {
+        "name": "team_average_player_value",
+        "type": "text"
+      },
+      {
+        "name": "team_total_player_value",
         "type": "text"
       }
     ]

@@ -25,8 +25,8 @@ def filter_documents_by_dates(input_file, output_file, dates):
         json.dump(matching_documents, f, indent=2)
 
 # Example usage:
-input_file_path = '../documents/articles.json'
-output_file_path = '../documents/articles_mane_injury_period.json'
+input_file_path = '../../documents/articles.json'
+output_file_path = '../../documents/articles_mane_injury_period.json'
 dates_list = ['2017-04-03T00:00:00Z', '2017-10-09T00:00:00Z', '2020-01-26T00:00:00Z']
 
 filter_documents_by_dates(input_file_path, output_file_path, dates_list)
