@@ -3,7 +3,7 @@
 
 curl -o boosted.json -X GET 'http://localhost:8983/solr/comebacks_articles/query?group=true%3Dtrue&group.field=abbreviation&group.limit=10&parent.q={!parent%20which="*:*%20-_nest_path_:*"%20v=\{!terms%20f=id%20v=$row.article_id\}}&fl=*,parent:\[subquery\]' -d '
 {
-    "query": "_nest_path_:\\/named_teams AND ({!child of=\"*:* -_nest_path_:*\"}title:comeback^2 OR summary:fightback^1.5 OR summary:comeback^1.5 OR text:comeback^1)"
+    "query": "_nest_path_:\\/named_teams AND (({!child of=\"*:* -_nest_path_:*\"}title:comeback^2) OR ({!child of=\"*:* -_nest_path_:*\"}summary:comeback^1.5) OR ({!child of=\"*:* -_nest_path_:*\"}text:comeback^1) OR ({!child of=\"*:* -_nest_path_:*\"}title:fightback^2) OR ({!child of=\"*:* -_nest_path_:*\"}summary:fightback^1.5) OR ({!child of=\"*:* -_nest_path_:*\"}text:fightback^1))"
 }'
 
 <<comment
