@@ -1,24 +1,43 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import SearchBar from './components/SearchBar';
+import SearchButton from './components/SearchButton';
+import SearchResults from './components/SearchResults';
 import './App.css';
+
+function SearchPage() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearchQueryChange = (query) => {
+    setSearchQuery(query);
+  };
+
+  const handleSearch = () => {
+    navigate(`/search?query=${searchQuery}`);
+  };
+
+  return (
+    <div>
+      <h1>My Search Engine</h1>
+      <SearchBar onSearchQueryChange={handleSearchQueryChange} />
+      <SearchButton onSearch={handleSearch} />
+    </div>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <Routes>
+            <Route path="/" element={<SearchPage />} />
+            <Route path="/search" element={<SearchResults />} />
+          </Routes>
+        </header>
+      </div>
+    </Router>
   );
 }
 
