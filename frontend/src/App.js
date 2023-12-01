@@ -4,6 +4,7 @@ import SearchBar from './components/SearchBar';
 import SearchButton from './components/SearchButton';
 import SearchResults from './components/SearchResults';
 import './App.css';
+import logo from './images/logo.png';
 
 function SearchPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,7 +20,10 @@ function SearchPage() {
 
   return (
     <div>
-      <h1>My Search Engine</h1>
+      <div className="title">
+      <img src={logo} alt="Premier League Logo" />
+        <h1>Premier League</h1>
+      </div>
       <SearchBar onSearchQueryChange={handleSearchQueryChange} />
       <SearchButton onSearch={handleSearch} />
     </div>
