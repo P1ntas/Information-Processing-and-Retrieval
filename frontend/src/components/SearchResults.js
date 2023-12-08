@@ -2,6 +2,7 @@ import React from 'react';
 import SearchResultItem from './SearchResultItem';
 import SearchBar from './SearchBar';
 import SearchButton from './SearchButton';
+import FilterOptions from './FilterOptions';
 import '../App.css';
 
 const SearchResults = ({ searchQuery }) => {
@@ -67,8 +68,13 @@ const SearchResults = ({ searchQuery }) => {
 
   return (
     <div className='searchResults'>
-      <SearchBar onSearchQueryChange={() => {}} />
-      <SearchButton onSearch={() => {}} />
+      <div className='searchResultsHeader'>
+        <div>
+          <SearchBar onSearchQueryChange={() => {}} />
+          <SearchButton onSearch={() => {}} />
+        </div>
+        <FilterOptions />
+      </div>
       <div className='results'>
         {results.map((result, index) => (
           <SearchResultItem key={index} title={result.title} content={result.content} />

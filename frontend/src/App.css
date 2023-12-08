@@ -91,3 +91,68 @@ button:hover {
   margin-top: 50px;
   width: 100%;
 }
+
+.searchResultsHeader {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.searchResultsHeader div {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  grid-template-rows: 0.8fr;
+}
+
+.filter-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.filter-options {
+  display: none !important;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-top: 50px;
+  font-size: 25px;
+  border-radius: 5px;
+}
+
+.filter-container:hover .filter-options {
+  display: block !important;
+}
+
+.filter-option {
+  color: #3d195b;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.filter-option:hover {
+  background-color: #ddd;
+}
+
+.search-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.filter-label {
+  float: left;
+  font-size: 25px;
+  background-color: lightgray;
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.filter-label img {
+  max-width: 20px;
+  height: auto;
+  margin-right: 3px;
+}

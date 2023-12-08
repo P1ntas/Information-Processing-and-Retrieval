@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import SearchBar from './components/SearchBar';
 import SearchButton from './components/SearchButton';
 import SearchResults from './components/SearchResults';
+import FilterOptions from './components/FilterOptions';
 import './App.css';
 import logo from './images/logo.png';
 
@@ -24,8 +25,11 @@ function SearchPage() {
       <img src={logo} alt="Premier League Logo" />
         <h1>Premier League</h1>
       </div>
-      <SearchBar onSearchQueryChange={handleSearchQueryChange} />
-      <SearchButton onSearch={handleSearch} />
+      <div className="search-container">
+        <SearchBar onSearchQueryChange={handleSearchQueryChange} />
+        <SearchButton onSearch={handleSearch} />
+        <FilterOptions />
+      </div>
     </div>
   );
 }
