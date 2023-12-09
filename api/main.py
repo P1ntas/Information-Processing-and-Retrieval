@@ -49,8 +49,8 @@ async def search(query: str = ''):
     )
 
     return {
-        'teams': teams_results,
-        'players': players_results,
+        'team': teams_results[0] if teams_results else {},
+        'player': players_results[0] if players_results else {},
         'articles': articles_results
     }
 
