@@ -20,14 +20,16 @@ function SearchPage() {
   };
 
   return (
-    <div>
+    <div className="search-page-container">
       <div className="title">
-      <img src={logo} alt="Premier League Logo" />
+        <img src={logo} alt="Premier League Logo" />
         <h1>Premier League</h1>
       </div>
       <div className="search-container">
-        <SearchBar onSearchQueryChange={handleSearchQueryChange} />
-        <SearchButton onSearch={handleSearch} />
+        <div className="search-inputs">
+          <SearchBar onSearchQueryChange={handleSearchQueryChange} />
+          <SearchButton onSearch={handleSearch} />
+        </div>
         <FilterOptions />
       </div>
     </div>
