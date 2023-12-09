@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # docker run -p 8983:8983 --name premier_league -v ${PWD}:/data -d solr:9.3
 docker exec premier_league bin/solr delete -c games
 docker exec premier_league bin/solr create_core  -c games
@@ -16,6 +15,15 @@ curl -X POST -H 'Content-type:application/json' \
 
 docker exec premier_league bin/solr delete -c articles
 docker exec premier_league bin/solr create_core  -c articles
+
+
+curl -X POST -H 'Content-type:application/json' -d '{
+  "add-requesthandler": {
+    "name": "/mlt",
+    "class": "solr.MoreLikeThisHandler",
+    "defaults": {"mlt.fl": "title"}
+  } 
+}' http://localhost:8983/solr/articles/config
 
 # Schema definition via API
 curl -X POST -H 'Content-type:application/json' \
