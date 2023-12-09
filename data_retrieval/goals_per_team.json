@@ -1,0 +1,183 @@
+{
+  "responseHeader": {
+    "status": 0,
+    "QTime": 12,
+    "params": {
+      "json": "{\"query\": \"_nest_path_:\\\\/home_team AND {!child of=\\\"*:* -_nest_path_:*\\\"}season:2022-23\", \"facet\": {\"teams\": {\"type\": \"terms\", \"field\": \"abbreviation\", \"limit\": 100, \"facet\": {\"goals\": {\"type\": \"query\", \"facet\": {\"nr_goals\": \"sum(home_goals)\"}, \"domain\": {\"blockParent\": \"*:* -_nest_path_:*\"}}}}}}",
+      "rows": "0"
+    }
+  },
+  "response": {
+    "numFound": 380,
+    "start": 0,
+    "numFoundExact": true,
+    "docs": []
+  },
+  "facets": {
+    "count": 380,
+    "teams": {
+      "buckets": [
+        {
+          "val": "ARS",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 53.0
+          }
+        },
+        {
+          "val": "AVL",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 33.0
+          }
+        },
+        {
+          "val": "BHA",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 37.0
+          }
+        },
+        {
+          "val": "BOU",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 20.0
+          }
+        },
+        {
+          "val": "BRE",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 35.0
+          }
+        },
+        {
+          "val": "CHE",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 20.0
+          }
+        },
+        {
+          "val": "CRY",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 21.0
+          }
+        },
+        {
+          "val": "EVE",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 16.0
+          }
+        },
+        {
+          "val": "FUL",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 31.0
+          }
+        },
+        {
+          "val": "LEE",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 26.0
+          }
+        },
+        {
+          "val": "LEI",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 23.0
+          }
+        },
+        {
+          "val": "LIV",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 46.0
+          }
+        },
+        {
+          "val": "MCI",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 60.0
+          }
+        },
+        {
+          "val": "MUN",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 36.0
+          }
+        },
+        {
+          "val": "NEW",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 36.0
+          }
+        },
+        {
+          "val": "NFO",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 27.0
+          }
+        },
+        {
+          "val": "SOU",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 19.0
+          }
+        },
+        {
+          "val": "TOT",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 37.0
+          }
+        },
+        {
+          "val": "WHU",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 26.0
+          }
+        },
+        {
+          "val": "WOL",
+          "count": 19,
+          "goals": {
+            "count": 19,
+            "nr_goals": 19.0
+          }
+        }
+      ]
+    }
+  }
+}
