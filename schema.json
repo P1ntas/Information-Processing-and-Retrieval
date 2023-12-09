@@ -165,6 +165,10 @@
       "type": "int"
     },
     {
+      "name": "team",
+      "type": "text"
+    },
+    {
       "name": "team_url",
       "type": "text"
     },

@@ -53,6 +53,8 @@ response = requests.get(solr_url, json=home_goals_query_payload)
 
 if response.status_code == 200:
     result = response.json()
+    with open("goals_per_team.json", "w") as json_file:
+        json.dump(result, json_file, indent=2)
     for doc in result["facets"]["teams"]["buckets"]:
         team = doc["val"]
         goals = doc["goals"]["nr_goals"]
@@ -89,7 +91,7 @@ if response.status_code == 200:
     result = response.json()
     team_of_the_weeks = result["response"]["numFound"]
     for doc in result["response"]["docs"]:
-        nr_players+=doc["termfreq(text,'mci')"]
+        nr_players+=doc[f"termfreq(text,'{max_goals_team}')"]
     print(f"Nr players in all team of the weeks: {nr_players}")
     print(f"Total team of the weeks:{team_of_the_weeks}")
     print(f"Average number of players in team of the week:{nr_players/team_of_the_weeks}")

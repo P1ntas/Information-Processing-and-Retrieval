@@ -3,20 +3,53 @@ from sklearn.metrics import PrecisionRecallDisplay
 import numpy as np
 import requests
 import pandas as pd
+from sentence_transformers import SentenceTransformer
+
+def text_to_embedding(text):
+    model = SentenceTransformer('all-MiniLM-L6-v2')
+    embedding = model.encode(text, convert_to_tensor=False).tolist()
+    
+    # Convert the embedding to the expected format
+    embedding_str = "[" + ",".join(map(str, embedding)) + "]"
+    return embedding_str
+
+def solr_knn_query(endpoint, collection, embedding):
+    url = f"{endpoint}/{collection}/select"
+
+    data = {
+        "q": f"{{!knn f=vector topK=10}}{embedding}",
+        "fl": "url",
+        "rows": 10,
+        "wt": "json"
+    }
+    
+    headers = {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+    
+    response = requests.post(url, data=data, headers=headers)
+    response.raise_for_status()
+    return response.json()
+
+
 
 QRELS_FILE = "most_valued_team_transfers_qrels.txt"
 QUERY_SCHEMALESS_URL = "http://localhost:8983/solr/most_value_team_transfers_schemaless/query?q=text:%22MCI%20transfer%22%0Atext:%22MCI%20signing%22%0Atext:%22Manchester%20City%20transfer%22%0Atext:%22Manchester%20City%20signing%22%0Atext:MCI%0Atext:%22Manchester%20City%22%0Atext:transfer%0Atext:signing%0Asummary:%22MCI%20transfer%22%0Asummary:%22MCI%20signing%22%0Asummary:%22Manchester%20City%20transfer%22%0Asummary:%22Manchester%20City%20signing%22%0Asummary:MCI%0Asummary:%22Manchester%20City%22%0Asummary:transfer%0Asummary:signing%0Atitle:%22MCI%20transfer%22%0Atitle:%22MCI%20signing%22%0Atitle:%22Manchester%20City%20transfer%22%0Atitle:%22Manchester%20City%20signing%22%0Atitle:MCI%0Atitle:%22Manchester%20City%22%0Atitle:transfer%0Atitle:signing&q.op=OR&indent=true&rows=200&useParams="
 QUERY_SCHEMA_URL = "http://localhost:8983/solr/most_value_team_transfers/query?q=text:%22MCI%20transfer%22%0Atext:%22MCI%20signing%22%0Atext:%22Manchester%20City%20transfer%22%0Atext:%22Manchester%20City%20signing%22%0Atext:MCI%0Atext:%22Manchester%20City%22%0Atext:transfer%0Atext:signing%0Asummary:%22MCI%20transfer%22%0Asummary:%22MCI%20signing%22%0Asummary:%22Manchester%20City%20transfer%22%0Asummary:%22Manchester%20City%20signing%22%0Asummary:MCI%0Asummary:%22Manchester%20City%22%0Asummary:transfer%0Asummary:signing%0Atitle:%22MCI%20transfer%22%0Atitle:%22MCI%20signing%22%0Atitle:%22Manchester%20City%20transfer%22%0Atitle:%22Manchester%20City%20signing%22%0Atitle:MCI%0Atitle:%22Manchester%20City%22%0Atitle:transfer%0Atitle:signing&q.op=OR&indent=true&rows=200&useParams="
 QUERY_BOOST_URL = "http://localhost:8983/solr/most_value_team_transfers/select?defType=edismax&fl=*%2Cscore&fq=date%3A%5B2022-06-10T00%3A00%3A00Z%20TO%202023-01-31T00%3A00%3A00Z%20%5D&indent=true&q.op=OR&q=%22MCI%20transfer%22%5E15%20%22Manchester City%20transfer%22%5E15%20%22Manchester City%20signing%22%5E15%20%22MCI%20signing%22%5E15%20%22MCI%22%5E3%20%22Manchester City%22%5E3%20%22transfer%22%5E0.7%20%22signing%22%5E0.7&qf=title%5E4%20summary%5E3%20text%5E0.7&rows=1000&useParams="
-# Read qrels to extract relevant documents
+
+query = "Manchester City Transfer"
+embedding = text_to_embedding(query)
+
 relevant = list(map(lambda el: el.strip(), open(QRELS_FILE).readlines()))
 # Get query results from Solr instance
 results_schemaless = requests.get(QUERY_SCHEMALESS_URL).json()['response']['docs']
 results_schema = requests.get(QUERY_SCHEMA_URL).json()['response']['docs']
 results_boost = requests.get(QUERY_BOOST_URL).json()['response']['docs']
-results_list = [results_schemaless,results_schema,results_boost]
-results_list_names = ["schemaless", "schema","boost"]
-results_linestyle = ['--', '-', ':']
+results_semantic = solr_knn_query("http://localhost:8983/solr","semantic_articles",embedding)['response']['docs']
+results_list = [results_schemaless,results_schema,results_boost,results_semantic]
+results_list_names = ["schemaless", "schema","boost","semantic"]
+results_linestyle = ['--', '-', ':','--']
 
 def calculate_metrics(results_list):
     fig, ax = plt.subplots()
@@ -86,6 +119,10 @@ def calculate_metrics(results_list):
         ]
 
         precision_recall_match = {k: v for k, v in zip(recall_values, precision_values)}
+        print(results_list_names[results_idx])
+        print(precision_values)
+        print(recall_values)
+
         """
         # Extend recall_values to include traditional steps for a better curve (0.1, 0.2 ...)
         recall_values.extend([step for step in np.arange(0.1, 1.1, 0.1) if step not in recall_values])
