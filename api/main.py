@@ -1,8 +1,18 @@
-from flask import Flask, jsonify, request
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from urllib.parse import quote
-import requests
+import asyncio
+import httpx
+import uvicorn
+from PrettyJsonResponse import PrettyJSONResponse
+app = FastAPI()
 
-def perform_search(query):
+async def async_request(url):
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url, timeout=None)
+        return response.json()
+
+async def query_articles(query):
     articles_core = "http://localhost:8983/solr/articles/query"
     terms_used = f'"{query}"^10'
     for term in query.split():
@@ -11,31 +21,38 @@ def perform_search(query):
     query_independent_part = "q.op=OR&defType=edismax&indent=true&qf=title%5E2.3%20summary%20text%5E0.4&qs=20&fl=*,score&bf=ms(date,NOW)&rows=999&useParams="
     
     solr_query = f"{articles_core}?q={quote(terms_used)}&{query_independent_part}"
-    results = requests.get(solr_query).json()['response']['docs']
-    return results
+    results = await async_request(solr_query)
+    return results['response']['docs']
 
-app = Flask(__name__)
+async def query_teams(query):
+    solr_query = f'http://localhost:8983/solr/teams/query?q=name:%22{quote(query)}%22%20-_nest_path_:*&q.op=OR&indent=true&fl=*,%5Bchild%5D&useParams='
+    results = await async_request(solr_query)
+    return results['response']['docs']
 
-@app.route('/api/article/<id>')
-def get_article(id):
+async def query_players(query):
+    solr_query = f'http://localhost:8983/solr/players/query?q=name:%22{quote(query)}%22%20-_nest_path_:*&q.op=OR&indent=true&fl=*,%5Bchild%5D&useParams='
+    results = await async_request(solr_query)
+    return results['response']['docs']
+
+@app.get('/api/article/{id}',response_class=PrettyJSONResponse)
+async def get_article(id: str):
     solr_query = f"http://localhost:8983/solr/articles/query?q=id:{id}&q.op=OR&indent=true&fl=*,%5Bchild%5D&useParams="
-    results = requests.get(solr_query).json()['response']['docs']
-    return results
+    results = await async_request(solr_query)
+    return results['response']['docs']
 
+@app.get('/api/search',response_class=PrettyJSONResponse)
+async def search(query: str = ''):
+    teams_results, players_results, articles_results = await asyncio.gather(
+        query_teams(query),
+        query_players(query),
+        query_articles(query)
+    )
 
-@app.route('/api/search')
-def search():
-    # Retrieve the 'query' parameter from the URL
-    query_param = request.args.get('query', default='', type=str)
-    
-    # Perform some search logic with the query parameter
-    results = perform_search(query_param)
-    
-    # Return the results as JSON
-    return jsonify({'results': results})
-
+    return {
+        'teams': teams_results,
+        'players': players_results,
+        'articles': articles_results
+    }
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-
+    uvicorn.run(app, host='127.0.0.1', port=5000)
