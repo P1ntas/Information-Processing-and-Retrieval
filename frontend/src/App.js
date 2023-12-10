@@ -30,7 +30,6 @@ function SearchPage() {
           <SearchBar onSearchQueryChange={handleSearchQueryChange} />
           <SearchButton onSearch={handleSearch} />
         </div>
-        <FilterOptions />
       </div>
     </div>
   );

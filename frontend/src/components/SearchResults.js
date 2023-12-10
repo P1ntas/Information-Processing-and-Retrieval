@@ -67,7 +67,6 @@ const SearchResults = () => {
           <SearchBar onSearchQueryChange={handleSearchQueryChange} />
           <SearchButton onSearch={handleSearch} />
         </div>
-        <FilterOptions />
       </div>
       <div className='resultsLayout'>
         <div className='results'>

@@ -227,6 +227,7 @@ input[type="text"] {
 .playerInfoBox a {
   color: #1a0dab; /* Example color - you can choose your own */
   text-decoration: none;
+  cursor: pointer;
 }
 
 .playerInfoBox a:hover {
