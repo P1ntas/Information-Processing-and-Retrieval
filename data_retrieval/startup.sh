@@ -1,5 +1,6 @@
 #!/bin/bash
 # docker run -p 8983:8983 --name premier_league -v ${PWD}:/data -d solr:9.3
+
 docker exec premier_league bin/solr delete -c games
 docker exec premier_league bin/solr create_core  -c games
 
