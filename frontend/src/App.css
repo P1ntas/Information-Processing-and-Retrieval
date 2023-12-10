@@ -209,9 +209,10 @@ input[type="text"] {
   width: 50%;
   box-sizing: border-box;
   color: black;
+  text-decoration: none;
 }
 
-.playerInfoBox h2 {
+.playerInfoBox h2:hover {
   text-decoration: underline;
   cursor: pointer;
 }
@@ -341,6 +342,7 @@ input[type="text"] {
 
 /* Common Styles for Article, Player, and Team Pages */
 .page-container {
+  color: black;
   margin: 20px;
   text-align: center;
 }
