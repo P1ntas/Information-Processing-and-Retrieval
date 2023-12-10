@@ -7,64 +7,42 @@ import '../App.css';
 
 const SearchResults = ({ searchQuery }) => {
   // Mock data
-  const results = [
-    {
-      title: 'Lorem Ipsum Dolor Sit Amet',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...'
-    },
-    {
-      title: 'Sed Do Eiusmod Tempor',
-      content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...'
-    },
-    {
-      title: 'Sed Do Eiusmod Tempor',
-      content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...'
-    },
-    {
-      title: 'Sed Do Eiusmod Tempor',
-      content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...'
-    },
-    {
-      title: 'Sed Do Eiusmod Tempor',
-      content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...'
-    },
-    {
-      title: 'Sed Do Eiusmod Tempor',
-      content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...'
-    },
-    {
-      title: 'Sed Do Eiusmod Tempor',
-      content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...'
-    },
-    {
-      title: 'Sed Do Eiusmod Tempor',
-      content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...'
-    },
-    {
-      title: 'Sed Do Eiusmod Tempor',
-      content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...'
-    },
-    {
-      title: 'Sed Do Eiusmod Tempor',
-      content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...'
-    },
-    {
-      title: 'Sed Do Eiusmod Tempor',
-      content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...'
-    },
-    {
-      title: 'Sed Do Eiusmod Tempor',
-      content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...'
-    },
-    {
-      title: 'Sed Do Eiusmod Tempor',
-      content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...'
-    },
-    {
-      title: 'Ut Enim Ad Minim Veniam',
-      content: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...'
-    }
-  ];
+  const results = {
+    "team": {}, 
+    "player": {},
+    "articles": [
+      {
+        "id": "3908", 
+        "title": "GW26 Differentials: Sadio Mane", 
+        "summary": "The Scout on why wi matches ", 
+        "text": "\n The Scout is tipping four low-owned pl\n", 
+        "date": "2022-02-17T00:00:00Z", 
+        "url": "https://www.premierleague.com/news/2488660", 
+        "_version_": 1784807969405272064, 
+        "score": 160.5178
+      },
+      {
+        "id": "3908", 
+        "title": "GW26 Differentials: Sadio Mane", 
+        "summary": "The Scout on why wi matches ", 
+        "text": "\n The Scout is tipping four low-owned pl\n", 
+        "date": "2022-02-17T00:00:00Z", 
+        "url": "https://www.premierleague.com/news/2488660", 
+        "_version_": 1784807969405272064, 
+        "score": 160.5178
+      },
+      {
+        "id": "3908", 
+        "title": "GW26 Differentials: Sadio Mane", 
+        "summary": "The Scout on why wi matches ", 
+        "text": "\n The Scout is tipping four low-owned pl\n", 
+        "date": "2022-02-17T00:00:00Z", 
+        "url": "https://www.premierleague.com/news/2488660", 
+        "_version_": 1784807969405272064, 
+        "score": 160.5178
+      },
+    ]
+  };
 
   return (
     <div className='searchResults'>
@@ -76,8 +54,13 @@ const SearchResults = ({ searchQuery }) => {
         <FilterOptions />
       </div>
       <div className='results'>
-        {results.map((result, index) => (
-          <SearchResultItem key={index} title={result.title} content={result.content} />
+        {results.articles.map((article, index) => (
+          <SearchResultItem 
+            key={article.id} // It's better to use unique identifiers like 'id' for the key
+            title={article.title} 
+            summary={article.summary} 
+            url={article.url} 
+          />
         ))}
       </div>
     </div>
