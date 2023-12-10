@@ -5,9 +5,11 @@ import SearchButton from './SearchButton';
 import FilterOptions from './FilterOptions';
 import '../App.css';
 import { useSearchParams, useNavigate } from 'react-router-dom';
+import PlayerInfoBox from './PlayerInfoBox';
 
 const SearchResults = () => {
   const [searchResults, setSearchResults] = useState([]);
+  const [playerInfo, setPlayerInfo] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const initialQuery = searchParams.get('query')?.trim() || '';
@@ -37,6 +39,7 @@ const SearchResults = () => {
           }
           const data = await response.json();
           setSearchResults(data.articles.results);
+          setPlayerInfo(data.player);  // Assuming 'player' is part of the returned data
         } catch (error) {
           console.error("Error fetching data", error);
         }
@@ -55,15 +58,18 @@ const SearchResults = () => {
         </div>
         <FilterOptions />
       </div>
-      <div className='results'>
-        {searchResults.map((article) => (
-          <SearchResultItem 
-            key={article.id}
-            title={article.title} 
-            summary={article.summary} 
-            url={article.url} 
-          />
-        ))}
+      <div className='resultsLayout'>
+        <div className='results'>
+          {searchResults.map((article) => (
+            <SearchResultItem 
+              key={article.id}
+              title={article.title} 
+              summary={article.summary} 
+              url={article.url} 
+            />
+          ))}
+        </div>
+        <PlayerInfoBox player={playerInfo} />
       </div>
     </div>
   );

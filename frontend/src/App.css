@@ -47,7 +47,7 @@ button:hover {
 
 .search-result-item {
   margin-bottom: 10px;
-  width: 50%;
+  width: 100%;
 }
 
 .search-result-item h3 a {
@@ -196,3 +196,39 @@ input[type="text"] {
   margin-right: 3px;
 }
 
+.resultsLayout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.results {
+  width: 50%;
+}
+
+.playerInfoBox {
+  border: 1px solid grey;
+  padding: 20px;
+  margin: 40px 100px 0 0;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.playerInfoBox img {
+  width: 200px;
+  max-height: auto;
+  margin-bottom: 10px;
+}
+
+.playerInfoBox p {
+  color: black;
+  font-size: 20px;
+}
+
+.playerInfoBox a {
+  color: inherit; /* Example color - you can choose your own */
+  text-decoration: none;
+}
+
+.playerInfoBox a:hover {
+  text-decoration: underline;
+}
