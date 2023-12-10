@@ -1,6 +1,10 @@
 import sqlite3
 import json
 
+
+conn = sqlite3.connect('news_articles.db')
+cursor = conn.cursor()
+
 def get_player_stats_document(player_id):
     cursor.execute("""
         SELECT Games,Goals,Assists,Yellow_Cards,Double_Yellow_Cards,Red_Cards,Minutes_Played,seasons.name,teams.name,teams.short_name
@@ -45,14 +49,16 @@ conn = sqlite3.connect('news_articles.db')
 cursor = conn.cursor()
 
 cursor.execute("""
-    SELECT id, Name, Url
+    SELECT id, Name, Url, summary, image_url
     FROM players
     """)
 players = []
 for player_db in cursor.fetchall():
-    player_id, player_name, player_url = player_db
+    player_id, player_name, player_url, player_summary, player_image_url = player_db
     player = {"name":player_name,
               "url":player_url,
+              "summary":player_summary,
+              "image_url":player_image_url,
              }    
     player["player_stats"] = get_player_stats_document(player_id)
     players.append(player)

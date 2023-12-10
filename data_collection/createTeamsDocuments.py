@@ -10,10 +10,12 @@ cursor.execute("""
 """)
 final_teams = []
 for team_db in cursor.fetchall():
-    id, name, csv_name,short_name = team_db
+    id, name, csv_name,short_name, summary, image_url = team_db
     team = {
         "name":name,
-        "abbreviation":short_name
+        "abbreviation":short_name,
+        "summary":summary,
+        "image_url":image_url
     }
     cursor.execute("""
         SELECT season_id, Url, Squad, Average_Age, Foreigners, Average_Player_Value, Total_Player_Value
