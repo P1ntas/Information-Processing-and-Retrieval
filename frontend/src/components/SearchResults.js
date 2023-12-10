@@ -4,20 +4,28 @@ import SearchBar from './SearchBar';
 import SearchButton from './SearchButton';
 import FilterOptions from './FilterOptions';
 import '../App.css';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 const SearchResults = () => {
   const [searchResults, setSearchResults] = useState([]);
-  const [searchParams] = useSearchParams();
-  const searchQuery = searchParams.get('query')?.trim();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const initialQuery = searchParams.get('query')?.trim() || '';
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
+
+  const handleSearchQueryChange = (query) => {
+    setSearchQuery(query);
+  };
+
+  const handleSearch = () => {
+    navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       if (searchQuery) {
-        console.log("Search query:", searchQuery);  // Log the search query
         try {
           const url = `http://127.0.0.1:5000/api/search?query=${encodeURIComponent(searchQuery)}`;
-          console.log("Fetching URL:", url);
           const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -28,10 +36,6 @@ const SearchResults = () => {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
           const data = await response.json();
-  
-          // Log the results here
-          console.log("Fetched data:", data);
-  
           setSearchResults(data.articles.results);
         } catch (error) {
           console.error("Error fetching data", error);
@@ -41,14 +45,13 @@ const SearchResults = () => {
   
     fetchData();
   }, [searchQuery]);
-  
 
   return (
     <div className='searchResults'>
       <div className='searchResultsHeader'>
         <div>
-          <SearchBar onSearchQueryChange={() => {}} />
-          <SearchButton onSearch={() => {}} />
+          <SearchBar onSearchQueryChange={handleSearchQueryChange} />
+          <SearchButton onSearch={handleSearch} />
         </div>
         <FilterOptions />
       </div>
