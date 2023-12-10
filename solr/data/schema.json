@@ -1,0 +1,197 @@
+{
+  "add-field-type": [
+    {
+      "name": "text",
+
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                  {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                  {"class":"solr.LowerCaseFilterFactory"},
+                  {"class":"solr.SnowballPorterFilterFactory"}
+                ] 
+
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                  {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                  {"class":"solr.LowerCaseFilterFactory"},
+                  {"class":"solr.SnowballPorterFilterFactory"},
+                  {"class":"solr.SynonymGraphFilterFactory", "synonyms":"synonyms.txt", "ignoreCase":true, "expand":true}
+                ]
+            }
+    },
+    {
+      "name": "name",
+      "class":"solr.TextField"
+    },
+    {
+      "name": "date",
+      "class": "solr.TrieDateField"
+    },
+    {
+      "name": "int",
+      "class": "solr.IntPointField"
+    },
+    {
+      "name": "float",
+      "class": "solr.FloatPointField"
+    }
+  ],
+  "add-field": [
+    {
+      "name": "wk",
+      "type": "int"
+    },
+    {
+      "name": "date",
+      "type": "date"
+    },
+    {
+      "name": "home_goals",
+      "type": "int"
+    },
+    {
+      "name": "away_goals",
+      "type": "int"
+    },
+    {
+      "name": "ftr",
+      "type": "text"
+    },
+    {
+      "name": "season",
+      "type": "text"
+    },
+    {
+      "name": "name",
+      "type": "name"
+    },
+    {
+      "name": "abbreviation",
+      "type": "name"
+    },
+    {
+      "name": "article_id",
+      "type": "int"
+    },
+    {
+      "name": "url",
+      "type": "text"
+    },
+    {
+      "name": "nr_players",
+      "type": "int"
+    },
+    {
+      "name": "average_age",
+      "type": "float"
+    },
+    {
+      "name": "foreigners",
+      "type": "int"
+    },
+    {
+      "name": "average_player_value",
+      "type": "text"
+    },
+    {
+      "name": "total_player_value",
+      "type": "text"
+    },
+    {
+      "name": "nr_games",
+      "type": "int"
+    },
+    {
+      "name": "goals",
+      "type": "int"
+    },
+    {
+      "name": "assists",
+      "type": "text"
+    },
+    {
+      "name": "yellow_cards",
+      "type": "int"
+    },
+    {
+      "name": "double_yellow_cards",
+      "type": "int"
+    },
+    {
+      "name": "red_cards",
+      "type": "int"
+    },
+    {
+      "name": "minutes_played",
+      "type": "int"
+    },
+    {
+      "name": "clean_sheets",
+      "type": "int"
+    },
+    {
+      "name": "goals_conceded",
+      "type": "int"
+    },
+    {
+      "name": "title",
+      "type": "text"
+    },
+    {
+      "name": "summary",
+      "type": "text"
+    },
+    {
+      "name": "text",
+      "type": "text"
+    },
+    {
+      "name": "home_team",
+      "type": "name"
+    },
+    {
+      "name": "away_team",
+      "type": "name"
+    },
+    {
+      "name": "season_id",
+      "type": "int"
+    },
+    {
+      "name": "team",
+      "type": "text"
+    },
+    {
+      "name": "team_url",
+      "type": "text"
+    },
+    {
+      "name": "team_squad",
+      "type": "int"
+    },
+    {
+      "name": "team_average_age",
+      "type": "float"
+    },
+    {
+      "name": "team_foreigners",
+      "type": "int"
+    },
+    {
+      "name": "team_average_player_value",
+      "type": "text"
+    },
+    {
+      "name": "team_total_player_value",
+      "type": "text"
+    }
+  ]
+}
