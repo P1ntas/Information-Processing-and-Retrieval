@@ -1,48 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchResultItem from './SearchResultItem';
 import SearchBar from './SearchBar';
 import SearchButton from './SearchButton';
 import FilterOptions from './FilterOptions';
 import '../App.css';
+import { useSearchParams } from 'react-router-dom';
 
-const SearchResults = ({ searchQuery }) => {
-  // Mock data
-  const results = {
-    "team": {}, 
-    "player": {},
-    "articles": [
-      {
-        "id": "3908", 
-        "title": "GW26 Differentials: Sadio Mane", 
-        "summary": "The Scout on why wi matches ", 
-        "text": "\n The Scout is tipping four low-owned pl\n", 
-        "date": "2022-02-17T00:00:00Z", 
-        "url": "https://www.premierleague.com/news/2488660", 
-        "_version_": 1784807969405272064, 
-        "score": 160.5178
-      },
-      {
-        "id": "3908", 
-        "title": "GW26 Differentials: Sadio Mane", 
-        "summary": "The Scout on why wi matches ", 
-        "text": "\n The Scout is tipping four low-owned pl\n", 
-        "date": "2022-02-17T00:00:00Z", 
-        "url": "https://www.premierleague.com/news/2488660", 
-        "_version_": 1784807969405272064, 
-        "score": 160.5178
-      },
-      {
-        "id": "3908", 
-        "title": "GW26 Differentials: Sadio Mane", 
-        "summary": "The Scout on why wi matches ", 
-        "text": "\n The Scout is tipping four low-owned pl\n", 
-        "date": "2022-02-17T00:00:00Z", 
-        "url": "https://www.premierleague.com/news/2488660", 
-        "_version_": 1784807969405272064, 
-        "score": 160.5178
-      },
-    ]
-  };
+const SearchResults = () => {
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get('query');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (searchQuery) {
+        try {
+          const response = await fetch(`http://localhost:5000/api/search?query=${encodeURIComponent(searchQuery)}`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          setSearchResults(data.articles.results);
+        } catch (error) {
+          console.error("Error fetching data", error);
+        }
+      }
+    };
+
+    fetchData();
+  }, [searchQuery]);
 
   return (
     <div className='searchResults'>
@@ -54,9 +40,9 @@ const SearchResults = ({ searchQuery }) => {
         <FilterOptions />
       </div>
       <div className='results'>
-        {results.articles.map((article, index) => (
+        {searchResults.map((article) => (
           <SearchResultItem 
-            key={article.id} // It's better to use unique identifiers like 'id' for the key
+            key={article.id}
             title={article.title} 
             summary={article.summary} 
             url={article.url} 
