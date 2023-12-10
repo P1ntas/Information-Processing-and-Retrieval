@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from starlette.middleware.cors import CORSMiddleware
 from urllib.parse import quote
 import asyncio
 import httpx
@@ -6,6 +7,28 @@ import uvicorn
 from PrettyJsonResponse import PrettyJSONResponse
 
 app = FastAPI()
+
+origins = [
+    "*",  # Add the origin of your React app
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Use the list of origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+    expose_headers=["*"]  # Exposes all headers
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+    expose_headers=["*"]  # Exposes all headers
+)
 
 async def async_request(url):
     async with httpx.AsyncClient() as client:
