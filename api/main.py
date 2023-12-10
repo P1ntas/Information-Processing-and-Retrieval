@@ -51,7 +51,6 @@ async def query_articles(query,team_abbreviation,player_name,start,rows):
 
     
     solr_query = f"{articles_core}?{main_query}{query_independent_part}{filter_query}{pagination}"
-    print(solr_query)
     results = await async_request(solr_query)
     response = results['response']
     docs = response['docs']
@@ -61,12 +60,14 @@ async def query_articles(query,team_abbreviation,player_name,start,rows):
 
 
 async def query_teams(query):
-    solr_query = f'http://localhost:8983/solr/teams/query?q=name:%22{quote(query)}%22%20-_nest_path_:*&q.op=OR&indent=true&fl=*,%5Bchild%5D&rows=1&start=0&useParams='
+    query = '"' + query + '"'
+    solr_query = f'http://localhost:8983/solr/teams/query?q={quote(query)}&q.op=OR&defType=edismax&indent=true&qf=name%5E2.3%20summary&fl=*,score&qs=20&fq=-_nest_path_:*&rows=1&useParams='
     results = await async_request(solr_query)
     return results['response']['docs']
 
 async def query_players(query):
-    solr_query = f'http://localhost:8983/solr/players/query?q=name:%22{quote(query)}%22%20-_nest_path_:*&q.op=OR&indent=true&fl=*,%5Bchild%5D&rows=1&start=0&useParams='
+    query = '"' + query + '"'
+    solr_query = f'http://localhost:8983/solr/players/query?q={quote(query)}&q.op=OR&defType=edismax&indent=true&qf=name%5E2.3%20summary&fl=*,score&qs=20&fq=-_nest_path_:*&rows=1&useParams='
     results = await async_request(solr_query)
     return results['response']['docs']
 
@@ -133,14 +134,29 @@ async def search_articles(query: str = '',start:int=0,rows:int=10):
         query_articles(query,None,None,start,rows)
     )
     
-    return {
-        'team': teams_results[0] if teams_results else {},
-        'player': players_results[0] if players_results else {},
-        'articles': {
-            "numFound": numFound,
-            "results":articles_results
-        }
-    }
+    
+    search_result = {}
+
+    
+    if teams_results and players_results and teams_results[0]["score"]>3 and players_results[0]["score"]>3:
+        team = teams_results[0]
+        player = players_results[0]
+        team_score = team["score"]
+        player_score = player["score"]
+        if team_score > player_score:
+            search_result["team"] = team
+        else:
+            search_result["player"] = player
+    elif teams_results and teams_results[0]["score"]>3:
+        search_result["team"] = teams_results[0]
+    elif players_results and players_results[0]["score"]>3:
+        search_result["player"] = players_results[0]
+        
+    search_result["articles"] = {
+        "numFound": numFound,
+        "results":articles_results
+    } 
+    return search_result
 
 if __name__ == '__main__':
     uvicorn.run("main:app", host='127.0.0.1', port=5000,reload=True)
