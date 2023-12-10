@@ -10,6 +10,7 @@ import PlayerInfoBox from './PlayerInfoBox';
 const SearchResults = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [playerInfo, setPlayerInfo] = useState(null);
+  const [teamInfo, setTeamInfo] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const initialQuery = searchParams.get('query')?.trim() || '';
@@ -40,6 +41,16 @@ const SearchResults = () => {
           const data = await response.json();
           setSearchResults(data.articles.results);
           setPlayerInfo(data.player);  // Assuming 'player' is part of the returned data
+          if (data.player) {
+            setPlayerInfo(data.player);
+            setTeamInfo(null); // Clear team info if player info is available
+          } else if (data.team) {
+            setTeamInfo(data.team);
+            setPlayerInfo(null); // Clear player info if team info is available
+          } else {
+            setPlayerInfo(null);
+            setTeamInfo(null);
+          }
         } catch (error) {
           console.error("Error fetching data", error);
         }
@@ -69,7 +80,7 @@ const SearchResults = () => {
             />
           ))}
         </div>
-        <PlayerInfoBox player={playerInfo} />
+        <PlayerInfoBox player={playerInfo} team={teamInfo} />
       </div>
     </div>
   );

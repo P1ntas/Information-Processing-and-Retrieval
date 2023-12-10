@@ -1,8 +1,10 @@
 import React from 'react';
 import '../App.css';
 
-const PlayerInfoBox = ({ player }) => {
-  if (!player) {
+const PlayerInfoBox = ({ player, team }) => {
+  let info = player || team;
+
+  if (!info) {
     return null;
   }
 
@@ -13,14 +15,14 @@ const PlayerInfoBox = ({ player }) => {
     return summary;
   };
 
-  const displayedSummary = truncateSummary(player.summary, 400);
+  const displayedSummary = truncateSummary(info.summary, 400);
 
   return (
     <div className='playerInfoBox'>
-      <img src={player.image_url} alt={player.name} />
+      <img src={info.image_url} alt={info.name} />
       <h2>
-        <a href={player.url} target="_blank" rel="noopener noreferrer">
-          {player.name}
+        <a href={info.url} target="_blank" rel="noopener noreferrer">
+          {info.name}
         </a>
       </h2>
       <p>{displayedSummary}</p>
