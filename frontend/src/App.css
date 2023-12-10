@@ -208,6 +208,12 @@ input[type="text"] {
   margin: 40px 100px 0 0;
   width: 50%;
   box-sizing: border-box;
+  color: black;
+}
+
+.playerInfoBox h2 {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .playerInfoBox img {
@@ -229,4 +235,106 @@ input[type="text"] {
 
 .playerInfoBox a:hover {
   text-decoration: underline;
+}
+
+.article-page {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+  color: black;
+}
+
+.article-content {
+  margin: 0 auto; /* Centers the content */
+  max-width: 800px; /* Maximum width of the content */
+  padding: 0 20px; /* Padding for small screens */
+}
+
+.article-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  font-size: 2em;
+  margin-bottom: 0.5em; /* Space between title and date */
+}
+
+.article-title-link {
+  text-decoration: none;
+  color: black;
+}
+
+.article-title-link:hover {
+  text-decoration: underline;
+}
+
+.article-date {
+  font-size: 0.8em;
+  color: grey;
+  margin-top: 1em;
+}
+
+.article-text {
+  font-size: 1em;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.more-like-this {
+  border-top: 2px solid #ccc;
+  padding-top: 20px;
+  margin-top: 40px;
+}
+
+.more-like-this h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.player-page {
+  margin: 20px;
+  text-align: center;
+}
+
+.player-image {
+  max-width: 200px; /* Adjust as needed */
+  margin-bottom: 20px;
+}
+
+.player-name {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.player-name-link {
+  text-decoration: none;
+  color: black;
+}
+
+.player-summary {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+.team-page {
+  margin: 20px;
+  text-align: center;
+}
+
+.team-image {
+  max-width: 200px; /* Adjust as needed */
+  margin-bottom: 20px;
+}
+
+.team-name {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.team-summary {
+  font-size: 1em;
+  line-height: 1.6;
 }
