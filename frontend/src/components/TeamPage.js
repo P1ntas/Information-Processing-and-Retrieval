@@ -30,10 +30,10 @@ const TeamPage = () => {
   }
 
   return (
-    <div className="team-page">
-      <img src={team.image_url} alt={team.name} className="team-image" />
-      <h1 className="team-name">{team.name}</h1>
-      <p className="team-summary">{team.summary}</p>
+    <div className="page-container team-page">
+      <img src={team.image_url} alt={team.name} className="page-image" />
+      <h1 className="page-title">{team.name}</h1>
+      <p className="page-summary">{team.summary}</p>
     </div>
   );
 };

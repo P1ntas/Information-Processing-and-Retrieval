@@ -31,12 +31,10 @@ const PlayerPage = () => {
   }
 
   return (
-    <div className="player-page">
-      <img src={player.image_url} alt={player.name} className="player-image" />
-      <a href={player.url} className="player-name-link">
-        <h1 className="player-name">{player.name}</h1>
-      </a>
-      <p className="player-summary">{player.summary}</p>
+    <div className="page-container player-page">
+      <img src={player.image_url} alt={player.name} className="page-image" />
+      <h1 className="page-title">{player.name}</h1>
+      <p className="page-summary">{player.summary}</p>
     </div>
   );
 };

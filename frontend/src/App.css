@@ -338,3 +338,28 @@ input[type="text"] {
   font-size: 1em;
   line-height: 1.6;
 }
+
+/* Common Styles for Article, Player, and Team Pages */
+.page-container {
+  margin: 20px;
+  text-align: center;
+}
+
+.page-image {
+  max-width: 200px; /* Adjust as needed */
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.page-summary {
+  font-size: 1em;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 800px; /* Maximum width of the content */
+  padding: 0 20px; /* Padding for small screens */
+  text-align: justify;
+}
