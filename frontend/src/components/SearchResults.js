@@ -2,22 +2,36 @@ import React, { useEffect, useState } from 'react';
 import SearchResultItem from './SearchResultItem';
 import SearchBar from './SearchBar';
 import SearchButton from './SearchButton';
-import FilterOptions from './FilterOptions';
 import '../App.css';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import PlayerInfoBox from './PlayerInfoBox';
 
 const SearchResults = () => {
   const [searchResults, setSearchResults] = useState([]);
-  const [searchParams] = useSearchParams();
-  const searchQuery = searchParams.get('query')?.trim();
+  const [playerInfo, setPlayerInfo] = useState(null);
+  const [teamInfo, setTeamInfo] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const initialQuery = searchParams.get('query')?.trim() || '';
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
+
+  const handleArticleClick = (articleId) => {
+    navigate(`/article/${articleId}`);
+  };
+
+  const handleSearchQueryChange = (query) => {
+    setSearchQuery(query);
+  };
+
+  const handleSearch = () => {
+    navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       if (searchQuery) {
-        console.log("Search query:", searchQuery);  // Log the search query
         try {
           const url = `http://127.0.0.1:5000/api/search?query=${encodeURIComponent(searchQuery)}`;
-          console.log("Fetching URL:", url);
           const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -28,11 +42,18 @@ const SearchResults = () => {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
           const data = await response.json();
-  
-          // Log the results here
-          console.log("Fetched data:", data);
-  
           setSearchResults(data.articles.results);
+          setPlayerInfo(data.player);  // Assuming 'player' is part of the returned data
+          if (data.player) {
+            setPlayerInfo(data.player);
+            setTeamInfo(null); // Clear team info if player info is available
+          } else if (data.team) {
+            setTeamInfo(data.team);
+            setPlayerInfo(null); // Clear player info if team info is available
+          } else {
+            setPlayerInfo(null);
+            setTeamInfo(null);
+          }
         } catch (error) {
           console.error("Error fetching data", error);
         }
@@ -41,26 +62,28 @@ const SearchResults = () => {
   
     fetchData();
   }, [searchQuery]);
-  
 
   return (
     <div className='searchResults'>
       <div className='searchResultsHeader'>
         <div>
-          <SearchBar onSearchQueryChange={() => {}} />
-          <SearchButton onSearch={() => {}} />
+          <SearchBar onSearchQueryChange={handleSearchQueryChange} />
+          <SearchButton onSearch={handleSearch} />
         </div>
-        <FilterOptions />
       </div>
-      <div className='results'>
-        {searchResults.map((article) => (
-          <SearchResultItem 
-            key={article.id}
-            title={article.title} 
-            summary={article.summary} 
-            url={article.url} 
-          />
-        ))}
+      <div className='resultsLayout'>
+        <div className='results'>
+          {searchResults.map((article) => (
+            <SearchResultItem 
+              key={article.id}
+              id={article.id}
+              title={article.title} 
+              summary={article.summary}
+              onClick={() => handleArticleClick(article.id)}          
+            />
+          ))}
+        </div>
+        <PlayerInfoBox player={playerInfo} team={teamInfo} />
       </div>
     </div>
   );
