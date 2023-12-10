@@ -7,13 +7,13 @@ cursor = conn.cursor()
 
 def get_player_stats_document(player_id):
     cursor.execute("""
-        SELECT Games,Goals,Assists,Yellow_Cards,Double_Yellow_Cards,Red_Cards,Minutes_Played,seasons.name,teams.name,teams.short_name
+        SELECT Games,Goals,Assists,Yellow_Cards,Double_Yellow_Cards,Red_Cards,Minutes_Played,seasons.name,teams.name,teams.short_name, teams.image_url
         FROM players_stats LEFT JOIN seasons ON season_id = seasons.id LEFT JOIN teams ON teams_id = teams.id
         WHERE players_id = ?
     """,(player_id,))
     player_stats = []
     for player_stats_db in cursor.fetchall():
-        nr_games,goals,assists,yellow_cards,double_yellow_cards,red_cards,minutes_played,season,team,abbreviation=player_stats_db
+        nr_games,goals,assists,yellow_cards,double_yellow_cards,red_cards,minutes_played,season,team,abbreviation, teams_image_url=player_stats_db
         player_stats.append({"nr_games":nr_games,
                              "goals":goals,
                              "assists":assists,
@@ -23,14 +23,15 @@ def get_player_stats_document(player_id):
                              "minutes_played":minutes_played,
                              "season":season,
                              "team":team,
-                             "abbreviation":abbreviation})
+                             "abbreviation":abbreviation,
+                             "teams_image_url":teams_image_url})
     cursor.execute("""
-        SELECT Games,Goals,Yellow_Cards,Double_Yellow_Cards,Red_Cards,Goals_Conceded,Clean_Sheets,Minutes_Played,seasons.name,teams.name,teams.short_name
+        SELECT Games,Goals,Yellow_Cards,Double_Yellow_Cards,Red_Cards,Goals_Conceded,Clean_Sheets,Minutes_Played,seasons.name,teams.name,teams.short_name, teams.image_url
         FROM goalkeepers_stats LEFT JOIN seasons ON season_id = seasons.id LEFT JOIN teams ON teams_id = teams.id
         WHERE players_id = ?
     """,(player_id,))
     for player_stats_db in cursor.fetchall():
-        nr_games,goals,yellow_cards,double_yellow_cards,red_cards,goals_conceded,clean_sheets,minutes_played,season,team,abbreviation=player_stats_db
+        nr_games,goals,yellow_cards,double_yellow_cards,red_cards,goals_conceded,clean_sheets,minutes_played,season,team,abbreviation, teams_image_url=player_stats_db
         player_stats.append({"nr_games":nr_games,
                              "goals_conceded":goals_conceded,
                              "clean_sheets":clean_sheets,
@@ -40,7 +41,8 @@ def get_player_stats_document(player_id):
                              "minutes_played":minutes_played,
                              "season":season,
                              "team":team,
-                             "abbreviation":abbreviation})
+                             "abbreviation":abbreviation,
+                             "teams_image_url":teams_image_url})
         
     return player_stats
 
