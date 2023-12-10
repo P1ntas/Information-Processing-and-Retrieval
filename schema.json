@@ -192,6 +192,14 @@
     {
       "name": "team_total_player_value",
       "type": "text"
+    },
+    {
+      "name": "summary",
+      "type": "text"
+    },
+    {
+      "name": "image_url",
+      "type": "text"
     }
   ]
 }

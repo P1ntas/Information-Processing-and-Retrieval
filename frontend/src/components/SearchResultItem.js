@@ -2,11 +2,11 @@ import React from 'react';
 import '../App.css';
 
 
-const SearchResultItem = ({ title, content }) => {
+const SearchResultItem = ({ title, summary, url }) => {
   return (
     <div className="search-result-item">
-      <h3><a href="#">{title}</a></h3>
-      <p>{content}</p>
+      <h3><a href={url} target="_blank" rel="noopener noreferrer">{title}</a></h3>
+      <p>{summary}</p>
     </div>
   );
 };

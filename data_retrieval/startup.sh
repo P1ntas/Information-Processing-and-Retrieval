@@ -1,15 +1,10 @@
 #!/bin/bash
-
 # docker run -p 8983:8983 --name premier_league -v ${PWD}:/data -d solr:9.3
 
 docker exec premier_league bin/solr delete -c games
 docker exec premier_league bin/solr create_core  -c games
 
 # Schema definition via API
-curl -X POST -H 'Content-type:application/json' \
-    --data-binary "@../synonyms.txt" \
-    http://localhost:8983/solr/games/update?commit=true&wt=json&file=synonyms.txt&contentType=text/plain;charset=utf-8
-
 curl -X POST -H 'Content-type:application/json' \
     --data-binary "@../schema.json" \
     http://localhost:8983/solr/games/schema
@@ -22,11 +17,16 @@ curl -X POST -H 'Content-type:application/json' \
 docker exec premier_league bin/solr delete -c articles
 docker exec premier_league bin/solr create_core  -c articles
 
-# Schema definition via API
-curl -X POST -H 'Content-type:application/json' \
-    --data-binary "@../synonyms.txt" \
-    http://localhost:8983/solr/articles/update?commit=true&wt=json&file=synonyms.txt&contentType=text/plain;charset=utf-8
 
+curl -X POST -H 'Content-type:application/json' -d '{
+  "add-requesthandler": {
+    "name": "/mlt",
+    "class": "solr.MoreLikeThisHandler",
+    "defaults": {"mlt.fl": "title"}
+  } 
+}' http://localhost:8983/solr/articles/config
+
+# Schema definition via API
 curl -X POST -H 'Content-type:application/json' \
     --data-binary "@../schema.json" \
     http://localhost:8983/solr/articles/schema

@@ -23,13 +23,13 @@ for article_db in cursor.fetchall():
     }
     if(game_id):
         cursor.execute("""
-                SELECT wk,date,home_goals,away_goals,ftr,home_team.name,away_team.name,seasons.name
+                SELECT wk,date,home_goals,away_goals,ftr,home_team.name,away_team.name,seasons.name, home_team.image_url, away_team.image_url
                 FROM games LEFT JOIN teams home_team on games.home_id=home_team.id LEFT JOIN teams away_team on games.away_id = away_team.id LEFT JOIN seasons on season_id = seasons.id
                 WHERE games.id=?
             """,(game_id,))
         
 
-        wk,date,home_goals,away_goals,ftr,home_team,away_team,season = cursor.fetchone()
+        wk,date,home_goals,away_goals,ftr,home_team,away_team,season,home_team_image_url, away_team_image_url = cursor.fetchone()
         game={
             "wk":wk,
             "date":f"{date}T00:00:00Z",
@@ -37,7 +37,9 @@ for article_db in cursor.fetchall():
             "away_goals":away_goals,
             "ftr":ftr,
             "home_team":home_team,
+            "home_team_image_url":home_team_image_url,
             "away_team":away_team,
+            "away_team_image_url":away_team_image_url,
             "season": season
         }
         
@@ -46,29 +48,29 @@ for article_db in cursor.fetchall():
         article["named_game"] = {}
     
     cursor.execute("""
-        SELECT name,short_name
+        SELECT name,short_name, teams.image_url
         FROM article_named_teams LEFT JOIN teams ON named_team_id = teams.id
         WHERE article_id=?
     """,(id,))
 
     named_teams = []
     for teams_db in cursor.fetchall():
-        team_name,short_name = teams_db
-        named_teams.append({"name":team_name,"abbreviation":short_name,"article_id":id})
+        team_name,short_name, image_url = teams_db
+        named_teams.append({"name":team_name,"abbreviation":short_name,"article_id":id,"image_url":image_url})
 
 
     article["named_teams"]=named_teams
 
     cursor.execute("""
-        SELECT name,Url
+        SELECT name,Url, players.image_url
         FROM article_named_players LEFT JOIN players ON named_player_id = players.id
         WHERE article_id=?
     """,(id,))
 
     named_players = []
     for players_db in cursor.fetchall():
-        player_name,url = players_db
-        named_players.append({"name":player_name,"url":url})
+        player_name,url, image_url = players_db
+        named_players.append({"name":player_name,"url":url,"image_url":image_url})
 
     article["named_players"]=named_players
     articles.append(article)
