@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import SearchBar from './components/SearchBar';
 import SearchButton from './components/SearchButton';
 import SearchResults from './components/SearchResults';
-import FilterOptions from './components/FilterOptions';
+import ArticlePage from './components/ArticlePage';
+import './App.css';
 import './App.css';
 import logo from './images/logo.png';
 
@@ -43,6 +44,7 @@ function App() {
           <Routes>
             <Route path="/" element={<SearchPage />} />
             <Route path="/search" element={<SearchResults />} />
+            <Route path="/article/:articleId" element={<ArticlePage />} />
           </Routes>
         </header>
       </div>

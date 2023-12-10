@@ -46,21 +46,18 @@ button:hover {
 }
 
 .search-result-item {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   width: 100%;
 }
 
-.search-result-item h3 a {
+.search-result-item h3 {
   color: #1a0dab;
   text-decoration: none;
   font-size: 0.6em;
+  margin-bottom: 3px;
 }
 
-.search-result-item h3 {
-  margin: 0;
-}
-
-.search-result-item h3 a:hover {
+.search-result-item h3:hover {
   text-decoration: underline;
 }
 

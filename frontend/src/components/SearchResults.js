@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import SearchResultItem from './SearchResultItem';
 import SearchBar from './SearchBar';
 import SearchButton from './SearchButton';
-import FilterOptions from './FilterOptions';
 import '../App.css';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import PlayerInfoBox from './PlayerInfoBox';
@@ -15,6 +14,10 @@ const SearchResults = () => {
   const navigate = useNavigate();
   const initialQuery = searchParams.get('query')?.trim() || '';
   const [searchQuery, setSearchQuery] = useState(initialQuery);
+
+  const handleArticleClick = (articleId) => {
+    navigate(`/article/${articleId}`);
+  };
 
   const handleSearchQueryChange = (query) => {
     setSearchQuery(query);
@@ -73,9 +76,10 @@ const SearchResults = () => {
           {searchResults.map((article) => (
             <SearchResultItem 
               key={article.id}
+              id={article.id}
               title={article.title} 
-              summary={article.summary} 
-              url={article.url} 
+              summary={article.summary}
+              onClick={() => handleArticleClick(article.id)}          
             />
           ))}
         </div>
