@@ -170,6 +170,10 @@
       "type": "text"
     },
     {
+      "name": "summary",
+      "type": "text"
+    },
+    {
       "name": "text",
       "type": "text"
     },
