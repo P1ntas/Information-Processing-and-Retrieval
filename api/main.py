@@ -24,7 +24,7 @@ async def async_request(url):
         return response.json()
 
 async def query_articles(query,team_abbreviation,player_name,start,rows):
-    articles_core = "http://127.0.0.1:8983/solr/articles/query"
+    articles_core = "http://solr:8983/solr/articles/query"
     if query:
         main_query = f'"{query}"^10'
         #for term in query.split(): /*generation query/*
@@ -62,20 +62,20 @@ async def query_articles(query,team_abbreviation,player_name,start,rows):
 
 async def query_teams(query):
     query = '"' + query + '"'
-    solr_query = f'http://127.0.0.1:8983/solr/teams/query?q={quote(query)}&q.op=OR&defType=edismax&indent=true&qf=name%5E2.3%20summary&fl=*,score&qs=20&fq=-_nest_path_:*&rows=1&useParams='
+    solr_query = f'http://solr:8983/solr/teams/query?q={quote(query)}&q.op=OR&defType=edismax&indent=true&qf=name%5E2.3%20summary&fl=*,score&qs=20&fq=-_nest_path_:*&rows=1&useParams='
     results = await async_request(solr_query)
     return results['response']['docs']
 
 async def query_players(query):
     query = '"' + query + '"'
-    solr_query = f'http://127.0.0.1:8983/solr/players/query?q={quote(query)}&q.op=OR&defType=edismax&indent=true&qf=name%5E2.3%20summary&fl=*,score&qs=20&fq=-_nest_path_:*&rows=1&useParams='
+    solr_query = f'http://solr:8983/solr/players/query?q={quote(query)}&q.op=OR&defType=edismax&indent=true&qf=name%5E2.3%20summary&fl=*,score&qs=20&fq=-_nest_path_:*&rows=1&useParams='
     results = await async_request(solr_query)
     return results['response']['docs']
 
 
 @app.get('/api/article/{id}',response_class=PrettyJSONResponse)
 async def get_article(id: str):
-    solr_query = f"http://127.0.0.1:8983/solr/articles/query?mlt.fl=title,summary,text&mlt.mindf=5&mlt.mintf=3&mlt=true&q=id:{id}&q.op=OR&indent=true&fl=*,%5Bchild%5D&useParams="
+    solr_query = f"http://solr:8983/solr/articles/query?mlt.fl=title,summary,text&mlt.mindf=5&mlt.mintf=3&mlt=true&q=id:{id}&q.op=OR&indent=true&fl=*,%5Bchild%5D&useParams="
     results = await async_request(solr_query)
     articles = results['response']['docs']
     if articles:
@@ -95,14 +95,14 @@ async def get_article(id: str):
 
 @app.get('/api/team/{abbreviation}',response_class=PrettyJSONResponse)
 async def get_team(abbreviation: str):
-    solr_query = f"http://127.0.0.1:8983/solr/teams/query?&q=abbreviation:{abbreviation}&q.op=OR&indent=true&fl=*,%5Bchild%5D&useParams="
+    solr_query = f"http://solr:8983/solr/teams/query?&q=abbreviation:{abbreviation}&q.op=OR&indent=true&fl=*,%5Bchild%5D&useParams="
     results = await async_request(solr_query)
     teams = results['response']['docs']
     return teams[0] if teams else {}
 
 @app.get('/api/player/{name}',response_class=PrettyJSONResponse)
 async def get_player(name: str):
-    solr_query = f"http://127.0.0.1:8983/solr/players/query?q=name:%22{quote(name)}%22&q.op=OR&indent=true&fl=*,%5Bchild%5D&useParams="
+    solr_query = f"http://solr:8983/solr/players/query?q=name:%22{quote(name)}%22&q.op=OR&indent=true&fl=*,%5Bchild%5D&useParams="
     results = await async_request(solr_query)
     players = results['response']['docs']
     return players[0] if players else {}
@@ -130,7 +130,7 @@ async def search_player_articles(name: str, query: str = '', start: int = 0, row
 
 @app.get('/api/suggest',response_class=PrettyJSONResponse)
 async def search_suggestions(query: str = ''):
-   solr_query = f"http://127.0.0.1:8983/solr/articles/suggest?suggest.q={quote(query)}"
+   solr_query = f"http://solr:8983/solr/articles/suggest?suggest.q={quote(query)}"
    results = await async_request(solr_query)
    results = [ result["term"] for result in results["suggest"]["mySuggester"][query]["suggestions"]]
    return results
@@ -171,4 +171,4 @@ async def search_articles(query: str = '',start:int=0,rows:int=10):
     return search_result
 
 if __name__ == '__main__':
-    uvicorn.run("main:app", host='127.0.0.1', port=5000,reload=True)
+    uvicorn.run("main:app", host='solr', port=5000,reload=True)
