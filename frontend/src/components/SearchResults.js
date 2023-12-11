@@ -15,6 +15,7 @@ const SearchResults = () => {
   const navigate = useNavigate();
   const currentQuery = searchParams.get('query')?.trim();
   const currentPlayer = searchParams.get('player')?.trim();
+  const currentTeam = searchParams.get('team')?.trim();
   const initialQuery = searchParams.get('query')?.trim() || '';
   const [searchQuery, setSearchQuery] = useState(initialQuery);
 
@@ -31,8 +32,16 @@ const SearchResults = () => {
     setSearchQuery(query);
   };
 
+  const isSpecificSearch = currentPlayer || currentTeam;
+
   const handleSearch = () => {
-    navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+    if (currentPlayer) {
+      navigate(`/search?player=${encodeURIComponent(currentPlayer)}&query=${encodeURIComponent(searchQuery)}`);
+    } else if (currentTeam) {
+      navigate(`/search?team=${encodeURIComponent(currentTeam)}&query=${encodeURIComponent(searchQuery)}`);
+    } else {
+      navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+    }
   };
 
   useEffect(() => {
@@ -129,6 +138,9 @@ const SearchResults = () => {
         </div>
         <PlayerInfoBox player={playerInfo} team={teamInfo} />
       </div>
+        {isSpecificSearch && (
+          <button onClick={() => navigate('/')} className="backToHomeButton">Back to Home</button>
+        )}
     </div>
   );
 };
