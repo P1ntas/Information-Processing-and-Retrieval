@@ -5,6 +5,7 @@ import SearchButton from './SearchButton';
 import '../App.css';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import PlayerInfoBox from './PlayerInfoBox';
+import SearchSuggestionsDropdown from './SearchSuggestionsDropdown';
 
 const SearchResults = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -18,6 +19,7 @@ const SearchResults = () => {
   const currentTeam = searchParams.get('team')?.trim();
   const initialQuery = searchParams.get('query')?.trim() || '';
   const [searchQuery, setSearchQuery] = useState(initialQuery);
+  const [searchSuggestions, setSearchSuggestions] = useState([]);
 
   const handleArticleClick = (articleId) => {
     navigate(`/article/${articleId}`);
@@ -26,10 +28,35 @@ const SearchResults = () => {
   const handleSpellingClick = (spelling) => {
     setSearchQuery(spelling);
     navigate(`/search?query=${encodeURIComponent(spelling)}`);
-  }
+  };
+
+
+  const handleSuggestionClick = (suggestion) => {
+    setSearchQuery(suggestion);
+    navigate(`/search?query=${encodeURIComponent(suggestion)}`);
+  };
 
   const handleSearchQueryChange = (query) => {
     setSearchQuery(query);
+    fetchSearchSuggestions(query);
+  };
+
+  const fetchSearchSuggestions = async (query) => {
+    const url = `http://127.0.0.1:5000/api/suggest?query=${encodeURIComponent(query)}`;
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        const suggestions = await response.json();
+        console.log(suggestions)
+        setSearchSuggestions(suggestions)
+      } else {
+        console.error('Error fetching search suggestions:', response.status);
+        return [];
+      }
+    } catch (error) {
+      console.error('Error fetching search suggestions:', error);
+      return [];
+    }
   };
 
   const isSpecificSearch = currentPlayer || currentTeam;
@@ -107,33 +134,37 @@ const SearchResults = () => {
 
     fetchData();
   }, [searchParams]);
-  
 
   return (
     <div className='searchResults'>
-      <div className='searchResultsHeader'>
-        <div>
+      <div className='searchResultsContainer'>
+        <div className='searchResultsHeader'>
           <SearchBar onSearchQueryChange={handleSearchQueryChange} />
           <SearchButton onSearch={handleSearch} />
         </div>
+        <SearchSuggestionsDropdown
+            searchSuggestions={searchSuggestions}
+            handleSuggestionClick={handleSuggestionClick}
+          />
       </div>
+
       <div className='resultsLayout'>
         <div className='results'>
           {searchSpelling && (
-             <div className='searchSpelling'>
-               <p>
-               Did you mean: <b onClick={() => handleSpellingClick(searchSpelling)} className="searchSpellingLink">{searchSpelling}</b>
-               </p>
-             </div>
+            <div className='searchSpelling'>
+              <p>
+                Did you mean: <b onClick={() => handleSpellingClick(searchSpelling)} className='searchSpellingLink'>{searchSpelling}</b>
+              </p>
+            </div>
           )}
           {searchResults.map((article) => (
-            <SearchResultItem 
+            <SearchResultItem
               key={article.id}
               id={article.id}
-              title={article.title} 
+              title={article.title}
               summary={article.summary}
-              onClick={() => handleArticleClick(article.id)}          
-            />
+              onClick={() => handleArticleClick(article.id)}
+            />  
           ))}
         </div>
         <PlayerInfoBox player={playerInfo} team={teamInfo} />

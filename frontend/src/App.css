@@ -99,6 +99,10 @@ button:hover {
   width: 100%;
 }
 
+.searchResultsContainer{
+  width:fit-content;
+}
+
 .searchResultsHeader {
   display: grid;
   grid-template-columns: auto auto;
@@ -417,3 +421,29 @@ input[type="text"] {
 .backToHomeButton {
   margin-top: 30px;
 }
+
+.suggestions {
+  position: relative;
+  display: inline-block;
+}
+
+.searchSuggestionsDropdown {
+  position: absolute;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  z-index: 999;
+  border: 1px solid #ccc;
+  margin-left: 20px;
+
+}
+
+.searchSuggestionsDropdown div {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+
+.searchSuggestionsDropdown div:last-child {
+  border-bottom: none;
+}
+

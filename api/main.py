@@ -130,7 +130,7 @@ async def search_player_articles(name: str, query: str = '', start: int = 0, row
 
 @app.get('/api/suggest',response_class=PrettyJSONResponse)
 async def search_suggestions(query: str = ''):
-   solr_query = f"http://localhost:8983/solr/articles/suggest?suggest.q={quote(query)}"
+   solr_query = f"http://127.0.0.1:8983/solr/articles/suggest?suggest.q={quote(query)}"
    results = await async_request(solr_query)
    results = [ result["term"] for result in results["suggest"]["mySuggester"][query]["suggestions"]]
    return results
