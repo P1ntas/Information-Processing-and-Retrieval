@@ -4,10 +4,10 @@ import SearchResultItem from './SearchResultItem';
 import '../App.css';
 
 const ArticlePage = () => {
-  const [article, setArticle] = useState(null);
-  const [moreLikeThis, setMoreLikeThis] = useState([]);
-  const { articleId } = useParams();
-  const navigate = useNavigate();
+    const [article, setArticle] = useState(null);
+    const [moreLikeThis, setMoreLikeThis] = useState([]);
+    const { articleId } = useParams();
+    const navigate = useNavigate();
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -17,9 +17,10 @@ const ArticlePage = () => {
           throw new Error('Article fetch failed');
         }
         const data = await response.json();
+        data.article.date = data.article.date.split('T')[0]
         setArticle(data.article);
         if (data.moreLikeThis) {
-          setMoreLikeThis(data.moreLikeThis); // Set moreLikeThis only if it exists
+          setMoreLikeThis(data.moreLikeThis);
         }
       } catch (error) {
         console.error('Error fetching article:', error);
@@ -41,8 +42,15 @@ const ArticlePage = () => {
 
   return (
     <div className="article-page">
-      <h1>{article.title}</h1>
-      <p>{article.text}</p>
+      <div className="article-content">
+        <div className="article-header">
+          <a href={article.url} target="_blank" rel="noopener noreferrer" className="article-title-link">
+            <h1 className="article-title">{article.title}</h1>
+          </a>
+          <span className="article-date">{article.date}</span>
+        </div>
+        <p className="article-text">{article.text}</p>
+      </div>
       {moreLikeThis && moreLikeThis.length > 0 && (
         <div className="more-like-this">
           <h2>More Like This</h2>
