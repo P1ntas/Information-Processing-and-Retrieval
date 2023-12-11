@@ -12,6 +12,8 @@ const SearchResults = () => {
   const [teamInfo, setTeamInfo] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const currentQuery = searchParams.get('query')?.trim();
+  const currentPlayer = searchParams.get('player')?.trim();
   const initialQuery = searchParams.get('query')?.trim() || '';
   const [searchQuery, setSearchQuery] = useState(initialQuery);
 
@@ -29,39 +31,61 @@ const SearchResults = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (searchQuery) {
+      const currentQuery = searchParams.get('query')?.trim();
+      const currentPlayer = searchParams.get('player')?.trim();
+      const currentTeam = searchParams.get('team')?.trim();
+
+      let url;
+      if (currentPlayer && currentQuery) {
+        url = `http://127.0.0.1:5000/api/player/${encodeURIComponent(currentPlayer)}/search?query=${encodeURIComponent(currentQuery)}`;
+      } else if (currentTeam && currentQuery) {
+        url = `http://127.0.0.1:5000/api/team/${encodeURIComponent(currentTeam)}/search?query=${encodeURIComponent(currentQuery)}`;
+      } else if (currentQuery) {
+        url = `http://127.0.0.1:5000/api/search?query=${encodeURIComponent(currentQuery)}`;
+      }
+
+      if (url) {
         try {
-          const url = `http://127.0.0.1:5000/api/search?query=${encodeURIComponent(searchQuery)}`;
-          const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            }
-          });
+          const response = await fetch(url);
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
           const data = await response.json();
-          setSearchResults(data.articles.results);
-          setPlayerInfo(data.player);  // Assuming 'player' is part of the returned data
-          if (data.player) {
-            setPlayerInfo(data.player);
-            setTeamInfo(null); // Clear team info if player info is available
-          } else if (data.team) {
-            setTeamInfo(data.team);
-            setPlayerInfo(null); // Clear player info if team info is available
-          } else {
+          // Handle different response structures
+          if (data.articles) {
+            setSearchResults(data.articles.results);
             setPlayerInfo(null);
             setTeamInfo(null);
+          } else {
+            setSearchResults(data.results);
+            if (currentPlayer) {
+              setPlayerInfo({ name: currentPlayer });
+            }
+            else if (currentTeam) {
+              setTeamInfo({ name: currentTeam }); // Adjust based on your data structure
+            }
           }
-        } catch (error) {
-          console.error("Error fetching data", error);
+        // Check and set playerInfo and teamInfo based on response
+        if (data.player) {
+          setPlayerInfo(data.player);
+        } else {
+          setPlayerInfo(null); // Clear if no player data
         }
+
+        if (data.team) {
+          setTeamInfo(data.team);
+        } else {
+          setTeamInfo(null); // Clear if no team data
+        }
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
       }
     };
-  
+
     fetchData();
-  }, [searchQuery]);
+  }, [searchParams]);
+  
 
   return (
     <div className='searchResults'>
