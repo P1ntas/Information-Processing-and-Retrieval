@@ -1,0 +1,46 @@
+Hull City,Hull City,HUL
+FC Middlesbrough,Middlesbrough,boro,MID
+FC Burnley,Burnley,clarets,BUR
+FC Everton,Everton,toffees,EVE
+Crystal Palace FC,Crystal Palace,eagles,palace,CRY
+FC Southampton,Southampton,saints,SOU
+Manchester City FC,Manchester City,city,man city,MCI
+AFC Bournemouth,Bournemouth,cherries,afc bournemouth,BOU
+FC Arsenal,Arsenal,gunners,ARS
+Chelsea FC,Chelsea,blues,CHE
+Manchester United FC,Manchester Utd,red devils,manchester united,united,man utd,MUN
+Stoke City,Stoke City,potters,STO
+Tottenham Hotspur,Tottenham,spurs,tottenham hotspur,TOT
+West Bromwich Albion,West Brom,baggies,WBA
+Swansea City AFC,Swansea City,swans,SWA
+FC Watford,Watford,hornets,WAT
+Leicester City FC,Leicester City,foxes,LEI
+AFC Sunderland,Sunderland,black cats,SUN
+West Ham United,West Ham,hammers,WHU
+FC Liverpool,Liverpool,reds,LIV
+Brighton & Hove Albion,Brighton,seagulls,BHA
+Newcastle United,Newcastle Utd,magpies,newcastle,NEW
+Huddersfield Town,Huddersfield,terriers,HUD
+FC Fulham,Fulham,cottagers,FUL
+Wolverhampton Wanderers,Wolves,wolverhampton,WOL
+Cardiff City,Cardiff City,bluebirds,CAR
+Norwich City,Norwich City,canaries,NOR
+Aston Villa FC,Aston Villa,villans,villa,AVL
+Sheffield United,Sheffield Utd,blades,sheff utd,SHU
+Leeds United FC,Leeds United,whites,leeds utd,LEE
+Brentford FC,Brentford,bees,BRE
+Nottingham Forest,Nott'ham Forest,forest,nott'm forest,NFO
+Haaland => Erling Haaland
+Mané => Sadio Mané
+Salah => Mohamed Salah
+Fernandes => Bruno Fernandes
+De Bruyne => Kevin De Bruyne
+Sterling => Raheem Sterling
+Kane => Harry Kane
+Agüero => Sergio Agüero
+Sané => Leroy Sané
+Foden => Phil Foden
+Ronaldo => Cristiano Ronaldo
+comeback,fightback
+transfer,move,deal,signing,sign
+injury,injured,strain
