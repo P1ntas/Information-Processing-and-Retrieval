@@ -8,6 +8,7 @@ import PlayerInfoBox from './PlayerInfoBox';
 
 const SearchResults = () => {
   const [searchResults, setSearchResults] = useState([]);
+  const [searchSpelling, setSearchSpelling] = useState(null); // TODO: Implement this
   const [playerInfo, setPlayerInfo] = useState(null);
   const [teamInfo, setTeamInfo] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,6 +28,12 @@ const SearchResults = () => {
     navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
   };
 
+  const handleSpellingClick = (spelling) => {
+    setSearchQuery(spelling);
+    navigate(`/search?query=${encodeURIComponent(spelling)}`);
+  }
+
+
   useEffect(() => {
     const fetchData = async () => {
       if (searchQuery) {
@@ -43,6 +50,7 @@ const SearchResults = () => {
           }
           const data = await response.json();
           setSearchResults(data.articles.results);
+          setSearchSpelling(data.articles.collation);
           setPlayerInfo(data.player);  // Assuming 'player' is part of the returned data
           if (data.player) {
             setPlayerInfo(data.player);
@@ -73,6 +81,13 @@ const SearchResults = () => {
       </div>
       <div className='resultsLayout'>
         <div className='results'>
+          {searchSpelling && (
+            <div className='searchSpelling'>
+              <p>
+              Did you mean: <b onClick={() => handleSpellingClick(searchSpelling)} className="searchSpellingLink" style={{ cursor: 'pointer' }}>{searchSpelling}</b>
+              </p>
+            </div>
+          )}
           {searchResults.map((article) => (
             <SearchResultItem 
               key={article.id}

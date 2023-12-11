@@ -30,10 +30,11 @@ async def query_articles(query,team_abbreviation,player_name,start,rows):
         #for term in query.split(): /*generation query/*
         #    terms_used += " " + term + "^0.2"
         main_query = f"q={quote(main_query)}"
+        spellcheck_query = f"&spellcheck=true&spellcheck.q={quote(query)}&spellcheck.collate=true"
     else:
         main_query = 'q=&q.alt=*:*'
-        
-    query_independent_part = "&q.op=OR&defType=edismax&indent=true&qf=title%5E2.3%20summary%20text%5E0.4&qs=20&fl=*,score&bf=ms(date,NOW)"
+
+    query_independent_part = "&q.op=OR&defType=edismax&indent=true&qf=title%5E2.3%20summary%20text%5E0.4&qs=20&fl=id,title,summary,text,data,url,score&bf=ms(date,NOW)"
     
     
     pagination = f"&rows={rows}&start={start}&useParams="
@@ -48,12 +49,14 @@ async def query_articles(query,team_abbreviation,player_name,start,rows):
         filter_query = '&' +f'fq=%7B!parent%20which%3D%22*:*%20-_nest_path_:*%22%7D%28%2B_nest_path_:%5C%2Fnamed_players%20%2Bname:{quote(player_name)}%29'
 
     
-    solr_query = f"{articles_core}?{main_query}{query_independent_part}{filter_query}{pagination}"
+    solr_query = f"{articles_core}?{main_query}{query_independent_part}{filter_query}{pagination}{spellcheck_query}"
     results = await async_request(solr_query)
     response = results['response']
+    spellcheck = results['spellcheck']
+    collations = spellcheck['collations']
     docs = response['docs']
     numFound = response['numFound']
-    return docs,numFound
+    return docs,numFound, collations
 
 
 
@@ -124,9 +127,17 @@ async def search_player_articles(name: str,query: str = '',start:int=0,rows:int=
         }
 
 
+@app.get('/api/suggest',response_class=PrettyJSONResponse)
+async def search_suggestions(query: str = ''):
+   solr_query = f"http://localhost:8983/solr/articles/suggest?suggest.q={quote(query)}"
+   results = await async_request(solr_query)
+   results = [ result["term"] for result in results["suggest"]["mySuggester"][query]["suggestions"]]
+   return results
+
+
 @app.get('/api/search',response_class=PrettyJSONResponse)
 async def search_articles(query: str = '',start:int=0,rows:int=10):
-    teams_results, players_results, (articles_results,numFound) = await asyncio.gather(
+    teams_results, players_results, (articles_results,numFound, collation) = await asyncio.gather(
         query_teams(query),
         query_players(query),
         query_articles(query,None,None,start,rows)
@@ -149,10 +160,12 @@ async def search_articles(query: str = '',start:int=0,rows:int=10):
         search_result["team"] = teams_results[0]
     elif players_results and players_results[0]["score"]>3:
         search_result["player"] = players_results[0]
-        
+    if collation == []:
+        collation = [None,None]
     search_result["articles"] = {
         "numFound": numFound,
-        "results":articles_results
+        "results":articles_results,
+        "collation":collation[1]
     } 
     return search_result
 

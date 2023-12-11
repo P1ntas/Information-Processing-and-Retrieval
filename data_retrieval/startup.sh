@@ -52,7 +52,7 @@ curl -X POST -H 'Content-type:application/json' -d '{
 
 curl -X POST -H 'Content-type:application/json' -d '{
   "update-requesthandler": {
-    "name": "/select",
+    "name": "/query",
     "class": "solr.SearchHandler",
     "last-components": [
         "spellcheck"
@@ -71,9 +71,7 @@ curl -X POST -H 'Content-type:application/json'  -d '{
         "dictionaryImpl": "DocumentDictionaryFactory",
         "field": "titleLittleAnalysis",
         "suggestAnalyzerFieldType": "textLittleAnalysis",
-        "exactMatchFirst": "true",
-        "highlight":"true",
-        "buildOnCommit": "true"
+        "highlight":"false"
     }
   }
 }' http://localhost:8983/solr/articles/config
@@ -85,7 +83,7 @@ curl -X POST -H 'Content-type:application/json'  -d '{
         "class": "solr.SearchHandler",
         "defaults": {
             "suggest": true,
-            "suggest.count": 20,
+            "suggest.count": 5,
             "suggest.dictionary": "mySuggester"
         },
         "components": [
@@ -95,6 +93,7 @@ curl -X POST -H 'Content-type:application/json'  -d '{
 }' http://localhost:8983/solr/articles/config
 
 curl 'http://localhost:8983/solr/articles/suggest?suggest.build=true'
+
 
 docker exec premier_league bin/solr delete -c teams
 docker exec premier_league bin/solr create_core  -c teams
