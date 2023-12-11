@@ -26,6 +26,32 @@ curl -X POST -H 'Content-type:application/json' -d '{
   } 
 }' http://localhost:8983/solr/articles/config
 
+
+curl -X POST -H 'Content-type:application/json' -d '{
+  "update-searchcomponent": {
+    "name": "spellcheck",
+    "class": "solr.SpellCheckComponent",
+    "spellchecker": {
+        "classname": "solr.IndexBasedSpellChecker",
+        "spellcheckIndexDir": "./spellchecker",
+        "field": "textLittleAnalysis",
+        "buildOnCommit": "true"
+    }
+  } 
+}' http://localhost:8983/solr/articles/config
+
+curl -X POST -H 'Content-type:application/json' -d '{
+  "update-requesthandler": {
+    "name": "/select",
+    "class": "solr.SearchHandler",
+    "last-components": [
+        "spellcheck"
+    ]
+  } 
+}' http://localhost:8983/solr/articles/config
+
+
+
 # Schema definition via API
 curl -X POST -H 'Content-type:application/json' \
     --data-binary "@../schema.json" \
