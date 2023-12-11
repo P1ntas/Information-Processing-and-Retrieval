@@ -340,12 +340,19 @@ input[type="text"] {
   line-height: 1.6;
 }
 
-/* Common Styles for Article, Player, and Team Pages */
-.page-container {
-  color: black;
-  margin: 20px;
-  text-align: center;
+.page-container .search-container input{
+  width: 50%;
 }
+
+.page-container .search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.page-container
 
 .page-image {
   max-width: 200px; /* Adjust as needed */

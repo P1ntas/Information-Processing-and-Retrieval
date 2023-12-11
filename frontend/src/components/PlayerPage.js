@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import SearchBar from './SearchBar';
+import SearchButton from './SearchButton';
 import '../App.css';
 
 const PlayerPage = () => {
   const [player, setPlayer] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
   const { playerName } = useParams();
   const navigate = useNavigate();
 
@@ -30,6 +33,16 @@ const PlayerPage = () => {
     navigate(`/team/${encodeURIComponent(abbreviation)}`);
   };
 
+  const handleSearchQueryChange = (query) => {
+    setSearchQuery(query);
+  };
+
+  const handleSearch = async () => {
+    if (playerName && searchQuery) {   
+      navigate(`/search?player=${encodeURIComponent(playerName)}&query=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
   if (!player) {
     return <div>Loading...</div>;
   }
@@ -38,6 +51,10 @@ const PlayerPage = () => {
 
   return (
     <div className="page-container player-page">
+      <div className="search-container">
+        <SearchBar onSearchQueryChange={handleSearchQueryChange} />
+        <SearchButton onSearch={handleSearch} />
+      </div>
       <img src={player.image_url} alt={player.name} className="page-image" />
       <h1 className="page-title">{player.name}</h1>
       <p className="page-summary">{player.summary}</p>
