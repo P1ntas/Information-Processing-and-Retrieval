@@ -11,6 +11,7 @@ const SearchResults = () => {
   const [playerInfo, setPlayerInfo] = useState(null);
   const [teamInfo, setTeamInfo] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [searchSpelling, setSearchSpelling] = useState(null);
   const navigate = useNavigate();
   const currentQuery = searchParams.get('query')?.trim();
   const currentPlayer = searchParams.get('player')?.trim();
@@ -20,6 +21,11 @@ const SearchResults = () => {
   const handleArticleClick = (articleId) => {
     navigate(`/article/${articleId}`);
   };
+
+  const handleSpellingClick = (spelling) => {
+    setSearchQuery(spelling);
+    navigate(`/search?query=${encodeURIComponent(spelling)}`);
+  }
 
   const handleSearchQueryChange = (query) => {
     setSearchQuery(query);
@@ -54,6 +60,7 @@ const SearchResults = () => {
           // Handle different response structures
           if (data.articles) {
             setSearchResults(data.articles.results);
+            setSearchSpelling(data.articles.collation);
             setPlayerInfo(null);
             setTeamInfo(null);
           } else {
@@ -97,6 +104,13 @@ const SearchResults = () => {
       </div>
       <div className='resultsLayout'>
         <div className='results'>
+          {searchSpelling && (
+             <div className='searchSpelling'>
+               <p>
+               Did you mean: <b onClick={() => handleSpellingClick(searchSpelling)} className="searchSpellingLink">{searchSpelling}</b>
+               </p>
+             </div>
+          )}
           {searchResults.map((article) => (
             <SearchResultItem 
               key={article.id}
