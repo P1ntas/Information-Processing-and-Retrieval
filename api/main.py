@@ -34,7 +34,7 @@ async def query_articles(query,team_abbreviation,player_name,start,rows):
     else:
         main_query = 'q=&q.alt=*:*'
 
-    query_independent_part = "&q.op=OR&defType=edismax&indent=true&qf=title%5E2.3%20summary%20text%5E0.4&qs=20&fl=*,score&bf=ms(date,NOW)"
+    query_independent_part = "&q.op=OR&defType=edismax&indent=true&qf=title%5E2.3%20summary%20text%5E0.4&qs=20&fl=id,title,summary,text,data,url,score&bf=ms(date,NOW)"
     
     
     pagination = f"&rows={rows}&start={start}&useParams="
@@ -126,6 +126,14 @@ async def search_player_articles(name: str, query: str = '', start: int = 0, row
         "numFound": numFound,
         "results": articles_results
     }
+
+
+@app.get('/api/suggest',response_class=PrettyJSONResponse)
+async def search_suggestions(query: str = ''):
+   solr_query = f"http://localhost:8983/solr/articles/suggest?suggest.q={quote(query)}"
+   results = await async_request(solr_query)
+   results = [ result["term"] for result in results["suggest"]["mySuggester"][query]["suggestions"]]
+   return results
 
 
 @app.get('/api/search',response_class=PrettyJSONResponse)
