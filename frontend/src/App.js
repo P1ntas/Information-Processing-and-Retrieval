@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import SearchBar from './components/SearchBar';
 import SearchButton from './components/SearchButton';
 import SearchResults from './components/SearchResults';
-import FilterOptions from './components/FilterOptions';
+import ArticlePage from './components/ArticlePage';
+import PlayerPage from './components/PlayerPage';
+import TeamPage from './components/TeamPage';
+import './App.css';
 import './App.css';
 import logo from './images/logo.png';
 
@@ -30,7 +33,6 @@ function SearchPage() {
           <SearchBar onSearchQueryChange={handleSearchQueryChange} />
           <SearchButton onSearch={handleSearch} />
         </div>
-        <FilterOptions />
       </div>
     </div>
   );
@@ -44,6 +46,9 @@ function App() {
           <Routes>
             <Route path="/" element={<SearchPage />} />
             <Route path="/search" element={<SearchResults />} />
+            <Route path="/article/:articleId" element={<ArticlePage />} />
+            <Route path="/player/:playerName" element={<PlayerPage />} />
+            <Route path="/team/:teamAbbreviation" element={<TeamPage />} />
           </Routes>
         </header>
       </div>

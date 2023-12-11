@@ -18,14 +18,6 @@ docker exec premier_league bin/solr delete -c articles
 docker exec premier_league bin/solr create_core  -c articles
 
 
-curl -X POST -H 'Content-type:application/json' -d '{
-  "add-requesthandler": {
-    "name": "/mlt",
-    "class": "solr.MoreLikeThisHandler",
-    "defaults": {"mlt.fl": "title"}
-  } 
-}' http://localhost:8983/solr/articles/config
-
 # Schema definition via API
 curl -X POST -H 'Content-type:application/json' \
     --data-binary "@../schema.json" \
@@ -34,6 +26,73 @@ curl -X POST -H 'Content-type:application/json' \
 curl -X POST -H 'Content-type:application/json' \
 --data-binary "@../documents/articles.json" \
     http://localhost:8983/solr/articles/update?commit=true
+
+
+curl -X POST -H 'Content-type:application/json' -d '{
+  "add-requesthandler": {
+    "name": "/mlt",
+    "class": "solr.MoreLikeThisHandler",
+    "defaults": {"mlt.fl": "title"}
+  } 
+}' http://localhost:8983/solr/articles/config
+
+
+curl -X POST -H 'Content-type:application/json' -d '{
+  "update-searchcomponent": {
+    "name": "spellcheck",
+    "class": "solr.SpellCheckComponent",
+    "spellchecker": {
+        "classname": "solr.IndexBasedSpellChecker",
+        "spellcheckIndexDir": "./spellchecker",
+        "field": "textLittleAnalysis",
+        "buildOnCommit": "true"
+    }
+  } 
+}' http://localhost:8983/solr/articles/config
+
+curl -X POST -H 'Content-type:application/json' -d '{
+  "update-requesthandler": {
+    "name": "/query",
+    "class": "solr.SearchHandler",
+    "last-components": [
+        "spellcheck"
+    ]
+  } 
+}' http://localhost:8983/solr/articles/config
+
+
+curl -X POST -H 'Content-type:application/json'  -d '{
+  "add-searchcomponent": {
+    "name": "suggest",
+    "class": "solr.SuggestComponent",
+    "suggester": {
+        "name": "mySuggester",
+        "lookupImpl": "BlendedInfixLookupFactory",
+        "dictionaryImpl": "DocumentDictionaryFactory",
+        "field": "titleLittleAnalysis",
+        "suggestAnalyzerFieldType": "textLittleAnalysis",
+        "highlight":"false"
+    }
+  }
+}' http://localhost:8983/solr/articles/config
+
+
+curl -X POST -H 'Content-type:application/json'  -d '{
+  "add-requesthandler": {
+    "name": "/suggest",
+        "class": "solr.SearchHandler",
+        "defaults": {
+            "suggest": true,
+            "suggest.count": 5,
+            "suggest.dictionary": "mySuggester"
+        },
+        "components": [
+            "suggest"
+        ]
+  }
+}' http://localhost:8983/solr/articles/config
+
+curl 'http://localhost:8983/solr/articles/suggest?suggest.build=true'
 
 
 docker exec premier_league bin/solr delete -c teams
@@ -60,3 +119,4 @@ curl -X POST -H 'Content-type:application/json' \
 curl -X POST -H 'Content-type:application/json' \
 --data-binary "@../documents/players.json" \
     http://localhost:8983/solr/players/update?commit=true
+

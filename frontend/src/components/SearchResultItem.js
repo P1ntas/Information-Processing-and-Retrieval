@@ -1,11 +1,10 @@
 import React from 'react';
 import '../App.css';
 
-
-const SearchResultItem = ({ title, summary, url }) => {
+const SearchResultItem = ({ id, title, summary, onClick }) => {
   return (
-    <div className="search-result-item">
-      <h3><a href={url} target="_blank" rel="noopener noreferrer">{title}</a></h3>
+    <div className="search-result-item" onClick={() => onClick(id)}>
+      <h3>{title}</h3>
       <p>{summary}</p>
     </div>
   );
