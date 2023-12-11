@@ -4,15 +4,16 @@ import numpy as np
 import requests
 import pandas as pd
 from urllib.parse import quote
-#from sentence_transformers import SentenceTransformer
+from sentence_transformers import SentenceTransformer
 
 def query_articles(query,team_abbreviation,player_name,start,rows):
-    articles_core = "http://localhost:8983/solr/most_value_team_transfers_synonyms/query"
+    articles_core = "http://localhost:8983/solr/most_value_team_transfers_synonyms/select"
+    terms_used = ""
     if query:
         main_query = f'"{query}"^10'
-        #for term in query.split(): /*generation query/*
-        #    terms_used += " " + term + "^0.2"
-        main_query = f"q={quote(main_query)}"
+        for term in query.split():
+            terms_used += " " + term + "^0.2"
+        main_query = f"q={quote(main_query + terms_used)}"
     else:
         main_query = 'q=&q.alt=*:*'
         
@@ -34,13 +35,13 @@ def query_articles(query,team_abbreviation,player_name,start,rows):
     solr_query = f"{articles_core}?{main_query}{query_independent_part}{filter_query}{pagination}"
     return solr_query
 
-#def text_to_embedding(text):
-    #model = SentenceTransformer('all-MiniLM-L6-v2')
-    #embedding = model.encode(text, convert_to_tensor=False).tolist()
+def text_to_embedding(text):
+    model = SentenceTransformer('all-MiniLM-L6-v2')
+    embedding = model.encode(text, convert_to_tensor=False).tolist()
     
     # Convert the embedding to the expected format
-    #embedding_str = "[" + ",".join(map(str, embedding)) + "]"
-    #return embedding_str
+    embedding_str = "[" + ",".join(map(str, embedding)) + "]"
+    return embedding_str
 
 def solr_knn_query(endpoint, collection, embedding):
     url = f"{endpoint}/{collection}/select"
@@ -60,8 +61,6 @@ def solr_knn_query(endpoint, collection, embedding):
     response.raise_for_status()
     return response.json()
 
-
-
 QRELS_FILE = "most_valued_team_transfers_qrels.txt"
 QUERY_SCHEMALESS_URL = "http://localhost:8983/solr/most_value_team_transfers_schemaless/query?q=text:%22MCI%20transfer%22%0Atext:%22MCI%20signing%22%0Atext:%22Manchester%20City%20transfer%22%0Atext:%22Manchester%20City%20signing%22%0Atext:MCI%0Atext:%22Manchester%20City%22%0Atext:transfer%0Atext:signing%0Asummary:%22MCI%20transfer%22%0Asummary:%22MCI%20signing%22%0Asummary:%22Manchester%20City%20transfer%22%0Asummary:%22Manchester%20City%20signing%22%0Asummary:MCI%0Asummary:%22Manchester%20City%22%0Asummary:transfer%0Asummary:signing%0Atitle:%22MCI%20transfer%22%0Atitle:%22MCI%20signing%22%0Atitle:%22Manchester%20City%20transfer%22%0Atitle:%22Manchester%20City%20signing%22%0Atitle:MCI%0Atitle:%22Manchester%20City%22%0Atitle:transfer%0Atitle:signing&q.op=OR&indent=true&rows=200&useParams="
 QUERY_SCHEMA_URL = "http://localhost:8983/solr/most_value_team_transfers/query?q=text:%22MCI%20transfer%22%0Atext:%22MCI%20signing%22%0Atext:%22Manchester%20City%20transfer%22%0Atext:%22Manchester%20City%20signing%22%0Atext:MCI%0Atext:%22Manchester%20City%22%0Atext:transfer%0Atext:signing%0Asummary:%22MCI%20transfer%22%0Asummary:%22MCI%20signing%22%0Asummary:%22Manchester%20City%20transfer%22%0Asummary:%22Manchester%20City%20signing%22%0Asummary:MCI%0Asummary:%22Manchester%20City%22%0Asummary:transfer%0Asummary:signing%0Atitle:%22MCI%20transfer%22%0Atitle:%22MCI%20signing%22%0Atitle:%22Manchester%20City%20transfer%22%0Atitle:%22Manchester%20City%20signing%22%0Atitle:MCI%0Atitle:%22Manchester%20City%22%0Atitle:transfer%0Atitle:signing&q.op=OR&indent=true&rows=200&useParams="
@@ -69,16 +68,15 @@ QUERY_BOOST_URL = "http://localhost:8983/solr/most_value_team_transfers/select?d
 QUERY_SYNONYM_URL = query_articles("Manchester City Transfer","MCI",None,0,200)
 
 query = "Manchester City Transfer"
-#embedding = text_to_embedding(query)
+embedding = text_to_embedding(query)
 
 relevant = list(map(lambda el: el.strip(), open(QRELS_FILE).readlines()))
 # Get query results from Solr instance
 results_schemaless = requests.get(QUERY_SCHEMALESS_URL).json()['response']['docs']
 results_schema = requests.get(QUERY_SCHEMA_URL).json()['response']['docs']
 results_boost = requests.get(QUERY_BOOST_URL).json()['response']['docs']
-#results_semantic = solr_knn_query("http://localhost:8983/solr","semantic_articles",embedding)['response']['docs']
-results_synonym = requests.get(QUERY_SYNONYM_URL).json()['response']['docs']
-results_semantic = []
+results_semantic = solr_knn_query("http://localhost:8983/solr","semantic_articles",embedding)['response']['docs']
+results_synonym = requests.get(QUERY_BOOST_URL).json()['response']['docs']
 results_list = [results_schemaless,results_schema,results_boost,results_semantic,results_synonym]
 results_list_names = ["schemaless", "schema","boost","semantic","synonym"]
 results_linestyle = ['--', '-', ':','--','-.']

@@ -43,4 +43,4 @@ Foden => Phil Foden
 Ronaldo => Cristiano Ronaldo
 comeback,fightback
 transfer,move,deal,signing,sign
-injury,injured,strain
+injury,injured
