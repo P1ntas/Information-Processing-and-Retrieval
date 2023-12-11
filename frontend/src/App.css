@@ -399,6 +399,15 @@ input[type="text"] {
   text-decoration: underline;
 }
 
+.searchSpelling {
+  color: black;
+}
+
+.searchSpellingLink {
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .searchSpellingLink:hover {
   text-decoration: underline;
 }

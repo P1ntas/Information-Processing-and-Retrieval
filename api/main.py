@@ -109,22 +109,23 @@ async def get_player(name: str):
 
 
 
-@app.get('/api/team/{abbreviation}/search',response_class=PrettyJSONResponse)
-async def search_team_articles(abbreviation: str,query: str = '',start:int=0,rows:int=10):
-    articles_results,numFound = await query_articles(query,abbreviation,None,start,rows)
-    return  {
-            "numFound": numFound,
-            "results":articles_results
-        }
+@app.get('/api/team/{abbreviation}/search', response_class=PrettyJSONResponse)
+async def search_team_articles(abbreviation: str, query: str = '', start: int = 0, rows: int = 10):
+    articles_results, numFound, _ = await query_articles(query, abbreviation, None, start, rows)
+    return {
+        "numFound": numFound,
+        "results": articles_results
+    }
+
     
     
-@app.get('/api/player/{name}/search',response_class=PrettyJSONResponse)
-async def search_player_articles(name: str,query: str = '',start:int=0,rows:int=10):
-    articles_results,numFound = await query_articles(query,None,name,start,rows)
-    return  {
-            "numFound": numFound,
-            "results":articles_results
-        }
+@app.get('/api/player/{name}/search', response_class=PrettyJSONResponse)
+async def search_player_articles(name: str, query: str = '', start: int = 0, rows: int = 10):
+    articles_results, numFound, _ = await query_articles(query, None, name, start, rows)
+    return {
+        "numFound": numFound,
+        "results": articles_results
+    }
 
 
 @app.get('/api/search',response_class=PrettyJSONResponse)
