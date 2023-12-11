@@ -57,36 +57,42 @@ const SearchResults = () => {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
           const data = await response.json();
-          // Handle different response structures
-          if (data.articles) {
-            setSearchResults(data.articles.results);
-            setSearchSpelling(data.articles.collation);
-            setPlayerInfo(null);
-            setTeamInfo(null);
-          } else {
-            setSearchResults(data.results);
-            if (currentPlayer) {
-              setPlayerInfo({ name: currentPlayer });
-            }
-            else if (currentTeam) {
-              setTeamInfo({ name: currentTeam }); // Adjust based on your data structure
-            }
-          }
-        // Check and set playerInfo and teamInfo based on response
-        if (data.player) {
-          setPlayerInfo(data.player);
-        } else {
-          setPlayerInfo(null); // Clear if no player data
-        }
 
-        if (data.team) {
-          setTeamInfo(data.team);
-        } else {
-          setTeamInfo(null); // Clear if no team data
+          // Set search results
+          setSearchResults(data.results || (data.articles && data.articles.results) || []);
+
+          if (data.articles) {
+            setSearchSpelling(data.articles.collation);
+          }
+          
+          if (data.player) {
+            setPlayerInfo(data.player);
+          } else if (!currentPlayer) {
+            setPlayerInfo(null);
+          }
+
+          if (data.team) {
+            setTeamInfo(data.team);
+          } else if (!currentTeam) {
+            setTeamInfo(null);
+          }
+
+          // Fetch and set player or team info if specific search
+          if (currentPlayer) {
+            const playerResponse = await fetch(`http://127.0.0.1:5000/api/player/${encodeURIComponent(currentPlayer)}`);
+            const playerData = await playerResponse.json();
+            setPlayerInfo(playerData);
+          }
+
+          if (currentTeam) {
+            const teamResponse = await fetch(`http://127.0.0.1:5000/api/team/${encodeURIComponent(currentTeam)}`);
+            const teamData = await teamResponse.json();
+            setTeamInfo(teamData);
+          }
+
+        } catch (error) {
+          console.error("Error fetching data", error);
         }
-      } catch (error) {
-        console.error("Error fetching data", error);
-      }
       }
     };
 
