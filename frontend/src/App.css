@@ -398,3 +398,7 @@ input[type="text"] {
 .team-link:hover {
   text-decoration: underline;
 }
+
+.searchSpellingLink:hover {
+  text-decoration: underline;
+}
