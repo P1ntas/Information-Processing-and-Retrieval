@@ -302,6 +302,7 @@ input[type="text"] {
 .player-page {
   margin: 20px;
   text-align: center;
+  color: black;
 }
 
 .player-image {
@@ -327,6 +328,7 @@ input[type="text"] {
 .team-page {
   margin: 20px;
   text-align: center;
+  color: black;
 }
 
 .team-image {
@@ -444,3 +446,4 @@ input[type="text"] {
 .searchSuggestionsDropdown div:last-child {
   border-bottom: none;
 }
+

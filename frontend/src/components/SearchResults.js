@@ -16,6 +16,7 @@ const SearchResults = () => {
   const navigate = useNavigate();
   const currentQuery = searchParams.get('query')?.trim();
   const currentPlayer = searchParams.get('player')?.trim();
+  const currentTeam = searchParams.get('team')?.trim();
   const initialQuery = searchParams.get('query')?.trim() || '';
   const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [searchSuggestions, setSearchSuggestions] = useState([]);
@@ -42,7 +43,6 @@ const SearchResults = () => {
 
   const fetchSearchSuggestions = async (query) => {
     const url = `http://127.0.0.1:5000/api/suggest?query=${encodeURIComponent(query)}`;
-
     try {
       const response = await fetch(url);
       if (response.ok) {
@@ -59,12 +59,16 @@ const SearchResults = () => {
     }
   };
 
-  const handleSearch = async () => {
-    if (searchQuery.trim() === '') {
-      return;
-    }
+  const isSpecificSearch = currentPlayer || currentTeam;
 
-    navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+  const handleSearch = () => {
+    if (currentPlayer) {
+      navigate(`/search?player=${encodeURIComponent(currentPlayer)}&query=${encodeURIComponent(searchQuery)}`);
+    } else if (currentTeam) {
+      navigate(`/search?team=${encodeURIComponent(currentTeam)}&query=${encodeURIComponent(searchQuery)}`);
+    } else {
+      navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+    }
   };
 
   useEffect(() => {
@@ -90,39 +94,46 @@ const SearchResults = () => {
           }
           const data = await response.json();
 
-          if (data.articles) {
-            setSearchResults(data.articles.results);
-            setSearchSpelling(data.articles.collation);
-            setPlayerInfo(null);
-            setTeamInfo(null);
-          } else {
-            setSearchResults(data.results);
-            if (currentPlayer) {
-              setPlayerInfo({ name: currentPlayer });
-            } else if (currentTeam) {
-              setTeamInfo({ name: currentTeam }); // Adjust based on your data structure
-            }
-          }
+          // Set search results
+          setSearchResults(data.results || (data.articles && data.articles.results) || []);
 
+          if (data.articles) {
+            setSearchSpelling(data.articles.collation);
+          }
+          
           if (data.player) {
             setPlayerInfo(data.player);
-          } else {
-            setPlayerInfo(null); // Clear if no player data
+          } else if (!currentPlayer) {
+            setPlayerInfo(null);
           }
 
           if (data.team) {
             setTeamInfo(data.team);
-          } else {
-            setTeamInfo(null); // Clear if no team data
+          } else if (!currentTeam) {
+            setTeamInfo(null);
           }
+
+          // Fetch and set player or team info if specific search
+          if (currentPlayer) {
+            const playerResponse = await fetch(`http://127.0.0.1:5000/api/player/${encodeURIComponent(currentPlayer)}`);
+            const playerData = await playerResponse.json();
+            setPlayerInfo(playerData);
+          }
+
+          if (currentTeam) {
+            const teamResponse = await fetch(`http://127.0.0.1:5000/api/team/${encodeURIComponent(currentTeam)}`);
+            const teamData = await teamResponse.json();
+            setTeamInfo(teamData);
+          }
+
         } catch (error) {
-          console.error('Error fetching data', error);
+          console.error("Error fetching data", error);
         }
       }
     };
 
     fetchData();
-  }, [searchParams, searchQuery]);
+  }, [searchParams]);
 
   return (
     <div className='searchResults'>
@@ -131,21 +142,10 @@ const SearchResults = () => {
           <SearchBar onSearchQueryChange={handleSearchQueryChange} />
           <SearchButton onSearch={handleSearch} />
         </div>
-        {searchSuggestions.length > 0 && (
-          <div className='searchSuggestionsDropdown'>
-            {searchSuggestions.map((suggestion, index) => (
-              <div
-                key={index}
-                onClick={() => {
-                  setSearchQuery(suggestion);
-                  handleSuggestionClick(suggestion);
-                }}
-              >
-                {suggestion}
-              </div>
-            ))}
-          </div>
-        )}
+        <SearchSuggestionsDropdown
+            searchSuggestions={searchSuggestions}
+            handleSuggestionClick={handleSuggestionClick}
+          />
       </div>
 
       <div className='resultsLayout'>
@@ -164,11 +164,14 @@ const SearchResults = () => {
               title={article.title}
               summary={article.summary}
               onClick={() => handleArticleClick(article.id)}
-            />
+            />  
           ))}
         </div>
         <PlayerInfoBox player={playerInfo} team={teamInfo} />
       </div>
+        {isSpecificSearch && (
+          <button onClick={() => navigate('/')} className="backToHomeButton">Back to Home</button>
+        )}
     </div>
   );
 };
