@@ -3,7 +3,37 @@ from sklearn.metrics import PrecisionRecallDisplay
 import numpy as np
 import requests
 import pandas as pd
+from urllib.parse import quote
 from sentence_transformers import SentenceTransformer
+
+def query_articles(query,team_abbreviation,player_name,start,rows):
+    articles_core = "http://localhost:8983/solr/most_value_team_transfers_synonyms/select"
+    terms_used = ""
+    if query:
+        main_query = f'"{query}"^10'
+        for term in query.split():
+            terms_used += " " + term + "^0.2"
+        main_query = f"q={quote(main_query + terms_used)}"
+    else:
+        main_query = 'q=&q.alt=*:*'
+        
+    query_independent_part = "&q.op=OR&defType=edismax&indent=true&qf=title%5E2.3%20summary%20text%5E0.4&qs=20&fl=*,score&bf=ms(date,NOW)"
+    
+    
+    pagination = f"&rows={rows}&start={start}&useParams="
+    
+    filter_query=""
+
+    if team_abbreviation and not player_name:
+        team_abbreviation = '"' + team_abbreviation + '"'
+        filter_query = '&' + f'fq=%7B!parent%20which%3D%22*:*%20-_nest_path_:*%22%7D%28%2B_nest_path_:%5C%2Fnamed_teams%20%2Babbreviation:{quote(team_abbreviation)}%29'
+    if player_name and not team_abbreviation:
+        player_name = '"' + player_name + '"'
+        filter_query = '&' +f'fq=%7B!parent%20which%3D%22*:*%20-_nest_path_:*%22%7D%28%2B_nest_path_:%5C%2Fnamed_players%20%2Bname:{quote(player_name)}%29'
+
+    
+    solr_query = f"{articles_core}?{main_query}{query_independent_part}{filter_query}{pagination}"
+    return solr_query
 
 def text_to_embedding(text):
     model = SentenceTransformer('all-MiniLM-L6-v2')
@@ -31,12 +61,11 @@ def solr_knn_query(endpoint, collection, embedding):
     response.raise_for_status()
     return response.json()
 
-
-
 QRELS_FILE = "most_valued_team_transfers_qrels.txt"
 QUERY_SCHEMALESS_URL = "http://localhost:8983/solr/most_value_team_transfers_schemaless/query?q=text:%22MCI%20transfer%22%0Atext:%22MCI%20signing%22%0Atext:%22Manchester%20City%20transfer%22%0Atext:%22Manchester%20City%20signing%22%0Atext:MCI%0Atext:%22Manchester%20City%22%0Atext:transfer%0Atext:signing%0Asummary:%22MCI%20transfer%22%0Asummary:%22MCI%20signing%22%0Asummary:%22Manchester%20City%20transfer%22%0Asummary:%22Manchester%20City%20signing%22%0Asummary:MCI%0Asummary:%22Manchester%20City%22%0Asummary:transfer%0Asummary:signing%0Atitle:%22MCI%20transfer%22%0Atitle:%22MCI%20signing%22%0Atitle:%22Manchester%20City%20transfer%22%0Atitle:%22Manchester%20City%20signing%22%0Atitle:MCI%0Atitle:%22Manchester%20City%22%0Atitle:transfer%0Atitle:signing&q.op=OR&indent=true&rows=200&useParams="
 QUERY_SCHEMA_URL = "http://localhost:8983/solr/most_value_team_transfers/query?q=text:%22MCI%20transfer%22%0Atext:%22MCI%20signing%22%0Atext:%22Manchester%20City%20transfer%22%0Atext:%22Manchester%20City%20signing%22%0Atext:MCI%0Atext:%22Manchester%20City%22%0Atext:transfer%0Atext:signing%0Asummary:%22MCI%20transfer%22%0Asummary:%22MCI%20signing%22%0Asummary:%22Manchester%20City%20transfer%22%0Asummary:%22Manchester%20City%20signing%22%0Asummary:MCI%0Asummary:%22Manchester%20City%22%0Asummary:transfer%0Asummary:signing%0Atitle:%22MCI%20transfer%22%0Atitle:%22MCI%20signing%22%0Atitle:%22Manchester%20City%20transfer%22%0Atitle:%22Manchester%20City%20signing%22%0Atitle:MCI%0Atitle:%22Manchester%20City%22%0Atitle:transfer%0Atitle:signing&q.op=OR&indent=true&rows=200&useParams="
 QUERY_BOOST_URL = "http://localhost:8983/solr/most_value_team_transfers/select?defType=edismax&fl=*%2Cscore&fq=date%3A%5B2022-06-10T00%3A00%3A00Z%20TO%202023-01-31T00%3A00%3A00Z%20%5D&indent=true&q.op=OR&q=%22MCI%20transfer%22%5E15%20%22Manchester City%20transfer%22%5E15%20%22Manchester City%20signing%22%5E15%20%22MCI%20signing%22%5E15%20%22MCI%22%5E3%20%22Manchester City%22%5E3%20%22transfer%22%5E0.7%20%22signing%22%5E0.7&qf=title%5E4%20summary%5E3%20text%5E0.7&rows=1000&useParams="
+QUERY_SYNONYM_URL = query_articles("Manchester City Transfer","MCI",None,0,200)
 
 query = "Manchester City Transfer"
 embedding = text_to_embedding(query)
@@ -47,9 +76,10 @@ results_schemaless = requests.get(QUERY_SCHEMALESS_URL).json()['response']['docs
 results_schema = requests.get(QUERY_SCHEMA_URL).json()['response']['docs']
 results_boost = requests.get(QUERY_BOOST_URL).json()['response']['docs']
 results_semantic = solr_knn_query("http://localhost:8983/solr","semantic_articles",embedding)['response']['docs']
-results_list = [results_schemaless,results_schema,results_boost,results_semantic]
-results_list_names = ["schemaless", "schema","boost","semantic"]
-results_linestyle = ['--', '-', ':','--']
+results_synonym = requests.get(QUERY_BOOST_URL).json()['response']['docs']
+results_list = [results_schemaless,results_schema,results_boost,results_semantic,results_synonym]
+results_list_names = ["schemaless", "schema","boost","semantic","synonym"]
+results_linestyle = ['--', '-', ':','--','-.']
 
 def calculate_metrics(results_list):
     fig, ax = plt.subplots()

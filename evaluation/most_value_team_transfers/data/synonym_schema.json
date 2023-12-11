@@ -28,30 +28,6 @@
             }
     },
     {
-      "name": "textLittleAnalysis",
-
-      "class":"solr.TextField",
-      "indexAnalyzer":{
-          "tokenizer":{
-              "class":"solr.StandardTokenizerFactory"
-          },
-          "filters":[
-            {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
-            {"class":"solr.LowerCaseFilterFactory"}
-          ] 
-
-      },
-      "queryAnalyzer":{
-          "tokenizer":{
-              "class":"solr.StandardTokenizerFactory"
-          },
-          "filters":[
-            {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
-            {"class":"solr.LowerCaseFilterFactory"}
-          ]
-      }
-    },
-    {
       "name": "name",
       "class":"solr.TextField"
     },
@@ -95,7 +71,7 @@
     },
     {
       "name": "name",
-      "type": "text"
+      "type": "name"
     },
     {
       "name": "abbreviation",
@@ -219,46 +195,7 @@
     },
     {
       "name": "image_url",
-      "type": "name"
-    },
-    {
-      "name": "home_team_image_url",
       "type": "text"
-    },
-    {
-      "name": "away_team_image_url",
-      "type": "text"
-    },
-    {
-      "name": "teams_image_url",
-      "type": "text"
-    },
-    {
-      "name": "textLittleAnalysis",
-      "type": "textLittleAnalysis",
-      "multiValued":true
-    },
-    {
-      "name": "titleLittleAnalysis",
-      "type": "textLittleAnalysis"
     }
-  ],
-  "add-copy-field":
-  {
-    "source":"title",
-    "dest":[ "textLittleAnalysis"]
-  },
-  "add-copy-field":
-  {
-    "source":"summary",
-    "dest":[ "textLittleAnalysis"]
-  },
-  "add-copy-field":{
-    "source":"text",
-    "dest":[ "textLittleAnalysis"]
-  },
-  "add-copy-field":{
-    "source":"title",
-    "dest":[ "titleLittleAnalysis"]
-  }
+  ]
 }

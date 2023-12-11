@@ -3,20 +3,84 @@ from sklearn.metrics import PrecisionRecallDisplay
 import numpy as np
 import requests
 import pandas as pd
+from urllib.parse import quote
+from sentence_transformers import SentenceTransformer
+
+def query_articles(query,team_abbreviation,player_name,start,rows):
+    articles_core = "http://localhost:8983/solr/mane_articles_synonyms/query"
+    terms_used = ""
+    if query:
+        main_query = f'"{query}"^10'
+        for term in query.split():
+            terms_used += " " + term + "^0.2"
+        main_query = f"q={quote(main_query + terms_used)}"
+    else:
+        main_query = 'q=&q.alt=*:*'
+        
+    query_independent_part = "&q.op=OR&defType=edismax&indent=true&qf=title%5E2.3%20summary%20text%5E0.4&qs=20&fl=*,score&bf=ms(date,NOW)"
+    
+    
+    pagination = f"&rows={rows}&start={start}&useParams="
+    
+    filter_query=""
+
+    if team_abbreviation and not player_name:
+        team_abbreviation = '"' + team_abbreviation + '"'
+        filter_query = '&' + f'fq=%7B!parent%20which%3D%22*:*%20-_nest_path_:*%22%7D%28%2B_nest_path_:%5C%2Fnamed_teams%20%2Babbreviation:{quote(team_abbreviation)}%29'
+    if player_name and not team_abbreviation:
+        player_name = '"' + player_name + '"'
+        filter_query = '&' +f'fq=%7B!parent%20which%3D%22*:*%20-_nest_path_:*%22%7D%28%2B_nest_path_:%5C%2Fnamed_players%20%2Bname:{quote(player_name)}%29'
+
+    
+    solr_query = f"{articles_core}?{main_query}{query_independent_part}{filter_query}{pagination}"
+    return solr_query
+
+def text_to_embedding(text):
+    model = SentenceTransformer('all-MiniLM-L6-v2')
+    embedding = model.encode(text, convert_to_tensor=False).tolist()
+    
+    # Convert the embedding to the expected format
+    embedding_str = "[" + ",".join(map(str, embedding)) + "]"
+    return embedding_str
+
+def solr_knn_query(endpoint, collection, embedding):
+    url = f"{endpoint}/{collection}/select"
+
+    data = {
+        "q": f"{{!knn f=vector topK=10}}{embedding}",
+        "fl": "url",
+        "rows": 10,
+        "wt": "json"
+    }
+    
+    headers = {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+    
+    response = requests.post(url, data=data, headers=headers)
+    response.raise_for_status()
+    return response.json()
 
 QRELS_FILE = "mane_injuries_qrels.txt"
 QUERY_SCHEMALESS_URL = "http://localhost:8983/solr/mane_articles_schemaless/query?q=text:%22Man%C3%A9%20injury%22%20OR%20summary:%22Man%C3%A9%20injury%22%20OR%20title:%20%22Man%C3%A9%20injury%22%20OR%20text:Man%C3%A9%20OR%20summary:Man%C3%A9%20OR%20title:%20Man%C3%A9%20OR%20text:injury%20OR%20summary:injury%20OR%20title:%20injury&q.op=OR&indent=true&rows=999&useParams="
 QUERY_SCHEMA_URL = "http://localhost:8983/solr/mane_articles/query?q=text:%22Man%C3%A9%20injury%22%20OR%20summary:%22Man%C3%A9%20injury%22%20OR%20title:%20%22Man%C3%A9%20injury%22%20OR%20text:Man%C3%A9%20OR%20summary:Man%C3%A9%20OR%20title:%20Man%C3%A9%20OR%20text:injury%20OR%20summary:injury%20OR%20title:%20injury&q.op=OR&indent=true&rows=999&useParams="
 QUERY_BOOST_URL = "http://localhost:8983/solr/mane_articles/query?q=%22Man%C3%A9%20injury%22%5E10%20Man%C3%A9%5E0.2%20injury%5E0.2&q.op=OR&defType=edismax&indent=true&qf=title%5E2.3%20summary%20text%5E0.4&qs=20&fl=*,score&bf=ms(date,NOW)&bq=%7B!parent%20which%3D%22*:*%20-_nest_path_:*%22%7D(%2B_nest_path_:%5C%2Fnamed_players%20%2Bname:%22Sadio%20Man%C3%A9%22)&rows=999&useParams="
+QUERY_SYNONYMS_URL = query_articles("Mane injury",None,None,0,999)
+
+query = "Mane Injury"
+embedding = text_to_embedding(query)
+
 # Read qrels to extract relevant documents
 relevant = list(map(lambda el: el.strip(), open(QRELS_FILE).readlines()))
 # Get query results from Solr instance
 results_schemaless = requests.get(QUERY_SCHEMALESS_URL).json()['response']['docs']
 results_schema = requests.get(QUERY_SCHEMA_URL).json()['response']['docs']
 results_boost = requests.get(QUERY_BOOST_URL).json()['response']['docs']
-results_list = [results_schemaless,results_schema,results_boost]
-results_list_names = ["schemaless", "schema","boost"]
-results_linestyle = ['--', '-', ':']
+results_synonyms = requests.get(QUERY_SYNONYMS_URL).json()['response']['docs']
+results_semantic = solr_knn_query("http://localhost:8983/solr","semantic_articles",embedding)['response']['docs']
+results_list = [results_schemaless,results_schema,results_boost,results_synonyms,results_semantic]
+results_list_names = ["schemaless", "schema","boost","synonyms","semantic"]
+results_linestyle = ['--', '-', ':', '-.', '-']
 
 def calculate_metrics(results_list):
     fig, ax = plt.subplots()
