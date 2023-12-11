@@ -237,6 +237,10 @@
       "name": "textLittleAnalysis",
       "type": "textLittleAnalysis",
       "multiValued":true
+    },
+    {
+      "name": "titleLittleAnalysis",
+      "type": "textLittleAnalysis"
     }
   ],
   "add-copy-field":
@@ -250,8 +254,12 @@
     "dest":[ "textLittleAnalysis"]
   },
   "add-copy-field":{
-      "source":"text",
-      "dest":[ "textLittleAnalysis"]
+    "source":"text",
+    "dest":[ "textLittleAnalysis"]
+  },
+  "add-copy-field":{
+    "source":"title",
+    "dest":[ "titleLittleAnalysis"]
   }
   
 }

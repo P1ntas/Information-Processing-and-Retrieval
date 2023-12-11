@@ -18,6 +18,16 @@ docker exec premier_league bin/solr delete -c articles
 docker exec premier_league bin/solr create_core  -c articles
 
 
+# Schema definition via API
+curl -X POST -H 'Content-type:application/json' \
+    --data-binary "@../schema.json" \
+    http://localhost:8983/solr/articles/schema
+
+curl -X POST -H 'Content-type:application/json' \
+--data-binary "@../documents/articles.json" \
+    http://localhost:8983/solr/articles/update?commit=true
+
+
 curl -X POST -H 'Content-type:application/json' -d '{
   "add-requesthandler": {
     "name": "/mlt",
@@ -57,12 +67,13 @@ curl -X POST -H 'Content-type:application/json'  -d '{
     "class": "solr.SuggestComponent",
     "suggester": {
         "name": "mySuggester",
-        "lookupImpl": "FuzzyLookupFactory",
+        "lookupImpl": "BlendedInfixLookupFactory",
         "dictionaryImpl": "DocumentDictionaryFactory",
-        "field": "title",
-        "suggestAnalyzerFieldType": "text_general",
+        "field": "titleLittleAnalysis",
+        "suggestAnalyzerFieldType": "textLittleAnalysis",
         "exactMatchFirst": "true",
-        "buildOnStartup": "true"
+        "highlight":"true",
+        "buildOnCommit": "true"
     }
   }
 }' http://localhost:8983/solr/articles/config
@@ -72,7 +83,6 @@ curl -X POST -H 'Content-type:application/json'  -d '{
   "add-requesthandler": {
     "name": "/suggest",
         "class": "solr.SearchHandler",
-        "startup": "lazy",
         "defaults": {
             "suggest": true,
             "suggest.count": 20,
@@ -84,16 +94,7 @@ curl -X POST -H 'Content-type:application/json'  -d '{
   }
 }' http://localhost:8983/solr/articles/config
 
-
-# Schema definition via API
-curl -X POST -H 'Content-type:application/json' \
-    --data-binary "@../schema.json" \
-    http://localhost:8983/solr/articles/schema
-
-curl -X POST -H 'Content-type:application/json' \
---data-binary "@../documents/articles.json" \
-    http://localhost:8983/solr/articles/update?commit=true
-
+curl 'http://localhost:8983/solr/articles/suggest?suggest.build=true'
 
 docker exec premier_league bin/solr delete -c teams
 docker exec premier_league bin/solr create_core  -c teams
@@ -119,3 +120,4 @@ curl -X POST -H 'Content-type:application/json' \
 curl -X POST -H 'Content-type:application/json' \
 --data-binary "@../documents/players.json" \
     http://localhost:8983/solr/players/update?commit=true
+
