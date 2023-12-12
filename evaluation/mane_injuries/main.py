@@ -66,6 +66,7 @@ QUERY_SCHEMALESS_URL = "http://localhost:8983/solr/mane_articles_schemaless/quer
 QUERY_SCHEMA_URL = "http://localhost:8983/solr/mane_articles/query?q=text:%22Man%C3%A9%20injury%22%20OR%20summary:%22Man%C3%A9%20injury%22%20OR%20title:%20%22Man%C3%A9%20injury%22%20OR%20text:Man%C3%A9%20OR%20summary:Man%C3%A9%20OR%20title:%20Man%C3%A9%20OR%20text:injury%20OR%20summary:injury%20OR%20title:%20injury&q.op=OR&indent=true&rows=999&useParams="
 QUERY_BOOST_URL = "http://localhost:8983/solr/mane_articles/query?q=%22Man%C3%A9%20injury%22%5E10%20Man%C3%A9%5E0.2%20injury%5E0.2&q.op=OR&defType=edismax&indent=true&qf=title%5E2.3%20summary%20text%5E0.4&qs=20&fl=*,score&bf=ms(date,NOW)&bq=%7B!parent%20which%3D%22*:*%20-_nest_path_:*%22%7D(%2B_nest_path_:%5C%2Fnamed_players%20%2Bname:%22Sadio%20Man%C3%A9%22)&rows=999&useParams="
 QUERY_SYNONYMS_URL = query_articles("Mane injury",None,None,0,999)
+print(QUERY_SYNONYMS_URL)
 
 query = "Mane Injury"
 embedding = text_to_embedding(query)
