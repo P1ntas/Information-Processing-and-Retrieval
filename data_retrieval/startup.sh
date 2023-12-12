@@ -15,6 +15,11 @@ solr start
 
 sleep 30
 
+cp synonyms.txt /var/solr/data/games/conf
+cp synonyms.txt /var/solr/data/articles/conf
+cp synonyms.txt /var/solr/data/teams/conf
+cp synonyms.txt /var/solr/data/players/conf
+
 # Schema definition via API
 curl -X POST -H 'Content-type:application/json' \
     --data-binary "@./schema.json" \
